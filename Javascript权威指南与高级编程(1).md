@@ -532,3 +532,43 @@ break和continue是JS中唯一可以使用语句标签的语句
     o.propertyIsEnumerable('toString')  //=>false：o继承了Object的toString属性，并不是o本身的属性，并且不可枚举
 
 ```
+
+## 21 自定义事件
+有两种方法，一种是使用 `new Event()` ，另一种是 `new CustomEvent()`
+>`new Event()` 
+```
+var btn = document.querySelector('.button');
+var ev = new Event('test', {
+    // 以下属性都是内置的
+    bubbles: true,
+    cancelable: true
+});
+
+btn.addEventListener('test', function(e){
+    console.log(e.bubbles);         // true
+    console.log(e.cancelable);      // true
+    console.log(e.detail);          // undefined
+}, false);  // 事件在冒泡阶段执行，默认就为false
+
+btn.dispatchEvent(ev);
+```
+>`new CustomEvent()` 
+```
+var btn = document.querySelector('.button');
+var ev = new CustomEvent('test', {
+    // 以下属性都是内置的
+    bubbles: true,
+    cancelable: true,
+    detail:'good'
+});
+
+btn.addEventListener('test', function(e){
+    console.log(e.bubbles);         // true
+    console.log(e.cancelable);      // true
+    console.log(e.detail);          // good
+}, false);  // 事件在冒泡阶段执行，默认就为false
+
+btn.dispatchEvent(ev);
+```
+>`new customEvent()` 与 `new Event()`之间的差别在于，<br>
+`new customEvent()`可以在`event.detail`属性里携带自定义数据的功能(`event.detail`的值为`good`)
