@@ -534,8 +534,11 @@ break和continue是JS中唯一可以使用语句标签的语句
 ```
 
 ## 21 自定义事件
+
 有两种方法，一种是使用 `new Event()` ，另一种是 `new CustomEvent()`
+
 >`new Event()` 
+
 ```
 var btn = document.querySelector('.button');
 var ev = new Event('test', {
@@ -552,7 +555,9 @@ btn.addEventListener('test', function(e){
 
 btn.dispatchEvent(ev);
 ```
->`new CustomEvent()` 
+
+> `new CustomEvent()` 
+
 ```
 var btn = document.querySelector('.button');
 var ev = new CustomEvent('test', {
@@ -570,5 +575,6 @@ btn.addEventListener('test', function(e){
 
 btn.dispatchEvent(ev);
 ```
->`new customEvent()` 与 `new Event()`之间的差别在于，<br>
+
+> `new customEvent()` 与 `new Event()`之间的差别在于，<br>
 `new customEvent()`可以在`event.detail`属性里携带自定义数据的功能(`event.detail`的值为`good`)
