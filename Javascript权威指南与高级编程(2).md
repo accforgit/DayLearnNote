@@ -64,7 +64,7 @@
         如果小于最小值或者超出最大值，将会被转换成-Infinity或者Infinity，而这两个值是无法参与计算的。
         使用 isFinite() 方法判断值是否存在于二者之间。
     5) parseInt() 转换数值，将会忽略字符串前面的空格，找到第一个非空格字符，如果第一个字符不是数字字符或者负号，则返回NAN，
-        如果第一个字符是数字字符或者负号，则继续往下解析，知道解析完后续所有数字字符或者遇到了一个非数字字符：
+        如果第一个字符是数字字符或者负号，则继续往下解析，直到解析完后续所有数字字符或者遇到了一个非数字字符：
         parseInt(1234blue)  //==>1234,因为 b 不是数字字符，所以解析到这里就停止解析
         parseInt(22.7)      //==>22，因为小数点不是数字字符，所以解析到这里就停止解析
 
@@ -173,7 +173,7 @@
     with(locaition){
         var qs=search.substring(1)
         var hostName=hostname
-        var url.url
+        var url=url
     }
 
     在ES5非严格模式下，with语句需要Javascript解释器进行大量的分析预测，所以将会导致性能下降，
@@ -292,16 +292,16 @@
     Boolean 对象在 ECMAScript中的用处不太大，并且容易造成误解，所以不推荐使用。
 
     以下两段代码：
-        var obObj=new Boolean(false)
+        var ob=new Boolean(false)
         var result=ob && true
         console.log(result)    //==>true
 
-        var obValue=false
+        var ob=false
         var result=ob && true
         console.log(result)    //==>false
 
     两段看似相同的代码，却产生了不同的结果，
-    原因在于第一段代码实际上是对obObjob 本身而不是其值false进行求值，而 obObj 本身是Object类型，
+    原因在于第一段代码实际上是对ob 本身而不是其值false进行求值，而 ob本身是Object类型，
     所以代表true。
 
 (3) Number 对象
@@ -386,7 +386,7 @@ ECMAScript中有两种属性：数据属性和访问器属性
         })
 
         book.year=2018
-        console.log(book.editable)   //==>2
+        console.log(book.editable)   //==>3
         console.log(book.year)   //==>2018
     2) 支持get()和set()函数的浏览器需要IE9+，如果是更早版本，则需要使用其他两个非标准方法：
         __defineGetter__() 和 __defineSetter()__ 进行重写：
@@ -486,11 +486,11 @@ ECMAScript中有两种属性：数据属性和访问器属性
 ## 1. 特殊集合
 ```
 访问文档常用的部分提供的快捷方式：
-    1) document.anchors : 包含文档中所有带name特性的 `<a>` 元素
+    1) document.anchors : 包含文档中所有带name属性的 `<a>` 元素
     2) document.applets : 包含文档中所有的 `<applet>` 元素，已经过时了，不建议使用
-    3) document.froms : 包含文档中所有的 `<from>` 元素，相当于 document.getElementsByTagName('form')
+    3) document.forms : 包含文档中所有的 `<from>` 元素，相当于 document.getElementsByTagName('form')
     4) document.images : 包含文档中所有的 `<img>` 元素，相当于 document.getElementsByTagName('img')
-    5) document.links : 包含文档中所有带href特性的 `<a>` 元素
+    5) document.links : 包含文档中所有带href属性的 `<a>` 元素
 ```
 
 ## 2. DocumentFragment 类型
