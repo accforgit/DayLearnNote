@@ -470,7 +470,7 @@ for...of遍历的是值，只适用于数组或者类数组(伪数组)
 ```
 (1) 使用数组
     var x=2,y=3
-    x=[y,y=x][1]
+    x=[y,y=x][0]
     console.log(x)    //3
     console.log(y)    //2
 
