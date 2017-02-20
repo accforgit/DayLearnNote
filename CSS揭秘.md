@@ -386,7 +386,9 @@ p{
 ```
 
 - 文字效果
+
 >1. 凸版印刷效果
+
 ```
 // 利用 text-shadow
 p{
@@ -420,6 +422,7 @@ p {
 ```
 
 >4. 文字凸起效果
+
 ```
 p {
   font-size: 50px;
@@ -458,6 +461,7 @@ CSS:
 - 鼠标光标
 
 >1. 隐藏光标 <br> 
+
 应用在播放视频或者PC触屏设备
 
 ```
@@ -469,7 +473,9 @@ video {
   cursor: none;
 }
 ```
+
 >2. 增大可点击区域
+
 ```
 .box1{
   width:50px;
@@ -487,9 +493,10 @@ video {
   cursor:pointer;
 }
 
-``` 
+```
 
 - 复选框 `checkbox` 样式美化
+
 ```
 HTML:
   <input type="checkbox" id='awesome'>
