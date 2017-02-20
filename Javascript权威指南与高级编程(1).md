@@ -417,7 +417,7 @@ push() sort()  reserve()  splice()等原地修改数组的方法用在字符串�
 
         var s=['aa','bb','cc']
         delete s[1]
-        console.log(s)      // => ['aa','cc']，看起来确实不存在'bb'这个值了
+        console.log(s)      // => ["aa", 2: "cc"]，看起来确实不存在'bb'这个值了
         console.log(s.length)      // => 3 ，但是s的长度却没变
 
 
