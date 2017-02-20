@@ -34,6 +34,7 @@ http://website.com/download?build/first.js&build/second.js
 ```
 
 >2. 动态脚本元素(常用，推荐)
+
 ```
 // 兼容 IE 和 标准浏览器
 // 因为这段代码体积很小，也可以将这个函数放到另外一个脚本文件中，保证页面的简洁性，
@@ -58,16 +59,17 @@ function loadScript(url, callback) {
   script.src = url;
   document.getElementsByTagName('head')[0].appendChild(script);
 }
-
 // 调用
 loadScript('file.js', function(){
   // 执行函数
 });
 
 // 最好将以上代码放在 `</body>` 之前。
+
 ```
 由于以上使用了一个回调函数，每个脚本所需的加载时间不同，所以无法保证所加载的脚本按照顺序执行，<br>
 要想让脚本按照顺序执行，可以串联脚本：
+
 ```
 loadScript('file1.js', function(){
   loadScript('file2.js', function(){
@@ -77,10 +79,12 @@ loadScript('file1.js', function(){
   })
 })
 ```
+
 这样一来就能保证脚本按照顺序执行，但是如果脚本太多可能比较麻烦，可以将多个脚本整合成一个大的脚本文件，<br>
 由于动态加载脚本是异步执行，所以就算脚本文件很大，也不会产生阻塞的后果。
 
 >3. `XMLHttpRequest` 脚本注入
+
 ```
 var xhr = new XMLHttpRequest();
 xhr.open('get','file.js', true);
@@ -96,6 +100,7 @@ xhr.onreadystatechange = function() {
 };
 xhr.send(null);
 ```
+
 这种方法优点在于能够适合所有的现代浏览器而不用考虑兼容性的问题，<br>
 限制在于 跨域限制 以及 无法使用 `CDN` 加速，所以一般很少使用。
 
@@ -216,6 +221,7 @@ function testChildNodes() {
   如注释节点和文本节点，而大多数情况下，我们只需要元素节点，所以对于其他类型节点的遍历都是不必要的。
 
 许多现代浏览器提供了只返回元素节点的`API`，能够高效地过滤掉其他节点。
+
 |自带过滤功能的浏览器 `API`|原生属性|
 |---|---|
 |`children`|`childNodes`|
@@ -343,6 +349,7 @@ current++;
     倒序循环能够加快速度，前提是你能够消除因此而产生的额外操作， <br>
     因为与升序循环相比，从原先的两次比较(迭代少于总数吗？它等于 true 吗？)，减少到一次比较(它等于 true 吗？) <br>
     例如，查询数组或属性长度的操作
+    
 ```
 let len = items.length;
 
@@ -363,6 +370,7 @@ do {
   达夫设备是一个循环体展开技术，在一次迭代中实际上执行了多次迭代操作。 <br>
   如果循环次数少于 `1000` 次，那么没有必要采用这种方法，而如果超过了 `1000` 次，<br> 
   那么使用此方法将会大幅度提升循环速度，循环迭代的次数越多，性能提升得就越明显。
+  
 
 ```
 var iterations=Math.floor(items.length/8),
@@ -386,6 +394,7 @@ var iterations=Math.floor(items.length/8),
 
 以下是根据 达夫设备 改进的更快版本，增加了一个 `while` 循环，但是减去了 `switch` 语句， <br>
 并且使用倒序循环
+
 ```
 var i=items.length%8;
 while(i) {
@@ -702,6 +711,7 @@ setInterval('sum=num1+num2',100);
 >3. 不要重复工作
 
 >4. 延迟加载
+
   ```
   // 覆写函数
   function addHandler(target,eventType,handler) {
