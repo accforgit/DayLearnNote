@@ -297,7 +297,7 @@ push() sort()  reserve()  splice()等原地修改数组的方法用在字符串�
         var arr1=[1,2,3]
         arr1 instanceof Array        //==>true
   (2) constructor
-        var arr2
+        var arr2=[]
         arr2.constructor===Array       //==>true
 
   这两种方法一般情况下都行得通，不过在多个执行上下文的场景中无法正常工作，
