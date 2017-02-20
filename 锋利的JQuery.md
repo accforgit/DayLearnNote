@@ -267,6 +267,7 @@
 >2. 只存在`true/false`的属性时应该使用`prop()`
 
 - 获取被点击的 `li` 元素在 `ul` 中的索引。
+
 ```
     var $li = $('li');
     $li.click(function(){
@@ -281,6 +282,7 @@
 - `jQuery` 插件
 
 >1. 表单验证插件：`jquery.validate.js`，一般可以与 `jquery.metadata.js` 配合使用，方便开发。
+
 ```
 (1) 内置验证规则：必填、数字、E-Mail、URL、信用卡等19类
 (2) 自定义验证规则
