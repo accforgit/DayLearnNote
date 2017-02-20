@@ -55,7 +55,7 @@
     classof(function(){})
     ==> Function
 
-3. 通过将对象传入Object.esExtensible(),来判断该对象是否是可扩展的。
+3. 通过将对象传入Object.isExtensible(),来判断该对象是否是可扩展的。
    调用Object.preventExtensions()，将对象转换为不可扩展的，此过程不可逆
    
    Object.seal()与Object.preventExtensions()类似，不过前者还可以将对象的所有
