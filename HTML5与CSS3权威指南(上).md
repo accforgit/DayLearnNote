@@ -94,6 +94,7 @@ video audio
 但是比 `section` 更加强调**独立性**，**二者可以互相嵌套使用**。
 
 >4. 需要注意的事情
+
 ```
 (1) 不要将 section 用作设置样式的页面容器，也就是说，如果一个页面容器元素，
 其主要表现都由 CSS 来进行规范，那么直接使用 div 。
@@ -102,6 +103,7 @@ video audio
 ```
 
 - 非主体结构元素
+
 >1. `header  footer  address` 标签元素都可以在同一个网页内存在多个，<br>
 比如为每个`article`内容区加一个`header` 和 `footer`.
 
@@ -129,7 +131,9 @@ article, aside, dialog, figure, header, legend, nav, section, main {
 ```
 
 - `WebStorage`
+
 >1. 利用 `storage` 事件监视 `Web Storage` 中的数据
+
 ```
 window.addEventListener('storage', function(event){
   // 当sessionStorage 或 localStorage 的值发生变动时所要执行的处理
@@ -145,7 +149,9 @@ window.addEventListener('storage', function(event){
 ```
 
 - `input` 文件类型
+
 >为 `file` 类型的 `input` 标签添加 `multiple` 属性，则允许一次性放置多个文件，以数组类型呈现。
+
 ```
 HTML:
   <!--size 限制上传文件大小，multiple 表明允许一个 input 控件中放置多个文件-->
@@ -210,10 +216,12 @@ JS:
 将会下载文件到本地，用编辑器打开，文件里的内容就是刚才输入在 `textarea` 里的内容。
 
 - `Base64` 编码
+
 >`Base64` 编码是一种使用`64`个可打印字符(大部分情况下指得是 A-Z、 a-z、0-9、"+"、"/")来表示二进制数据的一种编码方法<br>
 编码后的数据比原始数据略长。
 在 `HTML5` 中，新增`btoa()`与`atob()` 方法来支持`Base64` 编码，在这两个方法的命名中，<br>
 `b` 可以被理解为一串二进制数据，`a` 可以被理解为一个`ASCII`码字符串，**分别用来编码和解码**。
+
 ```
 // 编码
 var result = window.btoa(data);
@@ -296,6 +304,7 @@ JS:
 ```
 
 - 通信 `API`
+
 >1. `WebSocket`：服务器与客户端之间的 **双向** 通信机制
 >2. `Server-Sent Events`：服务器发送到客户端的 **单向** 通信机制
 
@@ -373,6 +382,7 @@ JS:
 ```
 
 - 其他 `API`
+
 >1. `Web` 页面可见性 `API`:`Page Visibility API`
 需要为不同的内核单独指定私有属性。
 
