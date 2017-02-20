@@ -52,7 +52,7 @@
             console.log(num1,num2)
             //==>56,31
 
-    2) 由于保存浮点数的内存空间是保存整数的两倍，所以ECMA会不失时机的将腹地安置转换为整数值：
+    2) 由于保存浮点数的内存空间是保存整数的两倍，所以ECMA会不失时机的将浮点值转换为整数值：
         var floatnum1=1.
         var floatnum2=10.0
         console.log(floatnum1,floatnum2)
