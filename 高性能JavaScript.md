@@ -450,7 +450,6 @@ if(value == 0){
 } else{
   // ...
 }
-
 // 使用二分法嵌套条件语句,最多只需要判断 3 次
 if(value < 3){
   if(value == 2){
@@ -475,6 +474,7 @@ if(value < 3){
 
 当有大量离散值需要测试时，查表法将比 `if...else` 和 `switch` 都要快得多，并且数据越多就越明显 <br>
 查表法可用 **数组** 或者 **普通** 对象实现。
+
 ```
 var results=[a1,a2,a3,a4,a5,a6,a7,a8,a9,a10];
 function search(key) {
@@ -501,7 +501,6 @@ function memfactorial(n) {
   }
   return memfactorial.cache[n];
 }
-
 // 像常规的阶乘函数那样直接使用，只不过速度更快
 var fact6=memfactorial(6);    // 720
 ```
@@ -541,6 +540,7 @@ str = str + 'one' + 'two';
 >1. 正则表达式本地化 <br>
   创建了一个正则表达式之后，浏览器会检查其是否存在错误，然后转换成一个本地代码例程，如果所创建的正则表达式 <br>
   不只使用一次，那么最好用一个变量将此正则表达式缓存起来
+  
 ```
 var reg = /\w{3}/;
 ```
@@ -693,7 +693,8 @@ function timedProcessArray(items, process, callback) {
 
 ## 编程实践
 
->1. 避免二次评估 <br>
+>1. 避免二次评估
+
 ```
 var num1=5, num2=6;
 
@@ -712,22 +713,22 @@ setInterval('sum=num1+num2',100);
 
 >4. 延迟加载
 
-  ```
-  // 覆写函数
-  function addHandler(target,eventType,handler) {
-    if(target.addEventlistener) {
-      // 标准浏览器
-      addHandler=function(target,eventType,handler) {
-        target.addEventlistener(eventType,handler,false);
-      }
-    } else {
-      // IE
-      addHandler=function(target,eventType,handler) {
-        target.attachEvent('on'+eventType,handler);
-      }
+```
+// 覆写函数
+function addHandler(target,eventType,handler) {
+  if(target.addEventlistener) {
+    // 标准浏览器
+    addHandler=function(target,eventType,handler) {
+      target.addEventlistener(eventType,handler,false);
+    }
+  } else {
+    // IE
+    addHandler=function(target,eventType,handler) {
+      target.attachEvent('on'+eventType,handler);
     }
   }
-  ```
+}
+```
 
 >5. 条件预加载
 
@@ -752,6 +753,7 @@ var addHandler=document.body.addEventlistener ?
 >2. `JavaScript` 压缩
 
 >3. 调试
+
 ```
 // 测试时间
 var name=0;
