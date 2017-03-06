@@ -116,6 +116,44 @@ input:focus{
 ```
 text-transform: none | uppercase | lowercase | capitalize | inherit
 ```
+- CSS最佳实践
+
+>CSS选择器运行效率
+```
+ID选择器： #id
+class选择器： .class
+标签选择器：div
+相邻选择器： a + li
+子元素选择器：ul > li
+通用选择器： *
+属性选择器：input[tyoe='text']
+伪类选择器：a:hover
+```
+>CSS选择器从右向左解析，所以选择器越短解析速度越快
+
+>如果使用 `Jquery` 操作DOM，则遵循 `Jquery`最佳实践
+
+>尽量只对 `position` 为 `absolute / fixed` 的元素设置动画
+
+>在页面滚动时禁用 `:hover`样式效果
+
+```
+.disable-hover {
+    // 这个属性只对 IE10+ 有效
+    pointer-events: none;
+}
+
+var body = document.body,timer;
+window.addEventListener('scroll',function(){
+    cleearTimeout(timer);
+    if(!body.classList.contains('disable-hover')){
+        body.classList.add('disable-hover');
+    }
+    timer = setTimeout(function(){
+        body.classList.remove('disable-hover');
+    },500)
+},false)
+```
 
 - 文本过长用省略号裁切
 ```
