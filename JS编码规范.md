@@ -91,13 +91,13 @@
  如果是“无容忍”的操作，尽量使用'==='代替'=='
 ```
 
-# 4. 字面量
+## 4. 字面量
 ```
 尽量使用 `{} []`代替`new Object()  new Array()`，不要使用`string bool number`对象类型，
 即不要调用`new String new Boollean new Number`。
 ```
 
-# 5. 作用域
+## 5. 作用域
 ```
 (1) 慎用 with
     这可能导致作用域混乱
@@ -105,7 +105,7 @@
 (2) 慎用 eval()
 ```
 
-# 6. 类与模块
+## 6. 类与模块
 ```
 (1) 类继承
     1) 一般写法
@@ -124,3 +124,6 @@
     当需要将文件当做一个类导出时，需要通过module.exports:
     module.exports=Class;
 ```
+
+## 更多
+[腾讯Web团队编码规范 Code Guide by @AlloyTeam](http://alloyteam.github.io/CodeGuide/)
