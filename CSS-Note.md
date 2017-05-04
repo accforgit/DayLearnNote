@@ -304,3 +304,20 @@ html {
     }
 }
 ```
+
+- CSS实现跨浏览器兼容性的盒阴影效果
+
+摘自 by [张鑫旭](http://www.zhangxinxu.com/wordpress/2010/04/css%E5%AE%9E%E7%8E%B0%E8%B7%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7%E7%9A%84%E7%9B%92%E9%98%B4%E5%BD%B1%E6%95%88%E6%9E%9C/)
+
+```
+.shadow {
+    -moz-box-shadow: 3px 3px 4px #000;
+    -webkit-box-shadow: 3px 3px 4px #000;
+    box-shadow: 3px 3px 4px #000;
+    /* For IE 8 */
+    /* 这里的颜色值不能缩写，例如不能缩写成 #000 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000')";
+    /* For IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
+}
+```
