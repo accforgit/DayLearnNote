@@ -321,3 +321,17 @@ html {
     filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000');
 }
 ```
+
+- 修复中文 Chrome 浏览器下，字号最小只能是12px
+
+首先，如果 chome版本大于 chrome 27，则 `-webkit-text-size-adjust:none;` 是没有用的
+
+正确解决方法如下：
+```
+   // 元素必须是块级元素，例如inline-block 和 block
+   display:inline-block;
+   // 其他浏览器才能正确解析小于12px的字号，所以下面这个字号9px对 Chrome是没用的
+   font-size:9px; 
+   // 当字号12px时，Chrome自动将字号一律设置为12px，所以下面这句设置，是在12px上进行缩小的，12px*0.7
+   -webkit-transform: scale(0.70);
+```
