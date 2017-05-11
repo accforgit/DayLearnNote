@@ -310,7 +310,7 @@ html {
 
 - CSS实现跨浏览器兼容性的盒阴影效果
 
-摘自 by [张鑫旭](http://www.zhangxinxu.com/wordpress/2010/04/css%E5%AE%9E%E7%8E%B0%E8%B7%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7%E7%9A%84%E7%9B%92%E9%98%B4%E5%BD%B1%E6%95%88%E6%9E%9C/)
+*摘自 by [张鑫旭](http://www.zhangxinxu.com/wordpress/2010/04/css%E5%AE%9E%E7%8E%B0%E8%B7%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7%E7%9A%84%E7%9B%92%E9%98%B4%E5%BD%B1%E6%95%88%E6%9E%9C/)*
 
 ```
 .shadow {
@@ -337,4 +337,20 @@ html {
    font-size:9px; 
    // 当字号12px时，Chrome自动将字号一律设置为12px，所以下面这句设置，是在12px上进行缩小的，12px*0.7
    -webkit-transform: scale(0.70);
+```
+
+- 大小不固定的图片垂直居中
+
+*摘自[张鑫旭](http://www.zhangxinxu.com/wordpress/2010/09/after%E4%BC%AA%E7%B1%BBcontent%E5%86%85%E5%AE%B9%E7%94%9F%E6%88%90%E5%B8%B8%E8%A7%81%E5%BA%94%E7%94%A8%E4%B8%BE%E4%BE%8B/)*
+以下代码兼容到IE6+
+```
+HTML:
+<div class="pic_box">
+    <img data-src="http://image.zhangxinxu.com/image/study/s/s256/mm1.jpg" />
+</div>
+
+CSS:
+.pic_box{width:300px; height:300px; background-color:#beceeb; font-size:0; *font-size:200px; text-align:center;}
+.pic_box img{vertical-align:middle;}
+.pic_box:after{display:inline-block; width:0; height:100%; content:"center"; vertical-align:middle; overflow:hidden;}
 ```
