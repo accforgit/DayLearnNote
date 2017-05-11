@@ -38,18 +38,21 @@ CSS:
 如果用了浮动，浮动的父层不会跟着浮动框的高度增加而增加，在Firefox等符合W3C标准的浏览器中，<br>
 如果有一个DIV作为外部容器，内部的DIV如果设置了float样式，则外部的容器DIV因为内部没有clear，<br>
 导致不能被撑开。这个时候我们可以用clearfix清除浮动。
+
+以下代码可以兼容到IE6+
 ```
 .clearfix:after {       
-    content: ".";     /*内容为“.”就是一个英文的句号而已。也可以不写。*/
+    content: ".";     /*内容为“.”就是一个英文的句号而已，可以是任何内容。*/
     display: block;   /*加入的这个元素转换为块级元素。*/
     clear: both;     /*清除左右两边浮动。*/
-    visibility: hidden;      /*可见度设为隐藏。注意它和display:none;是有区别的。visibility:hidden;仍然占据空间，只是看不到而已；*/
-    line-height: 0;    /*行高为0；*/
     height: 0;     /*高度为0；*/
-    font-size:0;    /*字体大小为0；*/
+    overflow:hidden;
+    visibility: hidden;      /*可见度设为隐藏。注意它和display:none;是有区别的。visibility:hidden;仍然占据空间，只是看不到而已；*/
+    line-height: 0;    /*行高为0，可以不写这一句*/
+    font-size:0;    /*字体大小为0，可以不写这一句*/
 }
 
-.clearfix { *zoom:1;}   /*这是针对于IE6的，因为IE6不支持:after伪类，这个神奇的zoom:1让IE6的元素可以清除浮动来包裹内部元素。*/
+.clearfix { *zoom:1;}   /*这是针对于IE6和IE&的，因为IE6不支持:after伪类，这个神奇的zoom:1让IE6的元素可以清除浮动来包裹内部元素。*/
 ```
 
 - Sticky footers
