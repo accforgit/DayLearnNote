@@ -710,7 +710,21 @@ CSS:
   }
 ```
 
->2. 基于视口的解决方案
+>2. `margin:auto;`，适应性较好(且是水平垂直都居中)
+
+```
+.element {
+    width: 600px; 
+    height: 400px;
+    position: absolute; 
+    // 四个值全是 0
+    left: 0; top: 0; right: 0; bottom: 0;
+    // 有了这个就自动居中了
+    margin: auto;    
+}
+```
+
+>3. 基于视口的解决方案
 
 ```
 main{
@@ -720,7 +734,7 @@ main{
 }
 ```
 
->3. 基于`Flexbox` 的解决方案
+>4. 基于`Flexbox` 的解决方案
 ```
 body{
   display: flex;
