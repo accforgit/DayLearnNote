@@ -354,3 +354,47 @@ CSS:
 .pic_box img{vertical-align:middle;}
 .pic_box:after{display:inline-block; width:0; height:100%; content:"center"; vertical-align:middle; overflow:hidden;}
 ```
+
+- 滚动条跳动
+
+问题描述：
+>开始只有头部一些信息加载，此时页面高度有限，没有滚动条；然后，更多内容显示，滚动条出现，占据可用宽度，`margin: 0 auto`，
+主体元素自然会做偏移——跳动产生
+
+解决方案：
+
+**1. CSS3计算calc和vw单位**
+
+`.wrap-outer`指的是居中定宽主体的父级，如果没有，创建一个，兼容到 `IE9+`
+```
+.wrap-outer {
+    margin-left: calc(100vw - 100%);
+}
+// 或者
+.wrap-outer {
+    padding-left: calc(100vw - 100%);
+}
+```
+
+**2. **
+
+```
+html {
+  // IE9 以下浏览器，因为不支持下面的 vm单位，直接让其出现滚动条
+  overflow-y: scroll;
+}
+
+:root {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+:root body {
+  position: absolute;
+}
+
+body {
+  width: 100vw;
+  overflow: hidden;
+}
+```
