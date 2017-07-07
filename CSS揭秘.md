@@ -526,7 +526,6 @@ CSS:
   input[type='checkbox']{
     // 使用裁切的方式将原有的checkbox隐藏，相对于直接 display:none； 的好处是，
     // 不会将复选框从键盘的 tab 键切换焦点的队列中完全删除，人机交互性更好
-    position:absolute;
     clip:rect(0,0,0,0);
   }
 ```
