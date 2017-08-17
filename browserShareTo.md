@@ -253,13 +253,20 @@ const mshare = () => {
   if (!socialShare.isWxOrQQ) {
     if (isSupportShare) {
       // 当前浏览器支持分享
-      let config = this.shareInfos
-      config.img_title = config.name
-      config.from = '58二手'
-      socialShare.goShare('.share-item', config)
+      let title = '分享的标题' // 标题
+      let url = 'http://example.com/index.html' // 分享的网页链接
+      let img = 'http://example.com/share.png' // 分享的图片链接
+      let desc = '分享的内容描述' // 描述
+      let img_title = '分享的图片描述'
+      let from = '分享的来源' // 一般此项都是由浏览器自动设置
+      
+      socialShare.goShare('.share-item', { title, url, img, desc, img_title, from })
     } else {
       console.log('当前浏览器不支持分享')
     }
   }
 }
+
+// 调用分享函数
+mshare()
 ```
