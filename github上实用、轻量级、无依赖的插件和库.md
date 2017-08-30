@@ -264,12 +264,18 @@ star：13.3K+
 ## mojs - web端图形运动算法库，用于制作复杂的炫酷动画效果
 github：https://github.com/legomushroom/mojs
 
-官网：
-
 star: 11.9K+
 
 功能介绍：
 >web端图形运动算法库，用于制作复杂的炫酷动画效果，官网有详细的 api文档以及示例
+
+## tween.js - javascript tweening engine
+github: https://github.com/tweenjs/tween.js
+
+star: 4.5k+
+
+功能介绍：
+>一款根据给定的初始坐标和结束坐标进行运动动画的动画库，包括  Linear、Quadratic、cubic、Quartic、Quintic、Sinusoidal、Exponential等形式的动画效果，还包括在动画过程中增删更新元素等的操作，便于实现简单的两点动画。
 
 ## Rainyday.js – 使用 JavaScript 实现雨滴效果
 github：https://github.com/maroslaw/rainyday.js
@@ -690,7 +696,7 @@ star：1.5K+
 
 ![showpicture](https://raw.githubusercontent.com/react-native-community/react-native-svg/master/screenShoots/clip-path.png)
 
-## gm - 基于node操作图片的库
+## gm - 基于nodeJS操作图片的库
 github：https://github.com/aheckmann/gm
 
 官网：http://aheckmann.github.io/gm/
