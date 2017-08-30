@@ -176,6 +176,13 @@ star：16k+
 
 ![showpicture](https://camo.githubusercontent.com/3144fa643139adee4eb7d01e2e0a63c12d0e0a72/68747470733a2f2f7261772e6769746875622e636f6d2f743474352f7377656574616c6572742f6d61737465722f7377656574616c6572742e676966)
 
+## push.js - 桌面通知 Notification框架库
+github: https://github.com/Nickersoft/push.js
+
+star: 6.1k+
+
+功能介绍：基于 HTML5 API **Notification** 实现跨浏览器的桌面推送效果，如果浏览器不支持此 API，则启动回退机制，支持 Chrome, Safari, Firefox, and IE 9+
+
 ## Awesomplete.js - 比datalist更强大更实用，零依赖的简单自动补全插件
 
 github：https://github.com/leaverou/awesomplete/
