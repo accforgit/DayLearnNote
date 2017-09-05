@@ -337,6 +337,8 @@ star:700k+
 功能介绍：
 >在两个 svg path将设置过渡渲染效果，让两个 path间的变化显得更加平滑
 
+![showpicture](https://camo.githubusercontent.com/d48802a29ef0d970b453b1a414c5a4c34b7e52f7/687474703a2f2f696d61676573323031352e636e626c6f67732e636f6d2f626c6f672f3130353431362f3230313730362f3130353431362d32303137303632303039343831373535342d34383331363130372e676966)
+
 ## scrollReveal.js – 使元素以非常酷帅的方式进入画布 (Viewpoint)
 github：https://github.com/jlmakes/scrollreveal
 
@@ -349,7 +351,6 @@ size: 8KB
 功能介绍：
 >scrollReveal.js 是一个用于使元素以非常酷帅的方式进入画布的 JavaScript 工具库，常见于整屏的 H5动画，当元素进入或者离开可视范围时，进行一系列的动画效果，轻量级，高性能，无依赖的一个小巧酷炫的库。
 
-![showpicture](https://camo.githubusercontent.com/d48802a29ef0d970b453b1a414c5a4c34b7e52f7/687474703a2f2f696d61676573323031352e636e626c6f67732e636f6d2f626c6f672f3130353431362f3230313730362f3130353431362d32303137303632303039343831373535342d34383331363130372e676966)
 
 ## Swiper – 经典的移动触摸滑块轮播插件
 github：https://github.com/nolimits4web/Swiper
