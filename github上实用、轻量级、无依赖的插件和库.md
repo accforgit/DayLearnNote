@@ -231,6 +231,21 @@ size: 60KB
 功能介绍：
 >不可变数据是指一旦创建就不能被修改的数据，使得应用开发更简单，允许使用函数式编程技术，比如惰性评估。Immutable JS 提供一个惰性 Sequence，允许高效的队列方法链，类似 map 和 filter ，不用创建中间代表。Immutable.js 提供持久化的列表、堆栈、Map， 以及 OrderedMap 等，最大限度地减少需要复制或缓存数据。
 
+## howler.js - 为现代web浏览器打造的 javascript音频库
+github：https://github.com/goldfire/howler.js
+
+官网：https://howlerjs.com/
+
+star: 8.4K+
+
+size: 28.3KB
+
+功能介绍：
+>为现代web浏览器打造的跨浏览器 javascript音频库，默认使用 HTML5 Audio API，回退为 HTML Audio，统一所有浏览器的 Audio API接口，
+自动缓存、音频控制（快进、快退、速度等）、混合、裁剪、3D音效等众多功能，纯净无依赖、压缩后仅有 28.3Kb、gzip之后仅有 7KB大小，支持 `IE9.0+`
+
+![showpicture](https://howlerjs.com/assets/images/logo.svg)
+
 ## Popmotion.js – 小巧，灵活的 JavaScript 运动引擎
 github：https://github.com/Popmotion/popmotion
 
