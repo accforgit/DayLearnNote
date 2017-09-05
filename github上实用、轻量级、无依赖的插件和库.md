@@ -135,6 +135,16 @@ size: 40KB
 功能介绍：
 >slick 是一个功能异常强大的一个图片滑动切换效果库，接口丰富，支持各种动画和各种样式的切换滑动，唯一的缺点就是基于jQuery，基本废了，因为 jQuery没办法装逼，所以应该没人会在新项目用了，支持 RequireJS 以及 Bower 安装
 
+## react-slick - 基于 slick 打造的 react-slick组件
+github: https://github.com/akiran/react-slick
+
+官网：http://neostack.com/opensource/react-slick
+
+star: 3.3K+
+
+功能介绍：
+>基于 slick的 react-slick组件，支持无限轮播、垂直轮播、自动轮播等多种轮播方式
+
 ## swipe – 非常轻量级的一个图片滑动切换效果库
 github：https://github.com/lyfeyaj/Swipe
 
@@ -327,6 +337,18 @@ star:700k+
 功能介绍：
 >在两个 svg path将设置过渡渲染效果，让两个 path间的变化显得更加平滑
 
+## scrollReveal.js – 使元素以非常酷帅的方式进入画布 (Viewpoint)
+github：https://github.com/jlmakes/scrollreveal
+
+官方网站：https://scrollrevealjs.org/
+
+star：12k+
+
+size: 8KB
+
+功能介绍：
+>scrollReveal.js 是一个用于使元素以非常酷帅的方式进入画布的 JavaScript 工具库，常见于整屏的 H5动画，当元素进入或者离开可视范围时，进行一系列的动画效果，轻量级，高性能，无依赖的一个小巧酷炫的库。
+
 ![showpicture](https://camo.githubusercontent.com/d48802a29ef0d970b453b1a414c5a4c34b7e52f7/687474703a2f2f696d61676573323031352e636e626c6f67732e636f6d2f626c6f672f3130353431362f3230313730362f3130353431362d32303137303632303039343831373535342d34383331363130372e676966)
 
 ## Swiper – 经典的移动触摸滑块轮播插件
@@ -398,6 +420,24 @@ star：14k+
 >Quill 的建立是为了解决现有的所见即所得（WYSIWYG）的编辑器本身就是所见即所得（指不能再扩张）的问题。如果编辑器不正是你想要的方式，这是很难或不可能对其进行自定义以满足您的需求。
 >Quill 旨在通过把自身组织成模块，并提供了强大的 API 来构建额外的模块来解决这个问题。它也并没有规定你用样式来定义编辑器皮肤。Quill 还提供了所有你希望富文本编辑器说用于的功能，包括轻量级封装，众多的格式化选项，以及广泛的跨平台支持。
 
+## request - 让 http请求变得更简单
+github: https://github.com/request/request
+
+star: 16.7K+
+
+size: 500K+
+
+功能介绍：
+>基于 node.js http模块，为浏览器打造易用的 http请求库，默认支持  https和重定向，支持文件流和表单的传输、HTTP认证、OAuth登录、定制HTTP header、cookies(默认禁止，需要自动开启)、代理、promise、async/await、HAR 1.2等多种 http请求。
+
+## r2 - 参考 request打造的轻量级、高可用的 http客户端
+github: https://github.com/mikeal/r2
+
+size: 66K
+
+功能介绍：
+>与 request为同一个作者打造，相比于 request更加轻量、专注，基于现代浏览器的 `fetch API`，基于 `promise`， 与 `asynv/await`搭配更佳。
+
 ## basket.js – 基于 LocalStorage 的资源加载器
 github：https://github.com/addyosmani/basket.js
 
@@ -410,17 +450,6 @@ size: 4KB
 功能介绍：
 >basket.js是一款基于 LocalStorage 的资源加载器，可以用来缓存 script 和 css, 手机端使用速度快于浏览器直接缓存。
 
-## scrollReveal.js – 使元素以非常酷帅的方式进入画布 (Viewpoint)
-github：https://github.com/jlmakes/scrollreveal
-
-官方网站：https://scrollrevealjs.org/
-
-star：12k+
-
-size: 8KB
-
-功能介绍：
->scrollReveal.js 是一个用于使元素以非常酷帅的方式进入画布的 JavaScript 工具库，常见于整屏的 H5动画，当元素进入或者离开可视范围时，进行一系列的动画效果，轻量级，高性能，无依赖的一个小巧酷炫的库。
 
 ## moment.js – 一款轻量级的Javascript日期处理类库
 github：https://github.com/moment/moment/
