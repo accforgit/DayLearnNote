@@ -181,7 +181,7 @@ github: https://github.com/Nickersoft/push.js
 
 star: 6.1k+
 
-功能介绍：基于 HTML5 API **Notification** 实现跨浏览器的桌面推送效果，如果浏览器不支持此 API，则启动回退机制，支持 Chrome, Safari, Firefox, and IE 9+
+功能介绍：Push 是 BrowserStack 出品的，快速实现基于 HTML5 API **Notification** 的桌面消息推送工具；Push 能够自动利用 Chrome、Safari、Firefox、IE9+ 这些现代浏览器提供的底层接口，为开发者提供跨平台的统一调用，如果浏览器不支持此 API，则启动回退机制，支持 Chrome, Safari, Firefox, and IE 9+
 
 ## Awesomplete.js - 比datalist更强大更实用，零依赖的简单自动补全插件
 
