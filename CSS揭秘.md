@@ -862,3 +862,32 @@ CSS:
               caret 1s infinite steps(1);
   }
 ```
+
+- 卡片元素两侧锯齿效果
+```
+// HTML
+<div class="card_coupon"></div>
+```
+
+```
+// CSS
+.card_coupon{position:relative;width:100px;height:100px;background:#f60;display:inline-block;}
+.card_coupon:before,
+.card_coupon:after{content: "";position: absolute;display: block;width:10px;height: 100%;background-size: 20px 10px;}
+.card_coupon:before{
+  left: -10px;
+  background-position: 100% 0;
+  background-image: linear-gradient(-45deg, #f60 25%, transparent 25%, transparent),
+    linear-gradient(-135deg, #f60 25%, transparent 25%, transparent),
+    linear-gradient(-45deg, transparent 75%, #f60 75%),
+    linear-gradient(-135deg, transparent 75%, #f60 75%);
+}
+.card_coupon:after{
+  right: -10px;
+  background-color: #f60;background-position: 100% 15%;
+  background-image: linear-gradient(-45deg, #fff 25%, transparent 25%, transparent),
+      linear-gradient(-135deg, #fff 25%, transparent 25%, transparent),
+      linear-gradient(-45deg, transparent 75%, #fff 75%),
+      linear-gradient(-135deg, transparent 75%, #fff 75%);
+}
+```
