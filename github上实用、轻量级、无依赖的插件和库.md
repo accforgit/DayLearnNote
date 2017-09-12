@@ -683,6 +683,16 @@ star: 16K+
 功能介绍：
 >阿里巴巴开源的 react组件库,支持现代浏览器和 IE9 及以上，支持服务端渲染，支持Electron
 
+## awesome-react-components - react UI库列表
+github：https://github.com/brillout/awesome-react-components
+
+官网：https://devarchy.com/react
+
+star：9.7K+
+
+功能介绍：
+>这并不是一个具备什么功能或者效果的技术库，而是一个整合了 github上几乎所有可用的 react UI组件库的列表，在这个列表中，你可以找到几乎所有的 react UI组件，以及众多优秀或者小众的 react UI组件库项目
+
 ## video.js - HTML5 & Flash 视频播放器
 
 github: https://github.com/videojs/video.js
