@@ -184,7 +184,7 @@ star：16k+
 功能介绍：
 >Sweet Alert 是一个替代传统的 JavaScript Alert 的漂亮提示效果。SweetAlert 自动居中对齐在页面中央，不管您使用的是台式电脑，手机或平板电脑看起来效果都很棒。另外提供了丰富的自定义配置选择，可以灵活控制。
 
-![showpicture](https://camo.githubusercontent.com/3144fa643139adee4eb7d01e2e0a63c12d0e0a72/68747470733a2f2f7261772e6769746875622e636f6d2f743474352f7377656574616c6572742f6d61737465722f7377656574616c6572742e676966)
+![showpicture](https://github.com/t4t5/sweetalert/blob/e3c2085473a0eb5a6b022e43eb22e746380bb955/assets/swal.gif)
 
 ## push.js - 桌面通知 Notification框架库
 github: https://github.com/Nickersoft/push.js
