@@ -193,6 +193,16 @@ star: 6.1k+
 
 功能介绍：Push 是 BrowserStack 出品的，快速实现基于 HTML5 API **Notification** 的桌面消息推送工具；Push 能够自动利用 Chrome、Safari、Firefox、IE9+ 这些现代浏览器提供的底层接口，为开发者提供跨平台的统一调用，如果浏览器不支持此 API，则启动回退机制，支持 Chrome, Safari, Firefox, and IE 9+
 
+## tracking.js - web端图像追踪引擎
+github：https://github.com/eduardolundgren/tracking.js
+
+官网：https://trackingjs.com/
+
+star：5.4K+
+
+功能介绍：
+>完成各种追踪类的图像处理任务，例如人脸识别、五官追踪等
+
 ## Awesomplete.js - 比datalist更强大更实用，零依赖的简单自动补全插件
 
 github：https://github.com/leaverou/awesomplete/
