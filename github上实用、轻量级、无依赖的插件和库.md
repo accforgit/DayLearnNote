@@ -203,6 +203,16 @@ star：5.4K+
 功能介绍：
 >完成各种追踪类的图像处理任务，例如人脸识别、五官追踪等
 
+## AlloyImage - 堪称前端PS的前端图像处理类库
+github：https://github.com/AlloyTeam/AlloyImage
+
+官网：http://alloyteam.github.io/AlloyImage/
+
+star:1.7K+
+
+功能介绍：
+>腾讯前端出品，基于html5的JS图片图像处理库，堪称前端PS，简单易用，官方文档齐全，支持多图层操作，与PS对应的17种图层混合模式，多种基本滤镜处理效果，多种组合风格效果，另有 [AlloyPhoto](http://alloyteam.github.io/AlloyImage/alloyphotopro.html)，基于此类库开发，AlloyImage的强势Demo。
+
 ## Awesomplete.js - 比datalist更强大更实用，零依赖的简单自动补全插件
 
 github：https://github.com/leaverou/awesomplete/
