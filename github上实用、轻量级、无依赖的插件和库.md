@@ -732,6 +732,26 @@ star：4.5K+
 功能介绍:
 >同时展现出一个网页在多种设备下显示效果，包括 iphone4、5、6、7、7plus、iPad Air、Nexus6P等
 
+## Next.js - React服务端渲染应用框架
+github: https://github.com/zeit/next.js
+
+官网： https://zeit.co/blog/next3
+
+star：16K+
+
+功能介绍：
+>React服务端渲染 SSR应用框架，支持可选的服务端与客户端渲染功能，简单易用，安装这个框架会搭建一个基于React、Webpack和Babel的构建过程，也就是说脚手架已经预设了配置，开发人员不必在搭建Webpack或Babel配置上花费时间了。以往，这两个步骤就会耗费开发人员很多的时间。要运行某个站点的开发版本，只需运行npm run dev。
+
+## Nuxt.js - Vue的服务端渲染应用框架
+github: https://github.com/nuxt/nuxt.js
+
+官网： https://nuxtjs.org/  中文：https://zh.nuxtjs.org/
+
+star: 6.3K+
+
+功能介绍：
+>Vue的服务端渲染应用框架，类别上面的 Next.js，发布时间紧随在 Next.js后面几个小时，同样预设了利用Vue.js开发服务端渲染的应用所需要的各种配置，并且还提供了一种命令叫：nuxt generate，为基于 Vue.js 的应用提供生成对应的静态站点的功能，作为框架，Nuxt.js 为 客户端/服务端 这种典型的应用架构模式提供了许多有用的特性，例如异步数据加载、中间件支持、布局支持等，最美妙的是，与 `Vue`一样，这东西有中文版，看着就亲切。
+
 ## react-native-vector-icons - react-native 图标库
 github: https://github.com/oblador/react-native-vector-icons
 
