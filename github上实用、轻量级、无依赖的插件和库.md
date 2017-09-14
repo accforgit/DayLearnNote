@@ -69,6 +69,8 @@ size: 46.5KB
 功能介绍：
 >移动端最好用的的筛选器组件，高仿 ios 的 UIPickerView ，非常流畅的体验，原生 JS 实现，不依赖任何插件和第三方库
 
+![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/picker.gif)
+
 ## nativeShare.js - 调起移动端浏览器自带分享功能
 
 github: https://github.com/fa-ge/NativeShare
@@ -111,6 +113,8 @@ star：2.8K+
 功能介绍：
 >基于react 的拖拽实现
 
+![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/react-sortable-hoc.gif)
+
 ## Draggabilly – 轻松实现拖放功能（Drag & Drop）
 github：https://github.com/desandro/draggabilly
 
@@ -134,6 +138,8 @@ size: 40KB
 
 功能介绍：
 >slick 是一个功能异常强大的一个图片滑动切换效果库，接口丰富，支持各种动画和各种样式的切换滑动，唯一的缺点就是基于jQuery，基本废了，因为 jQuery没办法装逼，所以应该没人会在新项目用了，支持 RequireJS 以及 Bower 安装
+
+![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/slick.gif)
 
 ## react-slick - 基于 slick 打造的 react-slick组件
 github: https://github.com/akiran/react-slick
@@ -195,6 +201,8 @@ star: 6.1k+
 
 功能介绍：Push 是 BrowserStack 出品的，快速实现基于 HTML5 API **Notification** 的桌面消息推送工具；Push 能够自动利用 Chrome、Safari、Firefox、IE9+ 这些现代浏览器提供的底层接口，为开发者提供跨平台的统一调用，如果浏览器不支持此 API，则启动回退机制，支持 Chrome, Safari, Firefox, and IE 9+
 
+![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/pushjs.gif)
+
 ## tracking.js - web端图像追踪引擎
 github：https://github.com/eduardolundgren/tracking.js
 
@@ -204,6 +212,8 @@ star：5.4K+
 
 功能介绍：
 >完成各种追踪类的图像处理任务，例如人脸识别、五官追踪等
+
+![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/trackingjs.gif)
 
 ## AlloyImage - 堪称前端PS的前端图像处理类库
 github：https://github.com/AlloyTeam/AlloyImage
@@ -228,6 +238,8 @@ size: 5KB
 功能介绍：
 >Awesomplete 是一款超轻量级的，可定制的，简单的自动完成插件，零依赖，使用现代化标准构建。你可以简单地添加 awesomplete 样式，让它自动处理（你仍然可以通过指定 HTML 属性配置更多选项），您可以用几行 JS 代码，提供更多的自定义
 
+![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/awesomplete.gif)
+
 ## Cleave.js – 自动格式化表单输入框的文本内容
 
 github：https://github.com/nosir/cleave.js/
@@ -240,6 +252,8 @@ size: 11.1KB
 
 功能介绍：
 >Cleave.js 有一个简单的目的：帮助你自动格式输入的文本内容。 这个想法是提供一个简单的方法来格式化您的输入数据以增加输入字段的可读性。通过使用这个库，您不需要编写任何正则表达式来控制输入文本的格式。然而，这并不意味着取代任何验证或掩码库，你仍应在后端验证数据。它支持信用卡号码、电话号码格式（支持各个国家）、日期格式、数字格式、自定义分隔符，前缀和块模式等，提供 CommonJS/AMD 模式以及ReactJS 组件端口。
+
+![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/cleavejs.gif)
 
 ## Immutable.js – JavaScript 不可变数据集合（Facebook出品）
 github：https://github.com/facebook/immutable-js
@@ -288,6 +302,11 @@ github：https://github.com/michaelvillar/dynamics.js
 star：6.5k+
 
 size: 20KB
+
+功能介绍：
+>创建逼真的物理动画的 JS 库
+
+![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/dynamicsjs.gif)
 
 ## Snabbt.js – 极简性能的 JavaScript 动画库
 github：http://daniel-lundin.github.io/snabbt.js/
@@ -387,6 +406,8 @@ size: 8KB
 
 功能介绍：
 >scrollReveal.js 是一个用于使元素以非常酷帅的方式进入画布的 JavaScript 工具库，常见于整屏的 H5动画，当元素进入或者离开可视范围时，进行一系列的动画效果，轻量级，高性能，无依赖的一个小巧酷炫的库。
+
+![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/scrollrevealjs.gif)
 
 
 ## Swiper – 经典的移动触摸滑块轮播插件
@@ -549,6 +570,8 @@ star: 5.6K+
 功能介绍：
 >平滑出现在网页内的弹窗，类似于 modal窗
 
+![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/notie.gif)
+
 ## particles.js - 粒子动画库
 github：https://github.com/VincentGarreau/particles.js
 
@@ -651,6 +674,8 @@ star：6.2K+
 功能介绍：
 >在 web端实现 VR效果，包括 360°全景图片、视频等
 
+![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/aframe.gif)
+
 ## Babylon.js - 使用 HTML 5 and WebGL构建 3D 的 javascript引擎
 github: https://github.com/BabylonJS/Babylon.js
 
@@ -724,7 +749,9 @@ github: https://github.com/videojs/video.js
 star: 17k+
 
 功能介绍：
->基于 HTML5的网络视频播放器，支持 HTML和 Flash，支持 PC和移动端
+>基于 HTML5的网络视频播放器，支持 HTML和 Flash，支持 PC和移动端，快速打造一个功能强大齐全的视频播放器
+
+![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/videojs.png)
 
 ## sizzy - 网站响应式一键测试
 github：https://github.com/kitze/sizzy
