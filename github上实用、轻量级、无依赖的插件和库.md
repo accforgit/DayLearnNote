@@ -127,6 +127,18 @@ size: 5KB
 功能介绍：
 >Draggabilly 是一个很小的 JavaScript 库，专注于拖放功能。只需要简单的设置参数就可以在你的网站用添加拖放功能。兼容 IE8+ 浏览器，支持多点触摸。可以灵活绑定事件，支持 RequireJS 以及 Bower 安装。
 
+## dragdealer - 炫酷拖拽
+github: https://github.com/skidding/dragdealer
+
+官网： https://skidding.github.io/dragdealer/
+
+star：870+
+
+功能介绍：
+>元素拖拽效果，能够用于实现超大图片的拖拽查看、轮播图、按钮开关等，支持物理表现的摩擦缓冲效果
+
+![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/dragdealer.gif)
+
 ## slick – 功能异常强大的一个图片滑动切换效果库
 github：https://github.com/kenwheeler/slick
 
@@ -165,7 +177,7 @@ size: 5KB
 
 ![showpicture](https://camo.githubusercontent.com/e04da5ac669c9c94d5e95181ad840a4197d14a60/687474703a2f2f6f6f327239726e7a702e626b742e636c6f7564646e2e636f6d2f323031372d30342d303925323030322e32392e32372e676966)
 
-## Slideout.js – 触摸滑出式 Web App 导航菜单
+## Slideout.js – 触摸滑出式 Web App 导航菜单，移动应用侧滑导航
 github：https://github.com/mango/slideout
 
 官方网站：https://slideout.js.org/
@@ -225,7 +237,7 @@ star:1.7K+
 功能介绍：
 >腾讯前端出品，基于html5的JS图片图像处理库，堪称前端PS，简单易用，官方文档齐全，支持多图层操作，与PS对应的17种图层混合模式，多种基本滤镜处理效果，多种组合风格效果，另有 [AlloyPhoto](http://alloyteam.github.io/AlloyImage/alloyphotopro.html)，基于此类库开发，AlloyImage的强势Demo。
 
-## Awesomplete.js - 比datalist更强大更实用，零依赖的简单自动补全插件
+## Awesomplete.js - 比 datalist更强大更实用，零依赖的简单自动补全插件
 
 github：https://github.com/leaverou/awesomplete/
 
@@ -239,6 +251,18 @@ size: 5KB
 >Awesomplete 是一款超轻量级的，可定制的，简单的自动完成插件，零依赖，使用现代化标准构建。你可以简单地添加 awesomplete 样式，让它自动处理（你仍然可以通过指定 HTML 属性配置更多选项），您可以用几行 JS 代码，提供更多的自定义
 
 ![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/awesomplete.gif)
+
+## Typeahead.js — 搜索补全
+github：https://github.com/twitter/typeahead.js
+
+官网：https://twitter.github.io/typeahead.js/
+
+star: 14.6K+
+
+功能介绍：
+>twitter出品，相比于 Awesomplete 或者 datalist，此款插件能够在实时根据你的输入来进行后端数据的搜索响应，根据后端响应的数据来填充搜索匹配列表
+
+![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/typeahead.gif)
 
 ## Cleave.js – 自动格式化表单输入框的文本内容
 
@@ -409,6 +433,69 @@ size: 8KB
 
 ![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/scrollrevealjs.gif)
 
+## Barba.js — 流式页面过渡
+github: https://github.com/luruke/barba.js
+
+官网：http://barbajs.org/examples.html
+
+star: 5.4K+
+
+功能介绍：
+>为网页之间的切换，或者元素的进入与隐藏添加平缓地动画过渡效果，类似于scrollReveal.js， 可用于 h5动画。
+
+## Wow.js — 滚动到某个元素时展现动画
+github：https://github.com/matthieua/WOW
+
+官网：http://mynameismatthieu.com/WOW/
+
+star：7.5K+
+
+功能介绍：
+>滚动页面到某个元素或者位置时呈现动画，动画的效果默认基于 [animate.css](https://github.com/daneden/animate.css)，但可以任意更换动画库，可用于 h5动画。
+
+## fullPage.js - 整屏滚动动画
+github: https://github.com/alvarotrigo/fullPage.js
+
+官网：https://alvarotrigo.com/fullPage/
+
+star: 20.6K+
+
+功能介绍：
+>整屏滚动动画，基于 jQuery
+
+## onepage-scroll - 整屏滚动动画
+github: https://github.com/peachananr/onepage-scroll
+
+官网：http://www.thepetedesign.com/demos/onepage_scroll_demo.html
+
+star: 9.1K+
+
+功能介绍：
+>整屏滚动动画，基于 jQuery
+
+![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/onepage-scroll.gif)
+
+## parallax - 对智能设备方向变化做出响应的视差引擎
+github：https://github.com/wagerfield/parallax
+
+官网：http://matthew.wagerfield.com/parallax/
+
+star： 11.9K+
+
+功能介绍：
+>根据设备的方向或者角度来进行动作的展示，如果设备没有陀螺仪或者测定角度方向的硬件设备(例如 pc设备)，那么就根据鼠标的方向来定位
+
+![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/parallax.gif)
+
+## vivus - 以类似于涂画的方式将定义的 svg图像逐步画出来
+github：https://github.com/maxwellito/vivus
+
+官网：http://maxwellito.github.io/vivus/
+
+star：9.1k+
+
+![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/vivus.gif)
+
 
 ## Swiper – 经典的移动触摸滑块轮播插件
 github：https://github.com/nolimits4web/Swiper
@@ -553,6 +640,16 @@ star: 7.6K+
 功能介绍：
 >动态改变网站的 favico图标，可以是图片、html视频等，支持改变颜色、字体、背景颜色等。
 
+## CSSpin - css spinners 合集
+github:https://github.com/webkul/csspin
+
+官网：https://webkul.github.io/csspin/
+
+star：800+
+
+功能介绍：
+>纯 CSS实现的模块化、可定制、单 HTML标签的 加载效果Spinners and Loaders
+
 ## move.js - js动态设置 `css3`动画
 github: https://github.com/visionmedia/move.js
 
@@ -571,6 +668,28 @@ star: 5.6K+
 >平滑出现在网页内的弹窗，类似于 modal窗
 
 ![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/notie.gif)
+
+## Waypoints.js - 滚动到某个元素位置时触发一个功能
+github：https://github.com/imakewebthings/waypoints
+
+官网：http://imakewebthings.com/waypoints/api/waypoint/
+
+star: 8.7K+
+
+功能介绍：
+>滚动到某个元素位置时触发一个功能，支持获取滚动方向等
+
+![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/waypoint.gif)
+
+## Instantclick - 鼠标 hover 时预加载资源，能够明显加速网站加载时间
+github: https://github.com/dieulot/instantclick/
+
+官网：http://instantclick.io/
+
+star: 4.6K+
+
+功能介绍：
+>鼠标 hover到某个链接时，能够预加载此链接下的网页资源，提升网页的加载速度
 
 ## particles.js - 粒子动画库
 github：https://github.com/VincentGarreau/particles.js
@@ -637,7 +756,27 @@ star：15K+
 ![showpicture](https://raw.githubusercontent.com/SirM2z/assets/master/image/4.gif)
 
 功能介绍：
+>使用动画来一步步引导用户熟悉网站功能，与 intro.js类似，但是有不同的风格
+
+## Shepherd.js — 为应用创建新手引导
+github：https://github.com/HubSpot/shepherd
+
+官网：http://github.hubspot.com/shepherd/docs/welcome/
+
+star: 5.2k+
+
+功能介绍：
 >使用动画来一步步引导用户熟悉网站功能
+
+## jInvertScroll — 视差滚动
+github: http://www.github.com/pixxelfactory/jInvertScroll
+
+官网：http://www.pixxelfactory.net/jInvertScroll/
+
+star: 530+
+
+功能介绍：
+>视差滚动效果，基于 jQuery
 
 ## whatwg-fetch - fetch 的 polyfill
 github: https://github.com/github/fetch
@@ -701,6 +840,7 @@ star:10k+
 
 功能介绍：
 >在网页中显示 `javascript`代码时，自动高亮语法
+
 
 ## clipboard.js - 现代浏览器复制到粘贴板的解决方案
 github: https://github.com/zenorocha/clipboard.js
