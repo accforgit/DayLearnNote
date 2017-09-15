@@ -880,6 +880,14 @@ star：9.7K+
 功能介绍：
 >这并不是一个具备什么功能或者效果的技术库，而是一个整合了 github上几乎所有可用的 react UI组件库的列表，在这个列表中，你可以找到几乎所有的 react UI组件，以及众多优秀或者小众的 react UI组件库项目
 
+## HEAD - 告诉你 <head></head>标签中能够放置的所有东西
+github: https://github.com/joshbuchea/HEAD
+
+star: 19.7K+
+
+功能介绍：
+>列举出<head></head>标签中能够放置的所有元素(element  meta)和属性(attr)，以及这些元素和属性中能够放置的元素和属性，并且针对各个网站，例如 给出了 facebook、twitter等网站专有的元素和属性，还有各个操作系统、浏览器（包括国内的 360、qq、UC等浏览器）的专有元素和属性
+
 ## video.js - HTML5 & Flash 视频播放器
 
 github: https://github.com/videojs/video.js
