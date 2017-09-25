@@ -374,6 +374,23 @@ star: 4.5k+
 功能介绍：
 >一款根据给定的初始坐标和结束坐标进行运动动画的动画库，包括  Linear、Quadratic、cubic、Quartic、Quintic、Sinusoidal、Exponential等形式的动画效果，还包括在动画过程中增删更新元素等的操作，便于实现简单的两点动画。
 
+## react-motion - react tweening engine
+
+github: https://github.com/chenglou/react-motion
+
+star: 10k+
+
+功能介绍：
+>功能同 tween.js ,不过是基于 react 实现
+
+## ant-motion - react tweening engine
+github：https://github.com/ant-design/ant-motion/
+
+star: 1.3K+
+
+功能介绍：
+>功能同 react-motion,更加容易上手使用
+
 ## Rainyday.js – 使用 JavaScript 实现雨滴效果
 github：https://github.com/maroslaw/rainyday.js
 
