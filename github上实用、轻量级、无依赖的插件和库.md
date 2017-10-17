@@ -572,6 +572,16 @@ size: 10KB
 功能介绍：
 >Numeral.js 是一个用于格式化和操作数字的 JavaScript 库。数字可以格式化为货币，百分比，时间，甚至是小数，千位，和缩写格式，功能十分强大。支持包括中文在内的17种语言。
 
+## number-precision - 解决`JavaScript` 浮点数陷阱
+github：https://github.com/dt-fe/number-precision
+
+star：120+
+
+size: 1KB
+
+功能介绍：
+>`JavaScript` 遵循 `IEEE 754 `标准，使用 `64` 位固定长度来表示，也就是标准的 `double` 双精度浮点数（相关的还有`float 32`位单精度），因而`0.1+0.2=0.30000000000000004`，`0.1.toPrecision(21) = 0.100000000000000005551`，此库便是针对此解决`JavaScript` 浮点数陷阱。
+
 ## Quill – 可以灵活自定义的开源的富文本编辑器
 github：https://github.com/quilljs/quill/
 
