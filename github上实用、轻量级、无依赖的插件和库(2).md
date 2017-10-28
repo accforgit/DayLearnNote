@@ -39,15 +39,4 @@ star: 7.5k+
 
 ---
 
-## sigma – 专用于图形绘制的JavaScript库
-github：https://github.com/jacomyal/sigma.js
-
-官方网站：http://sigmajs.org/
-
-star: 7.5k+
-
-功能介绍：
->专用于图形绘制的JavaScript库
-
-![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/sigma.png)
 
