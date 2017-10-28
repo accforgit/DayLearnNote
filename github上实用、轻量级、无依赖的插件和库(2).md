@@ -39,4 +39,12 @@ star: 7.5k+
 
 ---
 
+## babel-plugin-inline-react-svg - 让 React应用支持 inline-svg的 babel插件
+github：https://github.com/kesne/babel-plugin-inline-react-svg
+
+star：80k+
+
+功能介绍：
+>如果你在 react项目中使用了 babel的话，那么此插件可以给你的 react项目提供 inline-svg的功能
+
 
