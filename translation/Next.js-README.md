@@ -8,7 +8,7 @@ so，各位若是觉得我哪点翻译得不太准确，或者对于那几句我
 
 以下是全文翻译的 [Next.js](https://github.com/zeit/next.js)的 [README.md](https://github.com/zeit/next.js/blob/canary/readme.md)文件，版本是 `v4.1.4`
 
-另外，本文档已经放在我的 [github](https://github.com/accforgit/DayLearnNote/tree/master/translation/Next.js-README.md)上了，有兴趣的去看下，别忘了 `star`哦~
+别忘了 `star`哦~
 
 ---
 
