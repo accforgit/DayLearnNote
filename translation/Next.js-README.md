@@ -931,6 +931,9 @@ export default class Page extends React.Component {
 
 > 如果你想使用自定义的错误页面，那么你可以导入你自己的错误(`_error`)页面组件而非内置的 `next/error`
 
+>译者注：
+>如果你只是想覆写默认的错误页面，那么可以在 `/pages`下新建一个名为 `_error.js`的文件，`Next`将使用此文件来覆盖默认的错误页面
+
 ### 自定义配置
 
 为了对 `Next.js`进行更复杂的自定义操作，你可以在项目的根目录下(和 `pages/`以及 `package.json`属于同一层级)新建一个 `nexr.config.js`文件
