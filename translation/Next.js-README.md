@@ -6,7 +6,7 @@
 
 so，各位若是觉得我哪点翻译得不太准确，或者对于那几句我没翻译的地方有更好的见解，欢迎提出~
 
-以下是全文翻译的 [Next.js](https://github.com/zeit/next.js)的 [README.md](https://github.com/zeit/next.js/blob/canary/readme.md)文件，版本是 `v4.1.4`
+以下是全文翻译的 [Next.js](https://github.com/zeit/next.js)的 [README.md](https://github.com/zeit/next.js/blob/canary/readme.md)文件，版本是 `v4.1.4`，除了翻译原文之外，还加了一点个人小小见解。
 
 别忘了 `star`哦~
 
@@ -157,8 +157,7 @@ export default () =>
 
 >译者注：
 >1. `scope CSS`的作用范围，如果添加了 `jsx`属性，则是不包括子组件的当前组件；如果添加了 `global` 和 `jsx`属性，则是包括了子组件在内的当前组件；如果没添加任何属性，则作用与 添加了 `global` 和 `jsx`的作用类似，只不过 `next`不会对其进行额外的提取与优化打包
->2. `scope CSS`的位置必须是当前组件顶级 `DOM`下的第一个层级(即当前组件顶级 `DOM`元素的直接子元素)
->3. `scope CSS`的实现原理，其实就是在编译好的代码的对应元素上，添加一个以 `jsx`开头的类名(`class`)，然后将对应的样式代码提取到此类名下
+>2. `scope CSS`的实现原理，其实就是在编译好的代码的对应元素上，添加一个以 `jsx`开头的类名(`class`)，然后将对应的样式代码提取到此类名下
 
 #### 内联式样式 CSS-in-JS
 
