@@ -870,6 +870,9 @@ export default class MyDocument extends Document {
 
 _注意：`<Main/>`之外的 `React`组件都不会被浏览器初始化，如果你想在所有的页面中使用某些组件(例如菜单栏或者工具栏)，首先保证不要在其中添加有关应用逻辑的内容，然后可以看看[这个例子](https://github.com/zeit/next.js/tree/master/examples/layout-component)_
 
+>译者注：
+上面那句话的意思是，在 `_document.js`文件中，你可以额外添加其他的一些组件，但是这所有的组件中，除了 `<Main/>`以外，其他的组件内的所有逻辑都不会被初始化和执行，这些不会被初始化和执行的逻辑代码包括除了 `render` 之外的所有生命周期钩子函数，例如`componnetDidMount`、`componentWillUpdate`，以及一些监听函数，例如 `onClick`、`onMouseOver`等，所以如果你要在`_document.js`添加额外的组件，请确保这些组件中除了 `render`之外没有其他的逻辑
+
 ### 自定义错误处理
 
 客户端和服务器端都会捕获并使用默认组件 `error.js`来处理 `404` 和 `500`错误。如果你希望自定义错误处理，可以对其进行覆写：
