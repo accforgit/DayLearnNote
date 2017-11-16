@@ -398,3 +398,17 @@ body {
   overflow: hidden;
 }
 ```
+
+- 为了更好的可访问性，使用 `clip` 隐藏内容
+
+```
+.visually-hidden {
+    position: absolute;
+    clip: rect(1px 1px 1px 1px); /* IE6,IE7 */
+    clip: rect(1px , 1px, 1px, 1px);
+    // 解决 webkit/Opare/IE 下可能出现的滚动条
+    height: 1px;
+    width: 1px;
+    overflow:hidden;
+}
+```
