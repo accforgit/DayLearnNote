@@ -32,7 +32,6 @@ star:800+
 功能介绍：
 >ace 的 react 版本
 
-![showpicture](https://github.com/accforgit/DayLearnNote/blob/master/img/react-ace.png)
 
 ---
 
