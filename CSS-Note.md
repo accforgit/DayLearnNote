@@ -412,3 +412,44 @@ body {
     overflow:hidden;
 }
 ```
+
+- 元素垂直居中
+
+1. 单行行内元素
+
+行内元素的行高等于父容器的高度
+```
+// html
+<span>123</span>
+// css
+span {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background-color: lightblue;
+  line-height: 60px;
+}
+```
+
+2.多行元素垂直居中（包括inline  inline-block block元素）
+
+父容器设置 `table-cell`，然后使用`vertical-align: middle`对子元素进行垂直居中控制
+```
+// html
+<div class="wrap">
+    <span>1212323121e2dmkwefmkwlefm</span>
+    <span>1212323121e2dmkwefmkwlefm</span>
+    <p>1212323121e2dmkwefmkwlefm</p>
+    <p>1212323121e2dmkwefmkwlefm</p>
+    <div>1212323121e2dmkwefmkwlefm</div>
+    <div>1212323121e2dmkwefmkwlefm</div>
+</div>
+// css
+.wrap{
+    display: table-cell;
+    vertical-align:middle;
+    height: 500px;
+    background-color: skyblue;
+}
+
+```
