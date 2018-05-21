@@ -265,6 +265,15 @@ border-radius:5px 10px / 20px 40px;
     border-radius:50px / 100px;
   }
   ```
+  
+ - 等宽单元格
+ 
+ 让 `table`的单元格等宽
+ ```
+ table {
+    table-layout: fixed;
+ }
+ ```
 
 
 - 基于vw等viewport视区单位配合rem响应式排版和布局
