@@ -540,7 +540,7 @@ break和continue是JS中唯一可以使用语句标签的语句
 
 >`new Event()` 
 
-```
+```js
 var btn = document.querySelector('.button');
 var ev = new Event('test', {
     // 以下属性都是内置的
@@ -559,7 +559,7 @@ btn.dispatchEvent(ev);
 
 > `new CustomEvent()` 
 
-```
+```js
 var btn = document.querySelector('.button');
 var ev = new CustomEvent('test', {
     // 以下属性都是内置的

@@ -179,7 +179,8 @@
 
  - 合成事件
  >`jQuery`有两个合成事件: `hover()` & `toggle()`
-```
+
+```js
     hover(enter, leave)
 
     $('.tt').hover(function(){
@@ -188,7 +189,7 @@
       // 光标移出触发的事件
     })
 ```
-```
+```js
     toggle(fn1, fn2,...fnN):
       用于模拟鼠标连续单击事件，第1次鼠标单击触发指定的第1个函数(fn1)，第2次单击触发指定
       的第2个函数(fn2)，依次触发下去，直到最后一个，然后如果继续触发，则从头开始重复触发。
@@ -201,7 +202,7 @@
 ```
 
 - 触发自定义事件
-```
+```js
     // 首先定义自定义事件
     $('#btn').bind('myClick', function(){
       console.log('ok');
@@ -213,7 +214,8 @@
 
 - 为事件添加命名空间，便于管理
 >批量卸载事件
-```
+
+```js
         $(function(){
             // 命名空间为 plugin
             $('div').bind('click.plugin', function(){
@@ -237,7 +239,8 @@
 ```
 
 >触发指定命名空间下的事件
-```
+
+```js
         // 命名空间为 plugin
         $('div').bind('click.plugin', function(){
             $('body').append('<p>click事件</p>')
@@ -268,7 +271,7 @@
 
 - 获取被点击的 `li` 元素在 `ul` 中的索引。
 
-```
+```js
     var $li = $('li');
     $li.click(function(){
         // 第一种获取方法
@@ -304,18 +307,20 @@
 ```
 
 >2. 尽量缓存选择器对象
-```
-最好这样：
+
+```js
+// 最好这样：
     var $li = $('ul>li');
     $li.css('color','red');
 
-而不是：
+// 而不是：
     $('ul>li').css('color','red');
 ```
 
 >3. 减少 `DOM` 操作
-```
-最好这样(一次性插入拼接的元素)：
+
+```js
+// 最好这样(一次性插入拼接的元素)：
     var temp_li="", $list=$('ul');
     for(var i=0; i<100; i++){
         temp_li += '<li>' + i + '</li>';
@@ -323,7 +328,7 @@
     // 注意这里使用了 html() 方法
     $list.html(temp_li);
 
-而不是这样(循环多次修改DOM)：
+// 而不是这样(循环多次修改DOM)：
     var $list=$('ul');
     for(var i=0; i<100; i++){
         $list.append('<li>' + i + '</li>');
@@ -333,14 +338,15 @@
 ```
 
 >4. 使用简单的 `for` 或 `while` 循环，而不是 `jQuery` 的 `$.each()`
-```
-最好这样:
+
+```js
+// 最好这样:
     var array = new Array();
     for(var i=0; i<100; i++) {
         array[i] = i;
     }
 
-而不是：
+// 而不是：
     var array = new Array(100);
     $each(array, function(i){
         array[i] = i;
@@ -348,8 +354,9 @@
 ```
 
 >5. 使用父级元素委托冒泡事件
-```
-最好这样:
+
+```js
+// 最好这样:
     $('ul').click(function(e){
         var $clicked = $(e.target);
         $clicked.css('background', 'red');
@@ -360,7 +367,7 @@
         $(this).css('background', 'red');
     });
 
-而不是：
+// 而不是：
     $('ul li').click(function(){
         $(this).css('background', 'red');
     });
@@ -369,8 +376,9 @@
 >6. 将需要重复多次使用的代码片段创建成插件
 
 >7. 使用 `join()` 拼接字符串
-```
-最好这样：
+
+```js
+// 最好这样：
     var array=[], $list=$('ul');
     for(var i=0; i<20; i++){
         array[i] = '<li>'+i+'</li>';
@@ -378,7 +386,7 @@
     }
     $list.html(array.join(''));
 
-而不是：
+// 而不是：
     var temp_li="", $list=$('ul');
     for(var i=0; i<100; i++){
         temp_li += '<li>' + i + '</li>';
@@ -387,6 +395,7 @@
 ```
 
 >8. 合理利用 `HTML5` 的 `Data` 属性
+
 ```
 HTML:
     <div id="dl" data-role='page' data-options="{'name':'John'}"></div>
@@ -399,6 +408,7 @@ JS:
 >9. 尽量使用原生 `JavaScript` 方法,因为在很多时候这可以避免调用许多不需要使用的方法。
 
 >10. 使用 `$.proxy()` 改变 `this` 指向
+
 ```
 HTML:
     <div id="panel">

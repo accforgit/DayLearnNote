@@ -3,7 +3,7 @@
 - 遮蔽效应
 
 (1) 遮蔽效应的原理
-```
+```js
   function foo(a) {
     var b = a * 2;
     function bar(c) {
@@ -23,7 +23,7 @@ JS引擎也都会选择忽略掉，这叫做 **遮蔽效应** 。
 (2) 全局属性绕开遮蔽效应<br>
 >&emsp;&emsp;全局变量会自动成为全局对象(比如浏览器中的window对象)的属性，因此可以不直接通过全局对象的词法名称，
 而是间接地通过对全局对象属性的引用来对其进行访问。
-```
+```js
     window.a
 ```
 >&emsp;&emsp;通过这种技术可以访问那些被同名变量所遮蔽的全局变量。但非全局的变量
@@ -45,7 +45,7 @@ JS引擎也都会选择忽略掉，这叫做 **遮蔽效应** 。
 >&emsp;&emsp;在执行 eval(..) 之后的代码时，引擎并不“知道”或“在意”前面的代码是以动态形式插
 入进来，并对词法作用域的环境进行修改的。引擎只会如往常地进行词法作用域查找。
 
-```
+```js
     function foo(str, a) {
       eval(str);  // 欺骗
       console.log(a,b);
@@ -60,7 +60,7 @@ JS引擎在寻找`a,b`变量的时候，能够在`foo`的作用域内同时找�
 >&emsp;&emsp;在严格模式下(`use strict`)，`eval()`在运行时有其自己的作用域，意味着其中的
 声明无法修改所在的作用域。
 
-```
+```js
   function foo(str) {
     'use strct';
     eval(str);
@@ -73,7 +73,7 @@ JS引擎在寻找`a,b`变量的时候，能够在`foo`的作用域内同时找�
 >&emsp;&emsp;`with` 通常被当作重复引用同一个对象的多个属性的快捷方式，可以*不需要重复引用对象本身*。<br>
 >在严格模式下，`with` 被完全禁止使用。
 
-```
+```js
   var obj={
     a:1,
     b:2,
@@ -82,87 +82,91 @@ JS引擎在寻找`a,b`变量的时候，能够在`foo`的作用域内同时找�
 ```
 以上代码使用字面量方式定义了一个存在三个属性的对象，下面给这三个属性重新赋值，
 有两种方法：
-```
+```js
     obj.a = 2;
     obj.b = 3;
     obj.c = 4;
-    ```
-    和下面代码起到的作用其实是一样的，因为`with`改变下面代码大括号中变量的作用域：
-    ```
-    with(obj) {
-      a=2;
-      b=3;
-      c=4;
-    }
+```
+和下面代码起到的作用其实是一样的，因为`with`改变下面代码大括号中变量的作用域：
+```js
+  with(obj) {
+    a=2;
+    b=3;
+    c=4;
+  }
 ```
 
 但 `with` 的作用并不仅仅是改变作用域那么简单，有的时候，可能会导致意料之外的结果：
-```
-    function foo(obj) {
-      with (obj) {
-        a = 2;
-      }
-    }
-    var o1 = {
-      a: 3
-    };
-    var o2 = {
-      b: 3
-    };
 
-    foo( o1 );
-    console.log( o1.a ); // 2
-    foo( o2 );
-    console.log( o2.a ); // undefined
-    console.log( a ); // 2——不好，a 被泄漏到全局作用域上了！
+```js
+function foo(obj) {
+  with (obj) {
+    a = 2;
+  }
+}
+var o1 = {
+  a: 3
+};
+var o2 = {
+  b: 3
+};
+
+foo( o1 );
+console.log( o1.a ); // 2
+foo( o2 );
+console.log( o2.a ); // undefined
+console.log( a ); // 2——不好，a 被泄漏到全局作用域上了！
 ```
 
 >&emsp;&emsp;尽管 with 块可以将一个对象处理为词法作用域，但是这个块内部正常的 var
 声明并不会被限制在这个块的作用域中，而是被添加到 with 所处的函数作
 用域中。
-```
-    var obj={
-      a:1,
-      b:2
-    }
-    with(obj){
-      var c=3;
-      var b=5;
-      a:2
-    }
-    console.log( obj.a ); // 2
-    console.log( obj.b ); // 5
-    console.log( b ); // undefined
-    console.log( c ); // 3
+
+```js
+var obj={
+  a:1,
+  b:2
+}
+with(obj){
+  var c=3;
+  var b=5;
+  a:2
+}
+console.log( obj.a ); // 2
+console.log( obj.b ); // 5
+console.log( b ); // undefined
+console.log( c ); // 3
 ```
 
 
 - 立即执行函数表达式(IIFE)
-```
-    (function{
-      console.log('ok')
-    })();
 
-上面代码其实和下面这一段，写法上第二个圆括号的位置发生了变化，
-但在功能上是一致的，没什么区别，**选择哪个全凭个人喜好**。
+```js
+(function{
+console.log('ok')
+})();
 
-    (function{
-      console.log('ok')
-    }());
+// 上面代码其实和下面这一段，写法上第二个圆括号的位置发生了变化，
+// 但在功能上是一致的，没什么区别，**选择哪个全凭个人喜好**。
+
+(function{
+console.log('ok')
+}());
 
 ```
 
 - 变量提升，函数声明优先于变量声明
-```
-    foo();  // 1
-    var foo;
-    function foo() {
-      console.log(1);
-    }
 
-    foo=function() {
-      console.log(2);
-    }
+```js
+foo();  // 1
+var foo;
+function foo() {
+  console.log(1);
+}
+
+foo=function() {
+  console.log(2);
+}
 ```
 
 以上代码最终将会输出 `1` ，因为在上述的提升过程中，函数首先被提升，然后才是变量，
@@ -172,7 +176,7 @@ JS引擎在寻找`a,b`变量的时候，能够在`foo`的作用域内同时找�
 
 >&emsp;&emsp;对象属性引用链中只有最顶层或者说最后一层会影响调用位置。
 
-```
+```js
     function foo() {
       console.log(this.a);
     }
@@ -197,7 +201,7 @@ JS引擎在寻找`a,b`变量的时候，能够在`foo`的作用域内同时找�
 >一个最常见的 this 绑定问题就是被隐式绑定的函数会丢失绑定对象，也就是说它会应用默认绑定，<br>
 从而把 this 绑定到全局对象或者 undefined 上，取决于是否是严格模式。
 
-```
+```js
     function foo() {
       console.log(this.a);
     }
@@ -217,7 +221,7 @@ bar() 其实是一个不带任何修饰的函数调用，因此应用了默认�
 
 >一种更微妙、更常见并且更出乎意料的情况发生在传入回调函数时：
 
-```
+```js
     function foo() {
     console.log( this.a );
     }
@@ -240,24 +244,24 @@ bar() 其实是一个不带任何修饰的函数调用，因此应用了默认�
 
 >1. 函数是否在 new 中调用（ new 绑定）？如果是的话 this 绑定的是新创建的对象。
 
-```
+```js
   var bar = new foo();
 ```
 
 >2. 函数是否通过 call 、 apply （显式绑定）或者硬绑定调用？如果是的话， this 绑定的是
 指定的对象。
 
-```
+```js
   var bar = foo.call(obj2)
 ```
 >3. 函数是否在某个上下文对象中调用（隐式绑定）？如果是的话， this 绑定的是那个上
 下文对象。
 
-```
+```js
   var bar = obj1.foo();
 
-上述代码，foo()在全局的上下文对象中被调用，使用 bar 作为 函数别名，
-所以this 其实就是被隐式绑定到了全局作用域上。
+// 上述代码，foo()在全局的上下文对象中被调用，使用 bar 作为 函数别名，
+// 所以this 其实就是被隐式绑定到了全局作用域上。
 ```
 >4. 如果都不是的话，使用默认绑定。如果在严格模式下，就绑定到 undefined ，否则绑定到
 全局对象。
@@ -265,7 +269,7 @@ bar() 其实是一个不带任何修饰的函数调用，因此应用了默认�
 >5. 箭头函数(`=>`)不使用以上 `this` 的四种标准规则，而是根据外层（函数或者全局）作用域来决定 `this`，（无论 this 绑定到什么）<br>，
 >这其实和 ES6 之前代码中的 self = this 机制一样。并且 箭头函数的绑定无法被修改。
 
-```
+```js
   var bar = foo();
 ```
 
@@ -275,7 +279,7 @@ bar() 其实是一个不带任何修饰的函数调用，因此应用了默认�
 调用时会被忽略，实际应用的是默认绑定规则。
 
 
-```
+```js
   function foo() {
     console.log(this.a);
   }
@@ -288,7 +292,7 @@ bar() 其实是一个不带任何修饰的函数调用，因此应用了默认�
 >它就是一个空的非委托的对象，而在JS中，创建一个空对象的最简单方法就是`Object.create(null)`<br>
 > `Object.create(null)` 和 `{}` 很像，但是并不会创建 `Object.prototype` 这个委托，所以它比 `{}` “更空”。
 
-```
+```js
     function foo(a,b) {
       console.log( "a:" + a + ", b:" + b );
     }
@@ -303,7 +307,7 @@ bar() 其实是一个不带任何修饰的函数调用，因此应用了默认�
 
 - 复制对象
 考虑下面代码：
-```
+```js
     var obj1={a:'aa',b:'bb'}
     var obj2=obj1
     obj2===obj1  // true
@@ -312,7 +316,7 @@ bar() 其实是一个不带任何修饰的函数调用，因此应用了默认�
 `obj2`的改变，能够同时让`obj1`同时发生相同的变化，这并不是复制，因为没有产生任何副本。
 
 对于一个能够被`JSON序列化`并且解析的对象来说，有一种巧妙的复制方法：
-```
+```js
     var obj1={a:'aa',b:'bb'}
     var obj2=JSON.parse(JSON.stringify(obj1));
     obj2==obj1  // false
@@ -320,7 +324,7 @@ bar() 其实是一个不带任何修饰的函数调用，因此应用了默认�
 这个时候，`obj2`所指向的内存中的地址，实质上已经与`obj1`不再相同了。
 
 >如果是复制数组，那么可以借助`slice()`方法：
-```
+```js
   var a=[1,2,3];
   var b=a;
   var c=a.slice();
@@ -340,7 +344,7 @@ bar() 其实是一个不带任何修饰的函数调用，因此应用了默认�
 
     Object.getOwnPropertyDescriptor(obj1, 'a');
 
-    输出:
+    // 输出:
 
     {
       value: 2,
@@ -354,7 +358,7 @@ bar() 其实是一个不带任何修饰的函数调用，因此应用了默认�
 
 >2. 禁止扩展
 如果你想禁止一个对象添加新属性并且保留已有属性，可以使用`Object.preventExtensions()`。
-```
+```js
     var obj1={
       a:2
     }
@@ -382,7 +386,7 @@ bar() 其实是一个不带任何修饰的函数调用，因此应用了默认�
 - 检测对象及其属性的存在性
 
 >1. 在不访问属性值的情况下判断对象中是否存在这个属性
-```
+```js
     var obj={
       a:2
     }
@@ -395,7 +399,7 @@ bar() 其实是一个不带任何修饰的函数调用，因此应用了默认�
 ```
 
 >2. 检测对象的枚举属性
-```
+```js
     var myObject = { };
     Object.defineProperty(
       myObject,

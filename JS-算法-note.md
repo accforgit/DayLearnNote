@@ -1,5 +1,5 @@
 >1. 数组去重
-```
+```js
 let unique = (array)=>{
     let hashTable = {}
     let data = []
@@ -16,7 +16,8 @@ unique([1,13,24,11,11,14,1,2])
 ```
 
 >2. 统计一个字符串中出现最多的字母
-```
+
+```js
 let findMaxDuplicateChar = (str)=>{
     let len = str.length
     if (len === 1) {
@@ -48,7 +49,8 @@ let findMaxDuplicateChar = (str)=>{
 
 
 >3. 找出正数组的最大差值
-```
+
+```js
 function(array) {
     let len = array.length
     if(len === (1 || 0)){
@@ -72,7 +74,7 @@ function(array) {
 ```
 
 >4. 随机生成指定长度的字符串
-```
+```js
 function randomString(n) {
     let str = 'abcdefghijklmnopqrstuvwxyz9876543210'
     let result = ''
@@ -89,8 +91,8 @@ function randomString(n) {
 不允许使用原生提供的 `getElementsByClassName querySelectorAll` 等原生提供DOM查找函数。
 
 注意：以下代码别忘了使用反斜杠转义,node 代表从HTML文档中获取的节点，
-例如 var node = document.getElementById('tag')
-```
+例如 `var node = document.getElementById('tag')`
+```js
 function queryClassName(node,name) {
     let starts = "(^|[ \\n\\r\\f\\t])"
     let ends = "([ \\n\\r\\f\\t]|$)"
@@ -123,7 +125,7 @@ function queryClassName(node,name) {
     为O(log n)。二叉查找树是基础性数据结构，用于构建更为抽象的数据结构，如集合、multiset、关联数组等。
 
 
-```
+```js
 // 二叉查找树节点的数据结构
 class Node {
     constructor(data, left, right) {
@@ -307,7 +309,7 @@ function selectSort(array) {
 >d. 重复步骤c，直到找到一个已排序的元素，此元素不大于新元素；或者元素位于有有序序列开始位置<br>
 >e. 将新元素插入到此元素后面<br>
 >f. 重复步骤b~e,直接待排元素个数为0<br>
-```
+```js
 function insertSort(array) {
     let len = array.length
     let i, j, temp
@@ -324,13 +326,14 @@ function insertSort(array) {
 
 >9. 冒泡排序
 
->&emsp;&emsp;从头到尾依次交换，将较大的值交换到后面的位置<br>
+>&emsp;&emsp;从头到尾依次交换，将较大的值交换到后面的位置
 ><br>
 >a. 从头开始比较相邻的两个待排序元素，如果前面元素大于后面元素，就将二个元素位置互换<br>
 >b. 这样对序列的第0个元素到n-1个元素进行一次遍历后，最大的一个元素就“沉”到序列的最后位置（第n-1个位置，n为待排序元素个数）<br>
 >c．排除此次排序最后面的那个元素(n=n-1)，继续对剩余序列重复前面两步<br>
 >d. 当(n= n-1)=0时，排序完成<br>
-```
+
+```js
 let bubbleSort = (array) =>{
     let len = array.length
     if(len === 1) {
@@ -356,7 +359,8 @@ let bubbleSort = (array) =>{
 然后再从剩下的数组中依次取出值与基准值比较，比基准值大的放到基准值的右边，否则放到左边，
 计算完一轮过后，再分别将基准值左右两边的元素划分成更小的数组对待，为每个子数组都单独设置基准值，
 递归完成排序。
-```
+
+```js
 let quickSort =(array) =>{
     let len = array.length
     //注意，这里的递归出口不是len === 1
@@ -393,7 +397,7 @@ let quickSort =(array) =>{
 >e. 重复上面的步骤，直至dn=1，并进行最后一次插入排序，得到排好序的序列<br>
 
 第一种希尔排序，设定好的步长
-```
+```js
 function shellsort1(array){
     var gaps = [5,3,1],temp;
     for(var g = 0;g <gaps.length; g++){
@@ -414,7 +418,7 @@ function shellsort1(array){
 ```
 
 第二种希尔排序，动态计算步长
-```
+```js
 function shellsort2(array){
     let len = array.length
     let gap, temp, i, j
@@ -435,7 +439,7 @@ function shellsort2(array){
 >11. 归并排序<br>
 [JavaScript实现归并排序](http://www.108js.com/article/article5/50032.html?id=692)
 
-```
+```js
 // 排序并合并
 function merge(left, right) {
     let result = []

@@ -8,9 +8,7 @@
 但是有的时候这种方法无法派上用场，比如元素的背景并不是固定的，而是通过其他数据或者例如`JS`计算得来，<br>
 只能在`html`页面中才能获取这个计算而来的路径，那么就只能借助于`img`标签了。
 
-```
-HTML:
-
+```html
 <div class="wrapperBox">
     <div class="bgBox">
         <img height="100%" width="100%" src="./image/bg.png">
@@ -18,12 +16,11 @@ HTML:
 </div>
 ```
 
-```
-CSS:
+```css
 .wrapperBox {
-    // 需要使用position定位
+    /* 需要使用position定位 */
     position:relative;
-    // 需要高度和宽度，可以自定义也可以是由子元素撑开
+    /* 需要高度和宽度，可以自定义也可以是由子元素撑开 */
     height: 100px;
     width: 100%;
 }
@@ -40,7 +37,7 @@ CSS:
 导致不能被撑开。这个时候我们可以用clearfix清除浮动。
 
 以下代码可以兼容到IE6+
-```
+```css
 .clearfix:after {       
     content: ".";     /*内容为“.”就是一个英文的句号而已，可以是任何内容。*/
     display: block;   /*加入的这个元素转换为块级元素。*/
@@ -56,8 +53,8 @@ CSS:
 ```
 
 - Sticky footers
-```
-HTML:
+
+```html
 <div class="box1">
     <div class="text">
         这里是内容
@@ -66,18 +63,19 @@ HTML:
 <div class="box2">
     这里是底部元素
 </div>
+```
 
-CSS:
+```css
 .box1{
   width:100vh;
   min-height:100vh;
 }
 .text{
-  // 这个padding-bottom 很重要，主要是为了防止内容被 box2 覆盖
+  /* 这个padding-bottom 很重要，主要是为了防止内容被 box2 覆盖 */
   padding-bottom:60px;
 }
 .box2{
-  // 设置宽高只是为了居中
+  /* 设置宽高只是为了居中 */
   width:30px;
   height:30px;
   margin:-60px auto 0 auto;
@@ -85,6 +83,7 @@ CSS:
 ```
 
 - 使用 `padding`让元素宽高呈现比例
+
 ```
 如果一个块级元素，只设置宽，但是无法精确确定宽的大小，又想让高度与宽度呈现一定比例，
 那么可以设置padding-top 或者 padding-bottom 达到这一目的
@@ -100,7 +99,8 @@ div{
 
 - 设置 `placeholder` 的属性
 >在 `HTML5` 中，可以向其他文本内容那样，对输入框(`input`)的`placeholder` 属性进行定制。
-```
+
+```css
 #field4::-webkit-input-placeholder {
     font-style:italic;
     text-decoration:overline;
@@ -109,14 +109,14 @@ div{
 }
 ```
 - `input` 输入框获得焦点，或者`button`被点击时等情况，隐藏系统出现自带的蓝色边框。
-```
+```css
 input:focus{
     outline:0;
 }
 ```
 
 - 转换文本大小写。
-```
+```css
 text-transform: none | uppercase | lowercase | capitalize | inherit
 ```
 - CSS最佳实践
@@ -159,31 +159,31 @@ window.addEventListener('scroll',function(){
 ```
 
 - 文本过长用省略号裁切
-```
-// 必须指定宽度
+```css
+/* 必须指定宽度 */
 width: 100px;
-// 必须声明文本不换行
+/* 必须声明文本不换行 */
 white-space: nowrap;
-// 必须设置文本溢出隐藏
+/* 必须设置文本溢出隐藏 */
 overflow: hidden;
-// 设置为省略号展示溢出内容
+/* 设置为省略号展示溢出内容 */
 text-overflow: ellipsis;
 ```
 
 - CSS3动画开启硬件加速
-```
+```css
 .box{
-  // 使用CSS3动画
+  /* 使用CSS3动画 */
   transition:width 2s ease,height 2s ease;
 
-  // 使用  transiform 属性开启硬件加速
+  /* 使用  transiform 属性开启硬件加速 */
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
   -ms-transform: translateZ(0);
   -o-transform: translateZ(0);
   transform: translateZ(0);
 
-  // 或者下面这样也可以开启硬件加速
+  /* 或者下面这样也可以开启硬件加速 */
   transform: translate3d(0, 0, 0);
 }
 ```
@@ -193,6 +193,7 @@ text-overflow: ellipsis;
 可以有效减少chrome创建不必要的复合层，提升渲染性能，移动端优化效果尤为明显。
 
 -  `Responsive`(响应式)布局
+
 ```
 NO:
     - 尽量少用无关紧要的div
@@ -209,6 +210,7 @@ YES:
 ```
 
 - CSS3圆角边框属性：`border-radius`
+
 ```
 此属性可接收 1~4 个参数
 如果设置 1 个值，则top-left top-right bottom-right bottom-left四个值相等。
@@ -218,7 +220,7 @@ YES:
 ```
 `border-radius` 和 `border` 属性一样，可以将四个角单独拆分出来，派生出四个子属性：
 ```
-border-top-left-radius
+border-top-lef-radius
 border-top-right-radius
 border-bottom-right-radius
 border-bottom-left-radius
@@ -237,12 +239,12 @@ border-radius:5px 10px / 20px 40px;
 
 - 使用 `border-radius` 制作圆形、半圆、扇形、椭圆。
   1. 制作圆形比较简单，只需要保证元素宽高相等，`border-radius` 设为`50%` 或宽高的一半即可。
-  ```
+  ```css
   border-radius:50%;
   ```
   2. 制作半圆，首先要让高宽比`2:1`或者`1:2`，然后`border-radius` 需要设置两个值，<br>
   值设为比例较小的那一个值，剩下的两个值设置 0,
-  ```
+  ```css
   .top{
     width: 100px;
     height: 50px;
@@ -250,7 +252,7 @@ border-radius:5px 10px / 20px 40px;
   }
   ```
   3. 制作扇形，遵循“三同，一不同”：元素的宽度、高度、圆角半径值相同，圆角位置不同。
-  ```
+  ```css
   .top{
     width:100px;
     height:100px;
@@ -258,7 +260,7 @@ border-radius:5px 10px / 20px 40px;
   }
   ```
   4. 制作椭圆，需要单独设置水平半径和垂直半径。
-  ```
+  ```css
   .ver{
     width: 50px;
     height: 100px;
@@ -269,7 +271,7 @@ border-radius:5px 10px / 20px 40px;
  - 等宽单元格
  
  让 `table`的单元格等宽
- ```
+ ```css
  table {
     table-layout: fixed;
  }
@@ -321,7 +323,7 @@ html {
 
 *摘自 by [张鑫旭](http://www.zhangxinxu.com/wordpress/2010/04/css%E5%AE%9E%E7%8E%B0%E8%B7%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7%E7%9A%84%E7%9B%92%E9%98%B4%E5%BD%B1%E6%95%88%E6%9E%9C/)*
 
-```
+```css
 .shadow {
     -moz-box-shadow: 3px 3px 4px #000;
     -webkit-box-shadow: 3px 3px 4px #000;
@@ -339,12 +341,13 @@ html {
 首先，如果 chome版本大于 chrome 27，则 `-webkit-text-size-adjust:none;` 是没有用的
 
 正确解决方法如下：
-```
-   // 元素必须是块级元素，例如inline-block 和 block
+
+```css
+   /* 元素必须是块级元素，例如inline-block 和 block */
    display:inline-block;
-   // 其他浏览器才能正确解析小于12px的字号，所以下面这个字号9px对 Chrome是没用的
+   /* 其他浏览器才能正确解析小于12px的字号，所以下面这个字号9px对 Chrome是没用的 */
    font-size:9px; 
-   // 当字号12px时，Chrome自动将字号一律设置为12px，所以下面这句设置，是在12px上进行缩小的，12px*0.7
+   /* 当字号12px时，Chrome自动将字号一律设置为12px，所以下面这句设置，是在12px上进行缩小的，12px*0.7 */
    -webkit-transform: scale(0.70);
 ```
 
@@ -375,11 +378,11 @@ CSS:
 **1. CSS3计算calc和vw单位**
 
 `.wrap-outer`指的是居中定宽主体的父级，如果没有，创建一个，兼容到 `IE9+`
-```
+```css
 .wrap-outer {
     margin-left: calc(100vw - 100%);
 }
-// 或者
+/* 或者 */
 .wrap-outer {
     padding-left: calc(100vw - 100%);
 }
@@ -410,12 +413,12 @@ body {
 
 - 为了更好的可访问性，使用 `clip` 隐藏内容
 
-```
+```css
 .visually-hidden {
     position: absolute;
     clip: rect(1px 1px 1px 1px); /* IE6,IE7 */
     clip: rect(1px , 1px, 1px, 1px);
-    // 解决 webkit/Opare/IE 下可能出现的滚动条
+    /* 解决 webkit/Opare/IE 下可能出现的滚动条 */
     height: 1px;
     width: 1px;
     overflow:hidden;

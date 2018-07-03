@@ -2,6 +2,7 @@
 ---
 
 >1. `HTML5` 的结构元素
+
 ```
 主体结构元素:
   article section nav aside time pubdate
@@ -9,6 +10,7 @@
 非主体结构元素：
   header footer address main
 ```
+
 >2. 表单新增元素
 >3. 图形绘制：`Canvas`
 >4. 多媒体相关 `API`
@@ -17,6 +19,7 @@ video audio
 ```
 >5. 浏览器历史记录： `History API`
 >6. 本地存储
+
 ```
 (1) Web Storage:
   I. localStorage
@@ -31,6 +34,7 @@ video audio
   II. applicationCache 对象
 ```
 >7. 文件 `API`
+
 ```
 (1) FileList 对象与 file 对象
 (2) ArrayBuffer 对象与 ArrayBufferView 对象
@@ -44,6 +48,7 @@ video audio
 ---
 
 - 具有 `boolean` 值的属性 (例如 `disable readonly` ) 写法
+
 ```
 <!--不写属性名默认属性为 false-->
 <input type="checkbox">
@@ -72,7 +77,8 @@ video audio
 >1. `article` 元素代表文档、页面或应用程序中**独立的、完整的、可以独自被外部引用的内容**，<br>
 例如一篇博客、报纸上的文章、论坛帖子、用户评论等独立内容。
 >一个标准完整的 `article` 示例如下：
-```
+
+```html
 <article>
   <header>
     <h1>苹果</h1>
@@ -134,7 +140,7 @@ article, aside, dialog, figure, header, legend, nav, section, main {
 
 >1. 利用 `storage` 事件监视 `Web Storage` 中的数据
 
-```
+```js
 window.addEventListener('storage', function(event){
   // 当sessionStorage 或 localStorage 的值发生变动时所要执行的处理
 }, false)
@@ -222,7 +228,7 @@ JS:
 在 `HTML5` 中，新增`btoa()`与`atob()` 方法来支持`Base64` 编码，在这两个方法的命名中，<br>
 `b` 可以被理解为一串二进制数据，`a` 可以被理解为一个`ASCII`码字符串，**分别用来编码和解码**。
 
-```
+```js
 // 编码
 var result = window.btoa(data);
 

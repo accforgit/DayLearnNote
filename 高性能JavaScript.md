@@ -130,7 +130,8 @@ document.getElementById('foo').appendChild(foo);
 - 对象属性成员本地化
 使用诸如点号 `.` 的形式访问对象，每多加一个点号，就会导致对象多进行一次搜索，<br>
 所以将需要多次使用的成员属性本地化，以提升性能。
-```
+
+```js
 function hasEitherClassName(element, className1, className2) {
   return element.className === className1 || element.className === className2;
 }
@@ -172,7 +173,8 @@ document.getElementById("myList1").appendChild(cln);
 - `DOM` 集合与数组 <br>
   遍历 `DOM` 集合的速度，要比遍历数组的慢，如果需要对所产生的 `DOM` 集合进行多次便利查询， <br>
   则最好将 `DOM` 集合缓存到数组中。
-```
+  
+```js
 // 将 `DOM` 集合缓存到数组中
 function toArray(coll) {
   var a = [], len = coll.length;
@@ -189,7 +191,8 @@ var arr = toArray(coll);
 那么无需使用数组。
 
 - `IE` 浏览器中，使用 `nextSibling` 而非 `childNode` 抓取与当前元素有关的元素集合，因为前者速度更快
-```
+
+```js
 // 考虑一下情况，采用非递归的方式遍历一个元素的子节点
 
 // 第一种，使用 nextSibling

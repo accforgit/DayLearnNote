@@ -9,8 +9,9 @@
 优雅降级的一种，使用浏览器支持的样式，确保网站不会在低版本浏览器中挂掉，只是看起来没有那么炫。 <br>
 比如渐变(`gradient`) 需要 `IE 10` 及以上版本的支持，那么在编写渐变效果的时候， <br>
 可能就需要用到。
-```
-// 写在最前面
+
+```css
+/* 写在最前面 */
 background: rgb(255, 128, 0);
 
 background:-moz-linear-gradient(0deg, yellow, red);
@@ -37,7 +38,7 @@ h1 {
 
 >3. 使用 `JavaScript` 检测浏览器对属性的支持
 
-```
+```js
 function testProperty(property) {
   var root=element||document.documentElement;
   if(property in root.style) {
@@ -56,7 +57,8 @@ testProperty('text-shadow');
 否则就添加 `no-text-shadow`，然后在编写 `CSS` 代码的时候就可以对这两种情况分别定义样式了。
 
 比如对上面的 `text-shadow` 定义样式：
-```
+
+```css
 .no-text-shadow .header {
   color:gray;
 }
@@ -72,7 +74,7 @@ testProperty('text-shadow');
 如果我们想要检测某个具体的属性值是否支持，那就需要把它赋给对应的属性，<br> 
 然后再检查浏览器是不是还保存着这个值。很显然，这个过程会改变元素的样式，因此我们需要一个隐藏元素 <br>
 
-```
+```js
 function testValue(classname, value, property, element){
   var dummy=document.createElement(element);
   dummy.style[property]=value;
@@ -93,7 +95,7 @@ testValue('red','text-shadow','0 0.3em gray','h1');
 
 >1. 尽量减少改动时要编辑的地方，减少使用绝对值
 
-```
+```css
 button {
   padding: 6px 16px;
   border:1px solid #446d88;
@@ -110,7 +112,7 @@ button {
 可能导致其他地方也都要被修改，以使用被修改的那一个样式，牵一发而动全身。
 最好修改成以下 `相对` 确定值的情况：
 
-```
+```css
 button {
   // 使用 em 相对父级字体大小确定值
   padding: 0.3em 0.8em;
@@ -149,7 +151,7 @@ hr{
 ```
 
 >3. 继承属性 `inherit` <br>
-```
+```css
 a {
   font-size: inherit;
   color: inherit;
@@ -222,7 +224,7 @@ background: linear-gradient(-45deg, transparent 15px,#58a 0);
 
 >2. 梯形
 
-```
+```css
 .box1 {
   width:100px;
   height:100px;
@@ -314,7 +316,7 @@ CSS:
 
 >1. 毛玻璃效果
 
-```
+```css
 body,main::before{
   // 背景图片
   background: url('tiger.jpg') 0 / cover fiexd;
@@ -339,8 +341,8 @@ main::before{
 
 >2. 折角效果
 
-```
-// 45° 书页折角效果
+```css
+/* 45° 书页折角效果 */
 .box1{
   width:200px;
   height:200px;
@@ -354,7 +356,7 @@ main::before{
 
 >1. 连字符断行
 
-```
+```css
 hyphens: auto;
 ```
 
@@ -363,7 +365,8 @@ hyphens: auto;
 (1) 使用伪类 `:nth-child()`
 
 (2) 使用渐变
-```
+
+```css
 padding:0.5em;
 line-height:1.5;
 background: beige;
@@ -374,8 +377,9 @@ background-image:linear-gradient(rgba(0,0,0,0.2) 50%,transparent 0);
 ```
 
 >3. 自定义下划线
-```
-// 利用线性渐变
+
+```css
+/* 利用线性渐变 */
 p{
   background:linear-gradient(gray,gray) no-repeat;
   background-size: 100% 1px;
@@ -389,8 +393,8 @@ p{
 
 >1. 凸版印刷效果
 
-```
-// 利用 text-shadow
+```css
+/* 利用 text-shadow */
 p{
   font-size: 30px;
   background-color: hsl(210,13%,60%);
@@ -400,8 +404,8 @@ p{
 ```
 
 >2. 文字空心
-```
-// text-shadow 描边
+```css
+/* text-shadow 描边 */
 p {
   font-size: 30px;
   background: deeppink;
@@ -412,7 +416,7 @@ p {
 ```
 
 >3. 文字外发光
-```
+```css
 p {
   font-size: 30px;
   background: #203;
@@ -423,7 +427,7 @@ p {
 
 >4. 文字凸起效果
 
-```
+```css
 p {
   font-size: 50px;
   font-weight: 700;
@@ -465,31 +469,31 @@ CSS:
 
 应用在播放视频或者PC触屏设备
 
-```
+```css
 video {
-  // `CSS 2.1` 规范，使用一张 `1x1` 的透明 `GIF` 图片，作为回退机制
+  /* `CSS 2.1` 规范，使用一张 `1x1` 的透明 `GIF` 图片，作为回退机制 */
   cursor: url('transparent.gif');
 
-  // `CSS 3` 规范
+  /* `CSS 3` 规范 */
   cursor: none;
 }
 ```
 
 >2. 增大可点击区域
 
-```
-.box1{
+```css
+.box1 {
   width:50px;
   height: 50px;
-  // 圆形
+  /* 圆形 */
   border-radius:50%;
   background-color: #58a;
-  // 边框变宽并使用透明，功能上是增加了可点击区域
+  /* 边框变宽并使用透明，功能上是增加了可点击区域 */
   border:10px solid transparent;
-  // 为了不让元素因为边框的变宽而变大，裁剪到内边距
+  /* 为了不让元素因为边框的变宽而变大，裁剪到内边距 */
   background-clip: padding-box;
 
-  // 另外的效果，这是在原有的边框上再加一个圆环
+  /* 另外的效果，这是在原有的边框上再加一个圆环 */
   box-shadow: 0 0 0 1px rgba(0,0,0,0.3) inset;
   cursor:pointer;
 }
@@ -531,8 +535,8 @@ CSS:
 ```
 
 - 开关式按钮(借助 `checkbox`)
-```
 
+```css
 input[type='checkbox']{
   position:absolute;
   clip:rect(0,0,0,0);
@@ -559,8 +563,9 @@ input[type='checkbox']:active+label{
 - 遮罩层
 
 (1) 使用额外的 `HTML` 元素
-```
-// 这一层是暗色遮挡背景
+
+```css
+/* 这一层是暗色遮挡背景 */
 .overlay {
   position: fixed;
   top: 0;
@@ -569,7 +574,7 @@ input[type='checkbox']:active+label{
   left: 0;
   background: rgba(0,0,0,0.8);
 }
-// 这一层是需要在暗色背景之上显示的元素
+/* 这一层是需要在暗色背景之上显示的元素 */
 .lightbox {
   position: absolute;
   z-index: 1;
@@ -577,7 +582,8 @@ input[type='checkbox']:active+label{
 ```
 
 (2) 直接使用 `body` 的伪元素设置遮罩层
-```
+
+```css
 body.diimed::before {
   position: fixed;
   top: 0;
@@ -587,8 +593,10 @@ body.diimed::before {
   background: rgba(0,0,0,0.8);
 }
 ```
+
 (3) 使用 `box-shadow`
-```
+
+```css
 div {
   box-shadow: 0 0 0 100vmax rgba(0,0,0,0.3);
 }
@@ -596,8 +604,8 @@ div {
 
 
 - 滚动框顶部阴影提示效果
-```
-HTML:
+
+```html
   <ul>
     <li>Ada Catlace</li>
     <li>Alan Purring</li>
@@ -611,8 +619,9 @@ HTML:
     <li>Cat5</li>
     <li>Vector</li>
   </ul>
+```
 
-CSS:
+```css
   ul{
     overflow: auto;
     width: 10em;
@@ -628,16 +637,17 @@ CSS:
 ```
 
 - 图片对比
-```
-HTML:
+
+```html
   <div class="image-slider">
     <div>
       <img src="a.jpg" alt="jpg">
     </div>
     <img src="a_after.jpg" alt="after">
   </div>
+```
 
-CSS:
+```css
   .image-slider {
     position: relative;
     display: inline-block;
@@ -697,44 +707,43 @@ CSS:
 
 (2) 使用 `transform` 进行百分比确定位置
 
-```
-CSS:
+```css
   main{
     border:1px dashed;
     position: absolute;
     top:50%;
     left:50%;
-    // 不需要元素确定宽高，适应性较好
+    /* 不需要元素确定宽高，适应性较好 */
     transform:translate(-50%,-50%);
   }
 ```
 
 (3) `margin:auto;`，适应性较好(且是水平垂直都居中)
 
-```
+```css
 .element {
     width: 600px; 
     height: 400px;
     position: absolute; 
-    // 四个值全是 0
+    /* 四个值全是 0 */
     left: 0; top: 0; right: 0; bottom: 0;
-    // 有了这个就自动居中了
+    /* 有了这个就自动居中了 */
     margin: auto;    
 }
 ```
 
 >2. 基于视口的解决方案
 
-```
+```css
 main{
-  // 只适用于在视口中居中的场景
+  /* 只适用于在视口中居中的场景 */
   margin:50vh auto 0;
   transform:translateY(-50%);
 }
 ```
 
 >3. 基于`Flexbox` 的解决方案
-```
+```css
 body{
   display: flex;
   min-height: 100vh;
@@ -787,7 +796,7 @@ CSS:
 - 弹跳动画
 
 (1) 小球弹跳
-```
+```css
 @keyframes bounce{
   60%,80%,to{
     transform:translateY(350px);
@@ -864,13 +873,11 @@ CSS:
 ```
 
 - 卡片元素两侧锯齿效果
-```
-// HTML
+```html
 <div class="card_coupon"></div>
 ```
 
-```
-// CSS
+```css
 .card_coupon{position:relative;width:100px;height:100px;background:#f60;display:inline-block;}
 .card_coupon:before,
 .card_coupon:after{content: "";position: absolute;display: block;width:10px;height: 100%;background-size: 20px 10px;}

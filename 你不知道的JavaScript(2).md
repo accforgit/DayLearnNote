@@ -171,7 +171,8 @@
 ```
 
 >2. 是否存在 `window.addEventListener` 属性
-```
+
+```js
   if(window.addEventListener){ 
     console.log("IE9及以上或标准浏览器"); 
   } else if (window.attachEvent){ 
@@ -252,7 +253,8 @@
 - 函数参数
 >1. 对 `ES6` 中的参数默认值而言，除了在极少数情况下意外，参数被省略或被赋值为 `undefined` 效果都一样，<br>
 都是取该参数的默认值。
-```
+
+```js
   function foo(a=42, b=a+1) {
     console.log(a, b);
   }
@@ -274,7 +276,8 @@
   foo();    // undefined(not linked)
 ```
 >严格模式下则不会存在参数关联的说法，但无论如何，**尽量不要依赖这种关联机制**
-```
+
+```js
   function foo(a) {
     'use 'strict';
     a = 42;
@@ -287,7 +290,8 @@
 
 - `try...cantch...finally`
 >1. 执行顺序
-```
+
+```js
   function foo() {
     try {
       return 42;
@@ -546,7 +550,7 @@ it.next().value;    // undefined
 
  - 使用 return(...) 手动终止<br>
  
- ```
+ ```js
  var it = something();
  for(var v of it) {
    console.log(v);
@@ -563,7 +567,8 @@ it.next().value;    // undefined
  ```
 
 >4. 异步迭代生成器
-```
+
+```js
 function foo(x, y) {
   ajax(
     'http://some.url.1/?x=' + x + '&y=' + y,
@@ -596,7 +601,8 @@ it.next();
 ```
 
 >5. 生成器中的 `Promise` 并发。
-```
+
+```js
 function *foo() {
   // 两个请求是相互独立、互不干扰的，所以使用并发方式同时运行
   var results = yield Promise.all([
