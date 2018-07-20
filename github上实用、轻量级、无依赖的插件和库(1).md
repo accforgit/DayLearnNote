@@ -624,7 +624,7 @@ size: 4KB
 >basket.js是一款基于 LocalStorage 的资源加载器，可以用来缓存 script 和 css, 手机端使用速度快于浏览器直接缓存。
 
 
-## moment.js – 一款轻量级的Javascript日期处理类库
+## moment.js – Javascript日期处理类库
 github：https://github.com/moment/moment/
 
 官方网站：http://momentjs.com/
@@ -635,6 +635,16 @@ size: 16.6KB
 
 功能介绍：
 >moment.js是一个轻量级的JavaScript库日期解析、验证操作,格式化日期的库。
+
+## day.js - 更精简的日期处理类库
+github：https://github.com/iamkun/dayjs
+
+star:1.2k+
+
+size: 2KB
+
+功能介绍：
+>具有与 Moment相同的 API，但体积更小
 
 ## hammerjs
 github：https://github.com/hammerjs/hammer.js/

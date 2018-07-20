@@ -64,3 +64,33 @@ star:26k+
 
 功能介绍：
 >只需要编写 json文件，即可快速伪造出需要的 REST API
+
+## cookie.js - 操作cookie
+
+github: https://github.com/florian/cookie.js/blob/master/cookie.js
+
+star: 1k+
+
+功能介绍：
+>易于操作cookie
+
+## store.js - 跨浏览器、兼容低版本(ie6+)浏览器
+
+github: https://github.com/marcuswestin/store.js
+
+star: 10k+
+
+功能介绍：
+>兼容PC、移动端各大浏览器，兼容低版本浏览器(IE6+)
+
+## gcoord - 兼容不同标准下的坐标系精确度
+
+不同电子地图由于可能使用了不同的坐标系标准，例如百度地图使用 `BD-09`标准，高德地图使用 `GCL-02`标准，
+所以同一个坐标在不同的电子地图上可能对应不同的位置，存在几十到几百米的偏移，
+此库用于消除这些偏移
+
+github: https://github.com/hujiulong/gcoord
+
+star: 500+
+
+

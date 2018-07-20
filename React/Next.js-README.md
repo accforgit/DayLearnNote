@@ -1164,7 +1164,7 @@ now
 </details>
 
 <details>
-  <summary>它(指Next.js) 和 `create-react-app`是差不多的吗?</summary>
+  <summary>它(指Next.js) 和 create-react-app是差不多的吗?</summary>
 
 是也不是。
 说是，是因为二者都让你的开发变得更轻松。
@@ -1181,7 +1181,7 @@ now
 </details>
 
 <details>
-  <summary>如何使用嵌入式CSS(`CSS-in-JS`)方案？</summary>
+  <summary>如何使用嵌入式CSS(CSS-in-JS)方案？</summary>
 
 `Next.js`自带的库 [styled-jsx](https://github.com/zeit/styled-jsx)支持 局部(`scoped`)`css`，当然，你也可以在 `Next`应用中添加[上面所提到的](#内联式样式-css-in-js)任何你喜欢的代码库来使用你想要的 `CSS-in-JS`解决方案。
 </details>
@@ -1237,13 +1237,13 @@ Next.js is special in that:
 </details>
 
 <details>
-  <summary>能够配合使用 `GraphQL`吗</summary>
+  <summary>能够配合使用 GraphQL吗</summary>
 
 当然，这还有个用 [Apollo](https://github.com/zeit/next.js/blob/canary/examples/with-apollo) 的例子呢。
 </details>
 
 <details>
-<summary>能够配合使用 `Redux`吗？</summary>
+<summary>能够配合使用 Redux吗？</summary>
 
 当然，这也有个[例子](https://github.com/zeit/next.js/blob/canary/examples/with-redux)。
 </details>
