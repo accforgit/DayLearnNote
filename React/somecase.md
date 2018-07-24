@@ -1,6 +1,6 @@
-## 一些有关 React 的关键知识
+# 一些有关 React 的知识点
 
-### `setSate`具有确定的顺序
+## `setSate`具有确定的顺序
 
 >来源 [React 是否保持 state 更新的顺序？](https://mp.weixin.qq.com/s?__biz=MzI0NTAyNjE0NQ==&mid=2675577690&idx=1&sn=15fab0f2843a3c01866545a20efa0962&chksm=f3da6f54c4ade64220e8f5d7a2b05f980a43e47cba48c5f44d533b48f147832f8392b415b5c0&mpshare=1&scene=23&srcid=0206ZZS6lkbMjlxelHxLeHTe#rd)
 
@@ -46,4 +46,53 @@ promise.then(() => {
   });
   // 当我们退出 unstable_batchedUpdates函数后，重新渲染一次
 });
+```
+
+## `react-router 4.x`：切换路由后，页面仍然停留在上一个页面的位置
+
+>更多 `react-router`使用技巧可见 [React Router 4.x 开发，这些雷区我们都帮你踩过了](https://jdc.jd.com/archives/212552)
+
+由 A 页面跳转到 B 页面，B 页面停留在 A 页面的位置，没有返回到顶部。
+
+3.x以及早期版本中，可以使用滚动恢复的开箱即用功能，但是在 4.x中路由切换并不会回复滚动位置。
+
+解决方法：**使用 withRouter**：
+>`withRouter(MyComponent)`
+>`withRouter` 可以访问历史对象的属性和最近的 `<Route`> 匹配项，当路由的属性值 `{ match, location, history }` 改变时，
+>`withRouter` 都会重新渲染。该组件可以携带组件的路由信息，避免组件之间一层层传递。
+
+所以可以利用上述特点，使用 `withRouter` 封装出一个 `ScrollToTop` 组件。
+这里就用到了 `withRouter` 携带路由信息的特性，通过对比`props` 中 `location` 的变化，实现页面的滚动。
+
+```jsx
+import React, { Component } from 'react';
+import { Route, withRouter } from 'react-router-dom';
+class ScrollToTop extends Component {
+  componentDidUpdate(prevProps) {
+    if (this.props.location !== prevProps.location) {
+      window.scrollTo(0, 0);
+    }
+  }
+  render() {
+    return this.props.children;
+  }
+}
+
+export default withRouter(ScrollToTop);
+```
+
+在定义路由出引用该组件，例如：
+```jsx
+ReactDOM.render((
+  <BrowserRouter>
+    <ScrollToTop>
+      <div className="container">
+        <Route path={routePaths.INDEX} exact component={Index} />
+        <Route path={routePaths.CARD} component={Card} />
+      </div>
+    </ScrollToTop>
+  </BrowserRouter>
+  ),
+  document.getElementById('app')
+);
 ```
