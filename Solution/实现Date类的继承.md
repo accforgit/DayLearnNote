@@ -16,9 +16,8 @@ function(obj, proto) {
  * 用了点技巧的继承，实际上返回的是Date对象
  */
 function MyDate() {
-  // 下面这句话主要是为了能够拿到传入参数，换成下面三个写法也是可以的
+  // 下面这句话主要是为了能够拿到传入参数，换成下面两种写法也是可以的
   // new(Date.bind(([Date].concat(Array.prototype.slice.call(arguments))).join(',')))
-  // new(Date.bind(Date, ...Array.prototype.slice.call(arguments)))
   // new(Date.bind(Date, ...arguments))
   var dateInst = new(Function.prototype.bind.apply(Date, [Date].concat(Array.prototype.slice.call(arguments))))();
 
