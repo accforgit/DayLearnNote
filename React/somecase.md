@@ -7,7 +7,7 @@
 >**无论是同一个组件，还是不同的组件，`setSatte`都具有确定的顺序。**
 >状态始终是按照特定的顺序更新的。无论你是否看到介于两个状态之间的一个中间状态，无论你是否在批处理内。
 
-在 `React` 事件处理程序中，不论 `setState()` 调用了多少次，也不论 `setState()` 被多少个组件调用，它们在事件结束时只会生成一次重新渲染，也就是在事件结束时，所有的 `setState`调用都会被合并到一起。
+在 `React` 事件处理程序中(可以理解为由 `React`引发的事件处理，例如 `onClick` `onChange`)，不论 `setState()` 调用了多少次，也不论 `setState()` 被多少个组件调用，它们在事件结束时只会生成一次重新渲染，也就是在事件结束时，所有的 `setState`调用都会被合并到一起。
 
 更新总是按照它们发生的顺序进行浅合并(`shallowly merge`)。
 
@@ -47,6 +47,10 @@ promise.then(() => {
   // 当我们退出 unstable_batchedUpdates函数后，重新渲染一次
 });
 ```
+
+## 不要在 `componentWillMount`中获取数据
+
+在 `componentWillMount`里发起`AJAX`，不管多快得到结果也赶不上首次`render`，而且 `componentWillMount`可能会被调用多次，所以类似的 `IO`操作最好放到 `componentDidMount`
 
 ## `react-router 4.x`：切换路由后，页面仍然停留在上一个页面的位置
 
