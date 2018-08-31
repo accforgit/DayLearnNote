@@ -4,6 +4,8 @@
 
 ---
 
+# ECMA
+
 ## 延迟脚本
 
 ### defer
@@ -576,7 +578,7 @@ var o=new F()
 o.constructor===F       //==>true，constructor属性指代这个类
 ```
 
-识别对象是否属于某各类的方法
+识别对象是否属于某个类的方法
 
 - instanceof
 	```js
@@ -590,7 +592,6 @@ o.constructor===F       //==>true，constructor属性指代这个类
 	```
 
 这两种方法一般情况下都行得通，不过在多个执行上下文的场景中无法正常工作，比如在浏览器窗口的多个框架子页面中，因为 `Array`可能是属于不同上下文的 `Array`
-
 
 ## 正则表达式 
 
@@ -825,6 +826,130 @@ var o={x:1}
 o.propertyIsEnumerable('x')   //=>true：x是o 本身就有的属性
 o.propertyIsEnumerable('y')   //=>false：y不是o 的属性
 o.propertyIsEnumerable('toString')  //=>false：o继承了Object的toString属性，并不是o本身的属性，并且不可枚举
+```
+
+
+## 重写原型对象
+
+```js
+function Person() {}
+Person.prototype = {
+  name: 'Join',
+  getName: function () { return this.name }
+}
+```
+
+这种重写方法等于是重写了整个 `prototype`，尽管对功能没什么改变，但是得到的实例的 `constructor`不再指向 `Person`，
+而指向`Objcet`:
+```js
+var p1 = new Person()
+console.log(p1 instanceof Object)   // => true
+console.log(p1 instanceof Person)   // => true
+console.log(p1.constructor === Person)   // => false
+console.log(p1.constructor === Object)   // => true
+```
+
+所以需要手动引用回去：
+```js
+Person.prototype = {
+  constructor: Person,
+  name: 'Join',
+  getName: function () { return this.name }
+}
+```
+
+## 组合继承
+
+也叫伪经典继承，指的是将原型链和借用构造函数的技术组合到一起
+使用原型链实现对原型属性和方法的继承，通过借用构造函数来实现对实例属性的继承
+
+```js
+// 父对象
+function SuperType(name) {
+	this.name = name
+	this.colors = ['red', 'blue']
+	this.getColor = function() {
+		return this.colors
+	}
+}
+SuperType.prototype.sayName = function() {
+	return this.name
+}
+
+// 子对象
+function SubType(name, age) {
+	// 借用构造函数方法 继承原型属性和原型方法
+	SuperType.call(this, name)
+	this.age = age
+}
+// 原型链方法 继承实例方法和属性
+SubType.prototype = new SuperType()
+SubType.prototype.sayAge = function() {
+	return this.age
+}
+```
+
+## 原型式继承
+
+```js
+function inherit(o) {
+	function F(){}
+	F.prototype = o
+	return new F
+}
+```
+
+## 寄生组合式继承
+
+引用类型最理想的继承范式
+
+```js
+function inheritPrototype(subType, superType) {
+	var p = inherit(superType.prototype)
+	p.constructor = subType
+	subType.prototype = p
+}
+// 使用
+inheritPrototype(SubType, superType)
+// 子对象可以有自己的实例方法
+SubType.prototype.sayAge = function(){
+	return this.age
+}
+```
+
+## 作用域链
+
+闭包只能取得包含函数中任何变量的最后一个值
+```js
+function fn1(){
+	var i;
+	for(i=0; i< 10;i++){
+		setTimeout(function(){
+			console.log(i)
+		}, 1000)
+	}
+}
+
+fn1()
+```
+上述代码将在 `2s`后输出 `10`个 `10`而不是 `从 1 到 10`
+因为 `setTimeout`的第一个参数匿名函数的作用域链中都保存着 `fn1`的变量 `i`，当 `fn1`函数返回后， `i`的值为 `10`，
+所以所有的 匿名函数都输出 `i`的最终值 `10`
+
+想要达到预期输出，则可以加个闭包，本质就是多套一层作用域，延长作用域链
+```js
+function fn1(){
+	var i;
+	for(i=0; i< 10;i++){
+		setTimeout(function(j){
+			return function() {
+				console.log(j)
+			}
+		}(i), 1000)
+	}
+}
+
+fn1()
 ```
 
 ## 自定义事件

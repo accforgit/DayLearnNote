@@ -109,7 +109,7 @@ class ErrorBoundary extends React.Component {
 
 ## Context API
 
->解决 `props`多级嵌套传递的情况，只要父组件 `Provider`对应的 `props`，则其下任何层级的子组件都可通过 `Consumer`获得此 `props`
+>解决 `props`多级嵌套传递的问题，只要父组件 `Provider`对应的 `props`，则其下任何层级的子组件都可通过 `Consumer`获得此 `props`
 
 ```jsx
 import React, { Component } from 'react'
@@ -143,3 +143,61 @@ export default class App extends Component {
   }
 }
 ```
+
+## createRef API
+
+除了沿用之前创建 `ref`的两种方法： `string ref` 和 `callback ref`之外，另增 `createRef`的方法
+此方法创建的 `ref`，不会有使用 `string ref`方法创建的副作用
+
+```jsx
+export default class CreateRefApi extends Component {
+  inputRef = React.createRef()
+  btnClick = () => this.inputRef.current.focus()
+  render() {
+    return (
+      <div className="box">
+        <input type="text" ref={this.inputRef} />
+        <button onClick={this.btnClick}>click</button>
+      </div>
+    )
+  }
+}
+```
+
+## forwardRef API
+
+通过 `ref`穿透组件，直接控制组件内的指定元素
+
+```jsx
+const ChildInput = React.forwardRef((props, ref) => (
+  <div className="child-box">
+    <input type="text" ref={ref}/>
+    <p>other content</p>
+  </div>
+))
+
+export default class ForwardRefApi extends React.Component {
+  inputRef = React.createRef()
+  btnClick = () => {
+    this.inputRef.current.value = 'hello world'
+  }
+  render() {
+    return (
+      <div className="box">
+        <button onClick={this.btnClick}>Click</button>
+        <ChildInput ref={this.inputRef} />
+      </div>
+    )
+  }
+}
+```
+
+## Strict Mode
+
+此组件不会渲染任何的 `bisible UI`，用于对其所有子元素进行检测，只在开发环境起作用，不会对生产版本产生任何影响
+检测内容如下：
+
+- 不安全的生命周期函数
+- 使用`string ref API`创建 `ref`
+- 不期望的副作用
+- 老式(v16.x之前)的 `Context API`
