@@ -1,4 +1,5 @@
->1. 数组去重
+
+## 数组去重
 ```js
 let unique = (array)=>{
     let hashTable = {}
@@ -15,7 +16,7 @@ let unique = (array)=>{
 unique([1,13,24,11,11,14,1,2])
 ```
 
->2. 统计一个字符串中出现最多的字母
+## 统计一个字符串中出现最多的字母
 
 ```js
 let findMaxDuplicateChar = (str)=>{
@@ -46,9 +47,7 @@ let findMaxDuplicateChar = (str)=>{
 }
 ```
 
-
-
->3. 找出正数组的最大差值
+## 找出正数组的最大差值
 
 ```js
 function(array) {
@@ -73,7 +72,7 @@ function(array) {
 }
 ```
 
->4. 随机生成指定长度的字符串
+## 随机生成指定长度的字符串
 ```js
 function randomString(n) {
     let str = 'abcdefghijklmnopqrstuvwxyz9876543210'
@@ -86,42 +85,43 @@ function randomString(n) {
 }
 ```
 
->5. 实现类似getElementsByClassName 的功能<br>
+## 实现类似getElementsByClassName 的功能
+
 自己实现一个函数，查找某个DOM节点下面的包含某个class的所有DOM节点，
 不允许使用原生提供的 `getElementsByClassName querySelectorAll` 等原生提供DOM查找函数。
 
 注意：以下代码别忘了使用反斜杠转义,node 代表从HTML文档中获取的节点，
 例如 `var node = document.getElementById('tag')`
+
 ```js
 function queryClassName(node,name) {
-    let starts = "(^|[ \\n\\r\\f\\t])"
-    let ends = "([ \\n\\r\\f\\t]|$)"
-    let array = []
-    let regex = new RegExp(starts+name+ends)
-    let elements = node.getElementsByTagName('*')
-    let len = elements.length
-    let element,i=0
+	let starts = "(^|[ \\n\\r\\f\\t])"
+	let ends = "([ \\n\\r\\f\\t]|$)"
+	let array = []
+	let regex = new RegExp(starts+name+ends)
+	let elements = node.getElementsByTagName('*')
+	let len = elements.length
+	let element,i=0
 
-    while(i < len) {
-        element = elements[i]
-        if(regex.test(element.className)) {
-            array.push(element)
-        }
-        i += 1
-    }
-
-    return array
+	while(i < len) {
+		element = elements[i]
+		if(regex.test(element.className)) {
+			array.push(element)
+		}
+		i += 1
+	}
+	return array
 }
 ```
 
->6. 实现二叉查找树(Binary Search Tree)
+## 实现二叉查找树(Binary Search Tree)
 
-&emsp;&emsp;二叉查找树，也称二叉搜索树、有序二叉树（英语：ordered binary tree）是指一棵空树或者具有下列性质的二叉树：<br>
+&emsp;&emsp;二叉查找树，也称二叉搜索树、有序二叉树（英语：ordered binary tree）是指一棵空树或者具有下列性质的二叉树：
 
->(1) 任意节点的左子树不空，则左子树上所有结点的值均小于它的根结点的值；<br>
->(2) 任意节点的右子树不空，则右子树上所有结点的值均大于它的根结点的值；<br>
->(3) 任意节点的左、右子树也分别为二叉查找树；<br>
->(4) 没有键值相等的节点。二叉查找树相比于其他数据结构的优势在于查找、插入的时间复杂度较低。<br>
+>(1) 任意节点的左子树不空，则左子树上所有结点的值均小于它的根结点的值；
+>(2) 任意节点的右子树不空，则右子树上所有结点的值均大于它的根结点的值；
+>(3) 任意节点的左、右子树也分别为二叉查找树；
+>(4) 没有键值相等的节点。二叉查找树相比于其他数据结构的优势在于查找、插入的时间复杂度较低。
     为O(log n)。二叉查找树是基础性数据结构，用于构建更为抽象的数据结构，如集合、multiset、关联数组等。
 
 
@@ -270,16 +270,17 @@ class BinarySearchTree {
     }
 }
 ```
->7. 选择排序<br>
+
+## 选择排序
 >&emsp;&emsp;从所有序列中先找到最小的，然后与数组第一个位置的元素交换，也就是把最小的元素放在第一位，
 之后再看剩余元素中最小的，再与第二个位置的元素交换，全部完成交换。
-属于 `固定位置找元素` 的模式。<br>
-<br>
-a. 首先在待排序序列中找到最小元素，放入储存有序序列中。同时从待排序序列中删除这个元素<br>
-b. 继续从未排序序列中找到最小元素，然后a步中的有序列序列中<br>
-c. 以此类推，直到待排序序列元素个数为0<br>
+属于 `固定位置找元素` 的模式。
 
-```
+- 首先在待排序序列中找到最小元素，放入储存有序序列中。同时从待排序序列中删除这个元素
+- 继续从未排序序列中找到最小元素，然后a步中的有序列序列中
+- 以此类推，直到待排序序列元素个数为0
+
+```js
 function selectSort(array) {
     let len = array.length
     let minIndex, minValue
@@ -298,17 +299,19 @@ function selectSort(array) {
 }
 ```
 
->8. 直接插入排序<br>
->&emsp;&emsp;每一趟将一个待排序的记录(也就是新数据)，
->按照其关键字的大小插入到有序队列的合适位置里，直到全部插入完成。
->属于 `固定元素找位置` 的模式。<br>
->
->a. 从待排序序列第0个元素开始排序，该元素可以认为已经是有序的<br>
->b. 取出下一个元素，在已经排序的元素序列中从后向左遍历<br>
->c. 如果已排序元素大于新元素，将该元素移到下一位置<br>
->d. 重复步骤c，直到找到一个已排序的元素，此元素不大于新元素；或者元素位于有有序序列开始位置<br>
->e. 将新元素插入到此元素后面<br>
->f. 重复步骤b~e,直接待排元素个数为0<br>
+##  直接插入排序
+
+每一趟将一个待排序的记录(也就是新数据)，
+按照其关键字的大小插入到有序队列的合适位置里，直到全部插入完成。
+属于 `固定元素找位置` 的模式。
+
+>a. 从待排序序列第0个元素开始排序，该元素可以认为已经是有序的
+>b. 取出下一个元素，在已经排序的元素序列中从后向左遍历
+>c. 如果已排序元素大于新元素，将该元素移到下一位置
+>d. 重复步骤c，直到找到一个已排序的元素，此元素不大于新元素；或者元素位于有有序序列开始位置
+>e. 将新元素插入到此元素后面
+>f. 重复步骤b~e,直接待排元素个数为0
+
 ```js
 function insertSort(array) {
     let len = array.length
@@ -324,14 +327,14 @@ function insertSort(array) {
 }
 ```
 
->9. 冒泡排序
+## 冒泡排序
 
->&emsp;&emsp;从头到尾依次交换，将较大的值交换到后面的位置
-><br>
->a. 从头开始比较相邻的两个待排序元素，如果前面元素大于后面元素，就将二个元素位置互换<br>
->b. 这样对序列的第0个元素到n-1个元素进行一次遍历后，最大的一个元素就“沉”到序列的最后位置（第n-1个位置，n为待排序元素个数）<br>
->c．排除此次排序最后面的那个元素(n=n-1)，继续对剩余序列重复前面两步<br>
->d. 当(n= n-1)=0时，排序完成<br>
+从头到尾依次交换，将较大的值交换到后面的位置
+
+>a. 从头开始比较相邻的两个待排序元素，如果前面元素大于后面元素，就将二个元素位置互换
+>b. 这样对序列的第0个元素到n-1个元素进行一次遍历后，最大的一个元素就“沉”到序列的最后位置（第n-1个位置，n为待排序元素个数）
+>c．排除此次排序最后面的那个元素(n=n-1)，继续对剩余序列重复前面两步
+>d. 当(n= n-1)=0时，排序完成
 
 ```js
 let bubbleSort = (array) =>{
@@ -354,8 +357,9 @@ let bubbleSort = (array) =>{
 }
 ```
 
->9. 快速排序<br>
-&emsp;&emsp;从数组中任意选取一个元素作为基准值（为了方便计算，一般使用第一个元素值），
+## 快速排序
+
+从数组中任意选取一个元素作为基准值（为了方便计算，一般使用第一个元素值），
 然后再从剩下的数组中依次取出值与基准值比较，比基准值大的放到基准值的右边，否则放到左边，
 计算完一轮过后，再分别将基准值左右两边的元素划分成更小的数组对待，为每个子数组都单独设置基准值，
 递归完成排序。
@@ -385,18 +389,21 @@ let quickSort =(array) =>{
 
 ```
 
->10. 希尔排序<br>
->&emsp;&emsp;先设定一个小于数组长度的步长d1，然后根据步长d1将数组中元素分组，
+## 希尔排序
+
+先设定一个小于数组长度的步长d1，然后根据步长d1将数组中元素分组，
 在每个子组中使用`直接插入排序`进行排序，排序好之后，再选取一个小于d1的步长d2,
 然后根据步长d2将得到的新数组中的元素进行分组，接着在每个子组中使用`直接插入排序`进行排序。
 重复上述分组和插入排序，直到所选取的`步长=1`，即所有记录放在同一组中进行直接插入排序为止。    
->a. 设定一个间距d1(d1 < len)，将待排序序列分组<br>
->b. 对分组使用插入排序<br>
->c. 改变d2(d2<d1), 再次分组<br>
->d. 再次对上面的分组使用插入排序<br>
->e. 重复上面的步骤，直至dn=1，并进行最后一次插入排序，得到排好序的序列<br>
+
+>a. 设定一个间距d1(d1 < len)，将待排序序列分组
+>b. 对分组使用插入排序
+>c. 改变d2(d2<d1), 再次分组
+>d. 再次对上面的分组使用插入排序
+>e. 重复上面的步骤，直至dn=1，并进行最后一次插入排序，得到排好序的序列
 
 第一种希尔排序，设定好的步长
+
 ```js
 function shellsort1(array){
     var gaps = [5,3,1],temp;
@@ -436,7 +443,7 @@ function shellsort2(array){
 }
 ```
 
->11. 归并排序<br>
+## 归并排序
 [JavaScript实现归并排序](http://www.108js.com/article/article5/50032.html?id=692)
 
 ```js
@@ -469,4 +476,3 @@ function mergeSort(array) {
 
 console.log(mergeSort([23,53,6,1,7,8,0,54,67,2,34]))
 ```
-

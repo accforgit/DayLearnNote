@@ -3,7 +3,7 @@
 
 ---
 
-- 使用`img`标签作为背景图片
+## 使用`img`标签作为背景图片
 设置背景最恰当的方案，就是给对应的元素设置一个`background-image`的`CSS`属性，<br>
 但是有的时候这种方法无法派上用场，比如元素的背景并不是固定的，而是通过其他数据或者例如`JS`计算得来，<br>
 只能在`html`页面中才能获取这个计算而来的路径，那么就只能借助于`img`标签了。
@@ -31,7 +31,8 @@
 }
 
 ```
-- `clearfix`
+## `clearfix`
+
 如果用了浮动，浮动的父层不会跟着浮动框的高度增加而增加，在Firefox等符合W3C标准的浏览器中，<br>
 如果有一个DIV作为外部容器，内部的DIV如果设置了float样式，则外部的容器DIV因为内部没有clear，<br>
 导致不能被撑开。这个时候我们可以用clearfix清除浮动。
@@ -52,7 +53,7 @@
 .clearfix { *zoom:1;}   /*这是针对于IE6和IE&的，因为IE6不支持:after伪类，这个神奇的zoom:1让IE6的元素可以清除浮动来包裹内部元素。*/
 ```
 
-- Sticky footers
+## Sticky footers
 
 ```html
 <div class="box1">
@@ -82,48 +83,53 @@
 }
 ```
 
-- 使用 `padding`让元素宽高呈现比例
+## 使用 `padding`让元素宽高呈现比例
 
-```
 如果一个块级元素，只设置宽，但是无法精确确定宽的大小，又想让高度与宽度呈现一定比例，
 那么可以设置padding-top 或者 padding-bottom 达到这一目的
 
-div{
-    width: 100%
-    padding-top: 100%
+```css
+div {
+	width: 100%;
+	padding-top: 100%;
 }
+```
 
 以上代码，div宽度与外层元素相同，设置了`padding-top: 100%`，就等于让元素高度与宽度相同，
 如果换成`padding-bottom: 100%` 同样具有此种效果。
-```
 
-- 设置 `placeholder` 的属性
+## 设置 `placeholder` 的属性
+
 >在 `HTML5` 中，可以向其他文本内容那样，对输入框(`input`)的`placeholder` 属性进行定制。
 
 ```css
 #field4::-webkit-input-placeholder {
-    font-style:italic;
-    text-decoration:overline;
-    letter-spacing:3px;
-    color:#999;
+	font-style:italic;
+	text-decoration:overline;
+	letter-spacing:3px;
+	color:#999;
 }
 ```
-- `input` 输入框获得焦点，或者`button`被点击时等情况，隐藏系统出现自带的蓝色边框。
+
+## `input` 输入框获得焦点，或者`button`被点击时等情况，隐藏系统出现自带的蓝色边框。
+
 ```css
 input:focus{
     outline:0;
 }
 ```
 
-- 转换文本大小写。
+## 转换文本大小写。
+
 ```css
 text-transform: none | uppercase | lowercase | capitalize | inherit
 ```
-- CSS最佳实践
 
->CSS选择器运行效率
-```
-ID选择器： #id
+## CSS最佳实践
+
+- CSS选择器运行效率
+
+>ID选择器： #id
 class选择器： .class
 标签选择器：div
 相邻选择器： a + li
@@ -131,21 +137,21 @@ class选择器： .class
 通用选择器： *
 属性选择器：input[tyoe='text']
 伪类选择器：a:hover
-```
->CSS选择器从右向左解析，所以选择器越短解析速度越快
 
->如果使用 `Jquery` 操作DOM，则遵循 `Jquery`最佳实践
+- CSS选择器从右向左解析，所以选择器越短解析速度越快
 
->尽量只对 `position` 为 `absolute / fixed` 的元素设置动画
+如果使用 `Jquery` 操作DOM，则遵循 `Jquery`最佳实践
+尽量只对 `position` 为 `absolute / fixed` 的元素设置动画
+在页面滚动时禁用 `:hover`样式效果
 
->在页面滚动时禁用 `:hover`样式效果
-
-```
+```css
 .disable-hover {
-    // 这个属性只对 IE10+ 有效
+ 		/*  这个属性只对 IE10+ 有效 */
     pointer-events: none;
 }
+```
 
+```js
 var body = document.body,timer;
 window.addEventListener('scroll',function(){
     cleearTimeout(timer);
@@ -158,7 +164,8 @@ window.addEventListener('scroll',function(){
 },false)
 ```
 
-- 文本过长用省略号裁切
+## 文本过长用省略号裁切
+
 ```css
 /* 必须指定宽度 */
 width: 100px;
@@ -170,7 +177,8 @@ overflow: hidden;
 text-overflow: ellipsis;
 ```
 
-- CSS3动画开启硬件加速
+## CSS3动画开启硬件加速
+
 ```css
 .box{
   /* 使用CSS3动画 */
@@ -187,104 +195,122 @@ text-overflow: ellipsis;
   transform: translate3d(0, 0, 0);
 }
 ```
->硬件加速虽然好用，但是也不能乱用，小心使用这些方法，如果通过你的测试，结果确是提高了性能，<br>
+
+硬件加速虽然好用，但是也不能乱用，小心使用这些方法，如果通过你的测试，结果确是提高了性能，<br>
 你才可以使用这些方法。使用GPU可能会导致严重的性能问题，因为它增加了内存的使用，而且它会减少移动端设备的电池寿命。<br>
 必要的时候，使用3D硬件加速提升动画性能时，最好给元素增加一个`z-index`属性，人为干扰复合层的排序，<br>
 可以有效减少chrome创建不必要的复合层，提升渲染性能，移动端优化效果尤为明显。
 
--  `Responsive`(响应式)布局
+##  `Responsive`(响应式)布局
 
-```
 NO:
-    - 尽量少用无关紧要的div
-    - 不要使用内联元素(inline)
-    - 尽量少用 JS 或 Flash
-    - 丢弃没用的绝对定位和浮动样式
-    - 摒弃任何冗余结构和不使用 100% 设置
-    - 在页面布局的关键部分，不要过分依赖现在技巧实战，比如CSS3特效或者JS脚本
+>尽量少用无关紧要的div
+>不要使用内联元素(inline)
+>尽量少用 JS 或 Flash
+>丢弃没用的绝对定位和浮动样式
+>摒弃任何冗余结构和不使用 100% 设置
+>在页面布局的关键部分，不要过分依赖现在技巧实战，比如CSS3特效或者JS脚本
 
 YES:
-    - 重置样式(CSS Reset)
-    - 简单而有语义的核心布局
-    - 给重要的网页元素使用简单的技巧，比如导航菜单之类元素
-```
+>重置样式(CSS Reset)
+>简单而有语义的核心布局
+>给重要的网页元素使用简单的技巧，比如导航菜单之类元素
 
-- CSS3圆角边框属性：`border-radius`
 
-```
+## CSS3圆角边框属性：`border-radius`
+
+### 写法
+
 此属性可接收 1~4 个参数
-如果设置 1 个值，则top-left top-right bottom-right bottom-left四个值相等。
-如果设置 2 个值，则top-left bottom-right 取第一个值， top-right bottom-left取第二个值。
-如果设置 3 个值，则top-left取第一个值， top-right bottom-left取第二个值，bottom-right 取第三个值。
-如果设置 4 个值，则top-left top-right bottom-right bottom-left 依次取值
-```
+
+如果设置 1 个值，则 `top-left top-right bottom-right bottom-left`四个值相等。
+如果设置 2 个值，则`top-left bottom-right `取第一个值， `top-right bottom-left`取第二个值。
+如果设置 3 个值，则`top-left`取第一个值， `top-right bottom-lef` 取第二个值，`bottom-right` 取第三个值。
+如果设置 4 个值，则 `top-left top-right bottom-right bottom-left `依次取值
+
 `border-radius` 和 `border` 属性一样，可以将四个角单独拆分出来，派生出四个子属性：
+
 ```
 border-top-lef-radius
 border-top-right-radius
 border-bottom-right-radius
 border-bottom-left-radius
 ```
->上面的写法并非通用，不同的浏览器厂商可能并不一致，如果需要使用子属性，那么为了兼容性，<br>
-必须兼容各个浏览器，其实这大可不必，因为这完全可以使用`border-radius`这种标准写法代替，<br>
+
+上面的写法并非通用，不同的浏览器厂商可能并不一致，如果需要使用子属性，那么为了兼容性，
+必须兼容各个浏览器，其实这大可不必，因为这完全可以使用`border-radius`这种标准写法代替，
 而不需要考虑兼容问题。
 
 另外还可以使用斜线 `/` 来单独设置水平和垂直半径值：
-```
+
+```css
 border-radius:5px 10px / 20px 40px;
 ```
->上述代码表示，给元素的`top-left bottom-right` 的水平半径设为`5px`，而垂直半径为`10px`，<br>
-并且元素的`top-right bottom-left` 的水平半径设为`20px`，而垂直半径为`40px`<br>
+
+上述代码表示，给元素的`top-left bottom-right` 的水平半径设为`5px`，而垂直半径为`10px`，
+并且元素的`top-right bottom-left` 的水平半径设为`20px`，而垂直半径为`40px`
 这种单独设置水平和垂直半径的写法，只适用于标准写法，而用在四个子属性上是错误的。
 
-- 使用 `border-radius` 制作圆形、半圆、扇形、椭圆。
-  1. 制作圆形比较简单，只需要保证元素宽高相等，`border-radius` 设为`50%` 或宽高的一半即可。
-  ```css
-  border-radius:50%;
-  ```
-  2. 制作半圆，首先要让高宽比`2:1`或者`1:2`，然后`border-radius` 需要设置两个值，<br>
-  值设为比例较小的那一个值，剩下的两个值设置 0,
-  ```css
-  .top{
-    width: 100px;
-    height: 50px;
-    border-radius: 50px 50px 0 0;
-  }
-  ```
-  3. 制作扇形，遵循“三同，一不同”：元素的宽度、高度、圆角半径值相同，圆角位置不同。
-  ```css
-  .top{
-    width:100px;
-    height:100px;
-    border-radius: 100px 0 0 0;
-  }
-  ```
-  4. 制作椭圆，需要单独设置水平半径和垂直半径。
-  ```css
-  .ver{
-    width: 50px;
-    height: 100px;
-    border-radius:50px / 100px;
-  }
-  ```
+### 使用 `border-radius` 制作圆形、半圆、扇形、椭圆。
+
+- 制作圆形
+
+只需要保证元素宽高相等，`border-radius` 设为`50%` 或宽高的一半即可。
+
+```css
+border-radius:50%;
+```
+
+- 制作半圆
+
+首先要让高宽比`2:1`或者`1:2`，然后`border-radius` 需要设置两个值，值设为比例较小的那一个值，剩下的两个值设置 0,
+
+```css
+.top{
+	width: 100px;
+	height: 50px;
+	border-radius: 50px 50px 0 0;
+}
+```
+
+- 制作扇形
+
+遵循“三同，一不同”：元素的宽度、高度、圆角半径值相同，圆角位置不同。
+
+```css
+.top{
+	width:100px;
+	height:100px;
+	border-radius: 100px 0 0 0;
+}
+```
+- 制作椭圆，需要单独设置水平半径和垂直半径。
+
+```css
+.ver{
+	width: 50px;
+	height: 100px;
+	border-radius:50px / 100px;
+}
+```
   
- - 等宽单元格
+## 等宽单元格
  
- 让 `table`的单元格等宽
- ```css
- table {
-    table-layout: fixed;
- }
- ```
+让 `table`的单元格等宽
+```css
+table {
+	table-layout: fixed;
+}
+```
 
 
-- 基于vw等viewport视区单位配合rem响应式排版和布局
+## 基于vw等viewport视区单位配合rem响应式排版和布局
 
 摘自 by [张鑫旭](http://www.zhangxinxu.com/wordpress/2016/08/vw-viewport-responsive-layout-typography/)
 
 根据屏幕缩放的大小，使用 `calc` 自动计算字体大小，精确到每一像素界别，避免出现到达临界点时大幅度地页面变化。
 
-```
+```css
 html {
     font-size: 16px;
 }
@@ -319,7 +345,7 @@ html {
 }
 ```
 
-- CSS实现跨浏览器兼容性的盒阴影效果
+## CSS实现跨浏览器兼容性的盒阴影效果
 
 *摘自 by [张鑫旭](http://www.zhangxinxu.com/wordpress/2010/04/css%E5%AE%9E%E7%8E%B0%E8%B7%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%BC%E5%AE%B9%E6%80%A7%E7%9A%84%E7%9B%92%E9%98%B4%E5%BD%B1%E6%95%88%E6%9E%9C/)*
 
@@ -336,7 +362,7 @@ html {
 }
 ```
 
-- 修复中文 Chrome 浏览器下，字号最小只能是12px
+## 修复中文 Chrome 浏览器下，字号最小只能是12px
 
 首先，如果 chome版本大于 chrome 27，则 `-webkit-text-size-adjust:none;` 是没有用的
 
@@ -351,23 +377,25 @@ html {
    -webkit-transform: scale(0.70);
 ```
 
-- 大小不固定的图片垂直居中
+>Note: Chrome在 [设置](chrome://settings/) 里必须放开字体最小值的选项，否则单靠代码设置是没用的
+
+## 大小不固定的图片垂直居中
 
 *摘自[张鑫旭](http://www.zhangxinxu.com/wordpress/2010/09/after%E4%BC%AA%E7%B1%BBcontent%E5%86%85%E5%AE%B9%E7%94%9F%E6%88%90%E5%B8%B8%E8%A7%81%E5%BA%94%E7%94%A8%E4%B8%BE%E4%BE%8B/)*
 以下代码兼容到IE6+
-```
-HTML:
+
+```html
 <div class="pic_box">
     <img data-src="http://image.zhangxinxu.com/image/study/s/s256/mm1.jpg" />
 </div>
-
-CSS:
+```
+```css
 .pic_box{width:300px; height:300px; background-color:#beceeb; font-size:0; *font-size:200px; text-align:center;}
 .pic_box img{vertical-align:middle;}
 .pic_box:after{display:inline-block; width:0; height:100%; content:"center"; vertical-align:middle; overflow:hidden;}
 ```
 
-- 滚动条跳动
+## 滚动条跳动
 
 问题描述：
 >开始只有头部一些信息加载，此时页面高度有限，没有滚动条；然后，更多内容显示，滚动条出现，占据可用宽度，`margin: 0 auto`，
@@ -375,7 +403,7 @@ CSS:
 
 解决方案：
 
-**1. CSS3计算calc和vw单位**
+- CSS3计算calc和vw单位**
 
 `.wrap-outer`指的是居中定宽主体的父级，如果没有，创建一个，兼容到 `IE9+`
 ```css
@@ -388,9 +416,9 @@ CSS:
 }
 ```
 
-**2. **
+- overflow & 100vw
 
-```
+```css
 html {
   // IE9 以下浏览器，因为不支持下面的 vm单位，直接让其出现滚动条
   overflow-y: scroll;
@@ -411,7 +439,7 @@ body {
 }
 ```
 
-- 为了更好的可访问性，使用 `clip` 隐藏内容
+## 为了更好的可访问性，使用 `clip` 隐藏内容
 
 ```css
 .visually-hidden {
@@ -425,15 +453,18 @@ body {
 }
 ```
 
-- 元素垂直居中
+即使屏幕上看不到此元素，但屏幕访问器依旧可以读取
 
-1. 单行行内元素
+## 元素垂直居中
+
+- 单行行内元素
 
 行内元素的行高等于父容器的高度
-```
-// html
+
+```html
 <span>123</span>
-// css
+```
+```css
 span {
   display: inline-block;
   width: 50px;
@@ -443,11 +474,11 @@ span {
 }
 ```
 
-2.多行元素垂直居中（包括inline  inline-block block元素）
+- 多行元素垂直居中（包括inline  inline-block block元素）
 
 父容器设置 `table-cell`，然后使用`vertical-align: middle`对子元素进行垂直居中控制
-```
-// html
+
+```html
 <div class="wrap">
     <span>1212323121e2dmkwefmkwlefm</span>
     <span>1212323121e2dmkwefmkwlefm</span>
@@ -456,12 +487,13 @@ span {
     <div>1212323121e2dmkwefmkwlefm</div>
     <div>1212323121e2dmkwefmkwlefm</div>
 </div>
-// css
+```
+
+```css
 .wrap{
     display: table-cell;
     vertical-align:middle;
     height: 500px;
     background-color: skyblue;
 }
-
 ```
