@@ -16,3 +16,38 @@ exports = function() {}
 // 正确用法
 module.exports = function() {}
 ```
+## `setTimout`方法的第三个参数
+
+绝大部分情况下，大家都只是使用了 `setTimeout`的前两个参数，很少有人知道此方法还有第三个参数
+
+```js
+/**
+ * fn: 必需。要调用一个代码串，也可以是一个函数。
+ * milliseconds: 可选。执行或调用 code/function 需要等待的时间，以毫秒计。默认为 0
+ * param1, param2, ...: 可选。 传给执行函数的其他参数（IE9 及其更早版本不支持该参数）。
+ */
+setTimeout(fn, milliseconds, param1, param2, ...)
+```
+
+所以对于一个经典的面试题：
+
+```js
+for (var i = 1; i <= 5; i++) {
+  (function(j) {
+    setTimeout(function timer() {
+      console.log(j);
+    }, j * 1000);
+  })(i);
+}
+```
+
+上述代码，就是利用闭包实现输出 `1 2 3 4 5`
+
+解决方法除了闭包以及使用 `let`关键字之外，还可以利用 `setTimeout`方法的第三个参数解决：
+```js
+for ( var i=1; i<=5; i++) {
+	setTimeout(function timer(j) {
+		console.log(j);
+	}, i*1000, i);
+}
+```

@@ -2,7 +2,7 @@
 
 由于上述限制，所以想要继承 `Date`类，就无法使用经典的**寄生组合式继承法**进行继承。
 
-- ES5实现
+- ES5实现1
 
 ```js
 // 需要考虑polyfill情况
@@ -46,6 +46,21 @@ console.log(date.abc)  // => 1
 console.log(date2.abc)  // => undefined
 console.log(date.getTest());  // => 正常输出调用 getTime()
 console.log(date2.getTest());  // => Uncaught TypeError: date2.getTest is not a function
+```
+
+- ES5实现2
+
+```js
+function MyDate() {}
+MyDate.prototype.getTest = function() {
+  return this.getTime()
+}
+
+let d = new Date()
+Object.setPrototypeOf(d, MyDate.prototype)
+Object.setPrototypeOf(MyDate.prototype, Date.prototype)
+
+console.log(d.getTime()) // 1537532987673
 ```
 
 - ES6实现

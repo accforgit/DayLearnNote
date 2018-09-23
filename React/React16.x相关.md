@@ -194,7 +194,7 @@ export default class ForwardRefApi extends React.Component {
 
 ## Strict Mode
 
-此组件不会渲染任何的 `bisible UI`，用于对其所有子元素进行检测，只在开发环境起作用，不会对生产版本产生任何影响
+此组件不会渲染任何的 `visible UI`，用于对其所有子元素进行检测，只在开发环境起作用，不会对生产版本产生任何影响
 检测内容如下：
 
 - 不安全的生命周期函数
