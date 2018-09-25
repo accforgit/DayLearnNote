@@ -63,6 +63,17 @@ Object.setPrototypeOf(MyDate.prototype, Date.prototype)
 console.log(d.getTime()) // 1537532987673
 ```
 
+- ES5实现3
+
+```js
+Date.prototype.clone = function() {
+  return new Date(this.valueof())
+}
+var date = new Date('2010')
+var cloneDate = date.clone()
+console.log(cloneData)  // => Fri Jan 01 2010 08:00:00 GMT+0800 (中国标准时间)
+```
+
 - ES6实现
 
 ```js

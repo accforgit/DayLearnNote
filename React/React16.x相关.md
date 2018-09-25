@@ -5,6 +5,10 @@
 - `componentWillMount`
 - `componentWillUpdate`
 
+对应地为这三个函数增加了带有 `UNSAFE` 的替代方法， `UNSAFE_componentWillReceiveProps()`、`UNSAFE_componentWillMount()`、`UNSAFE_componentWillUpdate()`
+
+在 `16.4`及之前的版本中可以继续使用 不带 `UNSAFE`标识的上述三个生命周期函数，但会给出警告，但是  `17`版本之后将删除，只能使用 `UNSAFE`前缀的了
+
 ### getDerivedStateFromProps
 
 上述被 `deprecate`的函数都可以用新增的生命周期函数 `getDerivedStateFromProps`来代替实现

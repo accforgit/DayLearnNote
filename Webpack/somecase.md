@@ -167,3 +167,30 @@ _注：v4 beta 版时叫 `pure module`, 后来改成了 `sideEffects`_
 ```
 
 **_结论_：只要你的包不是用来做 `polyfill` 或 `shim` 之类的事情，就尽管放心的给它加上 `sideEffects: false` 吧！**
+
+## `preload-webpack-plugin`
+
+给外联资源加上 `preload`标识：
+```js
+const preloadWebpackPlugin = require('preload-webpack-plugin')
+...
+
+// webpack配置
+plugins: [
+  new htmlWebpackPlugin(),
+  new preloadWebpackPlugin({
+    as(entry) {
+      if (/\.woff2$/.test(entry)) return 'font';
+      return 'script';
+    },
+    include: 'allAssets',
+    rel: 'preload',
+    fileWhitelist: [/\.woff2/]
+  })
+]
+```
+
+编译出的字体标签链接为：
+```html
+<link as="font" crossorigin href='/dist/static/font.woff2' rel="preload" />
+```

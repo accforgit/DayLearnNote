@@ -51,3 +51,34 @@ for ( var i=1; i<=5; i++) {
 	}, i*1000, i);
 }
 ```
+
+## new操作符干了什么
+
+做了一下 4件事
+
+- 创建一个空对象
+
+```js
+var obj = new Object()
+```
+
+- 设置原型链，对象原型指向构造函数的 `prototype`
+
+```js
+obj.__proto__ = Func.prototype
+```
+
+- 让 `Func`中的 `this`指向 `obj`，并执行 `Func`的函数体，也即将对象作为函数的 `this`传进去
+
+```js
+var result = Func.call(obj)
+```
+
+- 判断`Func`的返回值类型，如果是值类型，返回 `obj`。如果是引用类型，就返回这个引用类型的对象
+
+```js
+if (typeof result === 'object') {
+  return result
+}
+return obj
+```
