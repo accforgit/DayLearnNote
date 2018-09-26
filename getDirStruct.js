@@ -64,10 +64,10 @@ let readmeContent = `
 // 整理输出结构
 ;(function formatLink(obj = structs, basePath = '', level = 1) {
   Object.keys(obj).forEach(k => {
-    readmeContent += ('\t'.repeat(level - 1) + '|----' + `[${k}](${basePath + '/' + k})` + '\n\n')
+    readmeContent += ('\t'.repeat(level - 1) + '|————' + `[${k}](${basePath + '/' + k})` + '\n\n')
     if (obj[k].directChildren) {
       obj[k].directChildren.forEach(d => {
-        readmeContent += ('\t'.repeat(level) + '|----' + `[${d}](${basePath + '/' + k + '/' + d})` + '\n\n')
+        readmeContent += ('\t'.repeat(level) + '|————' + `[${d}](${basePath + '/' + k + '/' + d})` + '\n\n')
       })
     }
     const objKeys = Object.keys(obj[k])
