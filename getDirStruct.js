@@ -19,12 +19,12 @@ const absolutePath = []
     return absolutePath.push(basePath)
   }
   files.forEach(file => {
-    // 处理先不要显示的文件
+    // 排除掉不想显示的文件
     if (excludeFile.indexOf(file) !== -1 || excludePrefix.some(pre => file.indexOf(pre) === 0)) return
     const fullPath = path.resolve(basePath, file)
     const fileStats = fs.statSync(fullPath)
     // 如果是文件夹，则继续遍历其子文件
-    return fileStats.isDirectory(file) ? getDirStruct(fullPath) : absolutePath.push(fullPath)
+    return fileStats.isDirectory() ? getDirStruct(fullPath) : absolutePath.push(fullPath)
   })
 })()
 // 文件的相对路径数组，用于拼接 url地址
