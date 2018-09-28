@@ -16,6 +16,7 @@ exports = function() {}
 // 正确用法
 module.exports = function() {}
 ```
+
 ## `setTimout`方法的第三个参数
 
 绝大部分情况下，大家都只是使用了 `setTimeout`的前两个参数，很少有人知道此方法还有第三个参数
@@ -82,3 +83,121 @@ if (typeof result === 'object') {
 }
 return obj
 ```
+
+## 浏览器渲染与 Event Loop
+
+对于以下代码：
+```js
+document.body.appendChild(el)
+el.style.display = 'none'
+```
+
+这段代码的意思是，给 `body`追加一个元素，并隐藏此元素，有的人可能下意识认为这会导致页面闪动，从而交换这两行代码的书写顺序，即：
+```js
+el.style.display = 'none'
+document.body.appendChild(el)
+```
+
+实际上，无论是哪种顺序，最后的渲染效果都是一样的，因为这两行代码都是同步代码，浏览器会把这两行代码合并，然后一次性渲染出结果，而不是一步步执行
+
+对于下述代码：
+```js
+
+```
+
+本意是 让 `box` 元素的位置从 `0` 一下子 移动到 `1000`，然后 动画移动 到 `500`，但是由于浏览器的渲染机制，所以实际情况是从 `0` 动画移动 到 `500`，中间那一步的 `1000`直接被跳过了，想要让上述代码达到预期的效果，那就必须让上述操作不发生在一次渲染中，可以使用 `setTimeout`、`requestAnimationFrame`、强制浏览器分别渲染
+
+- setTimeout
+
+这是最常用的方法了：
+```js
+box.style.transform = 'translateX(1000px)'
+setTimeout(() => {
+  box.style.tranition = 'transform 1s ease'
+  box.style.transform = 'translateX(500px)'
+})
+```
+
+- requestAnimationFrame
+
+`requestAnimationFrame`与 `setTimeout`的实现方式是不一样的， `requestAnimationFrame`可以看做是 `microtask`，而 `setTimeout` 是 `macrotask`，`requestAnimationFrame`将会在浏览器进行渲染之前完成，而 `setTimeout`则是在下一帧执行，所以如果你这么写：
+```js
+box.style.transform = 'translateX(1000px)'
+requestAnimationFrame(() => {
+  box.style.tranition = 'transform 1s ease'
+  box.style.transform = 'translateX(500px)'
+})
+```
+
+其实实现的效果和不加 `requestAnimationFrame`是一样的，但是如果是两个 `requestAnimationFrame`嵌套那就可以了：
+```js
+box.style.transform = 'translateX(1000px)'
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    box.style.tranition = 'transform 1s ease'
+    box.style.transform = 'translateX(500px)'
+  })
+})
+```
+第一个 `requestAnimationFrame`在第一帧随同第一行代码一同被浏览器执行并渲染，然后在下一帧才会执行第二个 `requestAnimationFrame`中的内容
+
+- 强制浏览器分别渲染
+
+例如：
+```js
+box.style.transform = 'translateX(1000px)'
+getComputedStyle(box) // 伪代码，只要获取一下当前的计算样式，就可以打断浏览器合并渲染的过程
+box.style.tranition = 'transform 1s ease'
+box.style.transform = 'translateX(500px)'
+```
+
+## addEventListener
+
+对于以下代码：
+```js
+button.addEventListener('click', () => {
+  Promise.resolve().then(() => console.log('microtask 1'))
+  console.log('listener 1')
+})
+button.addEventListener('click', () => {
+  Promise.resolve().then(() => console.log('microtask 2'))
+  console.log('listener 2')
+})
+// button.click()
+```
+
+如果执行上述代码，然后在浏览器中用鼠标点击 `button`这个元素，那么将输出：
+```js
+listener 1
+microtask 1
+listener 2
+microtask 2
+```
+
+但是如果不是手动触发，而是使用代码触发，例如打开上述代码中的 `button.click()`注释，然后执行代码，将输出：
+```js
+listener 1
+listener 2
+microtask 1
+microtask 2
+```
+
+原因如下：
+
+- 用户直接点击的时候，浏览器先后触发 `2` 个 `listener`。第一个 `listener` 触发完成 (`listener 1`) 之后，队列空了，就先打印了 `microtask 1`。然后再执行下一个 `listener`。重点在于浏览器并不实现知道有几个 `listener`，因此它发现一个执行一个，执行完了再看后面还有没有。
+
+- 而使用 `button.click()` 时，浏览器的内部实现是把 `2` 个 `listener` 都同步执行。因此 `listener 1 `之后，执行队列还没空，还要继续执行 `listener 2` 之后才行。所以 `listener 2` 会早于 `microtask 1`。重点在于浏览器的内部实现，`click` 方法会先采集有哪些 `listener`，再依次触发。
+
+## __defineGetter__ && __defineSetter__
+
+每个对象都有 `__defineGetter__` 和 `__defineSetter__` 方法，这两个方法可以 在对象定义后来给对象追加 `getter`与 `setter`的定义(但是如果已经定义过了，就不能覆盖，会报错)
+
+```js
+const obj = { a: 2 }
+obj.__defineGetter__('a', () => {
+  return 10
+})
+console.log(obj.a)  // => 10
+```
+
+>该方法是非标准方法，已从标准中删除，不要使用

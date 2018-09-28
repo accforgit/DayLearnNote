@@ -33,7 +33,7 @@ let relativePath = absolutePath.map(apath => {
   // 得到相对路径
   const rPath = path.relative(__dirname, apath)
   // 不同系统平台的分隔符处理
-  return isWin ? rPath.replace(/\\/g, '/') : rpath
+  return isWin ? rPath.replace(/\\/g, '/') : rPath
 })
 
 // 层级结构
