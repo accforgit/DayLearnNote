@@ -1,3 +1,11 @@
+# vue-router源码概览
+
+源码这个东西对于实际的工作其实没有立竿见影的效果，不会像那些针对性极强的文章一样看了之后就立马可以运用到实际项目中，产生什么样的效果，源码的作用是一个潜移默化的过程，它的理念、设计模式、代码结构等看了之后可能不会立即知识变现(或者说变现很少)，而是在日后的工作过程中悄无声息地发挥出来，你甚至都感觉不到这个过程
+
+另外，优秀的源码案例，例如 `vue`、`react`这种，内容量比较庞大，根本不是三篇五篇十篇八篇文章就能说完的，而且写起来也很难写得清楚，也挺浪费时间的，而如果只是分析其中一个点，例如 `vue`的响应式，类似的文章也已经够多了，没必要再 `repeat`
+
+所以我之前没专门写过源码分析的文章，只是自己看看，不过最近闲来无事看了 `vue-router`的源码，发现这种插件级别的东西，相比 `vue`这种框架级别的东西，逻辑简单清晰，没有那么多道道，代码量也不多，但是其中包含的理念等东西却很精炼，值得一写，当然，文如其名，只是概览，不会一行行代码分析过去，细节的东西还是要自己看看的
+
 ## vue.use
 
 `vue`插件必须通过 `vue.use`进行注册，`vue.use`的代码位于 `vue`源码的 `src/core/global-api/use.js`文件中，此方法的主要作用有两个：
@@ -378,7 +386,32 @@ Vue.mixin({
       ...
 })
 ```
-将 `this._route`通过 `defineReactive`变成一个响应式的数据，当路由发生变化时，将会调用 `router-view`的 `render`函数，此函数中访问了 `this._route`这个数据，也就相当于是调用了 `this._route`的 `getter`方法，触发依赖收集，建立一个 `Watcher`，执行 `_update`方法，从而让页面重新渲染
+将 `this._route`通过 `defineReactive`变成一个响应式的数据，这个`defineReactive`就是 `vue`中定义的，用于将数据变成响应式的一个方法，源码在 `vue/src/core/observer/index.js`中，其核心就是通过 `Object.defineProperty`方法修改数据的 `getter` 和 `setter`：
+```js
+Object.defineProperty(obj, key, {
+    enumerable: true,
+    configurable: true,
+    get: function reactiveGetter () {
+      const value = getter ? getter.call(obj) : val
+      if (Dep.target) {
+        // 进行依赖收集
+        dep.depend()
+        if (childOb) {
+          childOb.dep.depend()
+          if (Array.isArray(value)) {
+            dependArray(value)
+          }
+        }
+      }
+      return value
+    },
+    set: function reactiveSetter (newVal) {
+      ...
+      // 通知订阅当前数据 watcher的观察者进行响应
+      dep.notify()
+    }
+```
+当路由发生变化时，将会调用 `router-view`的 `render`函数，此函数中访问了 `this._route`这个数据，也就相当于是调用了 `this._route`的 `getter`方法，触发依赖收集，建立一个 `Watcher`，执行 `_update`方法，从而让页面重新渲染
 ```js
 // vue-router/src/components/view.js
 render (_, { props, children, parent, data }) {
@@ -430,7 +463,24 @@ render (h: Function) {
 data.on = on
 data.attrs = { href }
 ```
-当触发这些路由切换事件时，会调用响应的方法来切换路由刷新视图：
+另外，你可以可以通过传入 `tag`这个 `props`来定制 `router-link`渲染出来的元素标签：
+```js
+<router-link to="/foo" tag="div">Go to foo</router-link>
+```
+如果 `tag`值不为 `a`，则会递归遍历 `router-link`的子元素，直到找到一个 `a`标签，则将事件和路由赋值到这个 `<a>`上，如果没找到`a`标签，则将事件和路由放到 `router-link`渲染出的本身元素上：
+```js
+if (this.tag === 'a') {
+    data.on = on
+    data.attrs = { href }
+  } else {
+    // find the first <a> child and apply listener and href
+    // findAnchor即为递归遍历子元素的方法
+    const a = findAnchor(this.$slots.default)
+    ...
+  }
+}
+```
+当触发这些路由切换事件时，会调用相应的方法来切换路由刷新视图：
 ```js
 // src/components/link.js
 const handler = e => {
@@ -445,3 +495,24 @@ const handler = e => {
   }
 }
 ```
+
+## 总结
+
+可以看到，`vue-router`的源码是很简单的，比较适合新手进行阅读分析
+
+源码这种东西，我的理解是没必要非要**专门腾出时间来看**，只要你熟读文档，能正确而熟练地运用 `API`实现各种需求那就行了，轮子的出现本就是为实际开发所服务而不是用来折腾开发者的，注意，我不是说不要去看，有时间还是要看看的，就算弄不明白其中的道道，但看了一遍总会有收获的，比如我在看 `vue`源码的时候，经常看到类似于这种的赋值写法：
+```js
+// vue/src/core/vdom/create-functional-component.js
+(clone.data || (clone.data = {})).slot = data.slot
+```
+如果是之前，对于这段逻辑我通常会这么写：
+```js
+if (clone.data) {
+  clone.data.slot = data.slot
+} else {
+  clone.data = {
+    slot: data.slot
+  }
+}
+```
+也不是说第一种写法有什么难度或者看不明白，只是习惯了第二种写法，平时写代码的过程中自然而然不假思索地就写出来了，习惯成自然了，但是当看到第一种写法的时候才会一拍脑袋想着原来这么写也可以，以前白敲了那么多次键盘，所以没事要多看看别人优秀的源码，避免沉迷于自己的世界闭门造车，这样才能查漏补缺，这同样也是我认为代码 `review`比较重要的原因，自己很难发现的问题，别人可能一眼就看出来了，此之谓**当局者迷旁观者清也**
