@@ -151,7 +151,7 @@ export default class App extends Component {
 ## createRef API
 
 除了沿用之前创建 `ref`的两种方法： `string ref` 和 `callback ref`之外，另增 `createRef`的方法
-此方法创建的 `ref`，不会有使用 `string ref`方法创建的副作用
+此方法创建的 `ref`，不会有使用 `string ref`方法创建的副作用，更多关于 `string ref`的副作用详见 [React ref 的前世今生](https://zhuanlan.zhihu.com/p/40462264)
 
 ```jsx
 export default class CreateRefApi extends Component {
