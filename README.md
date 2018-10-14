@@ -43,6 +43,8 @@
 	- [异步组件.md](/Vue/异步组件.md)
 	- [性能优化.md](/Vue/性能优化.md)
 	- [新特性.md](/Vue/新特性.md)
+	- [solution](/Vue/solution)
+		- [输入手机号时334加入以及删除空格的组件.md](/Vue/solution/输入手机号时334加入以及删除空格的组件.md)
 	- [无渲染Vue组件](/Vue/无渲染Vue组件)
 		- [project](/Vue/无渲染Vue组件/project)
 			- [index.vue](/Vue/无渲染Vue组件/project/index.vue)
