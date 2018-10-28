@@ -53,7 +53,7 @@ for ( var i=1; i<=5; i++) {
 }
 ```
 
-## new操作符干了什么
+## new 操作符干了什么
 
 做了以下 4件事
 
@@ -63,13 +63,13 @@ for ( var i=1; i<=5; i++) {
 var obj = new Object()
 ```
 
-- 设置原型链，对象原型指向构造函数的 `prototype`
+- 将构造函数的作用域给新对象（因此 `this`就指向了这个新对象）
 
 ```js
 obj.__proto__ = Func.prototype
 ```
 
-- 让 `Func`中的 `this`指向 `obj`，并执行 `Func`的函数体，也即将对象作为函数的 `this`传进去
+- 执行构造函数中的代码
 
 ```js
 var result = Func.call(obj)
