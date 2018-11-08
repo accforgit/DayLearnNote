@@ -205,3 +205,43 @@ export default class ForwardRefApi extends React.Component {
 - 使用`string ref API`创建 `ref`
 - 不期望的副作用
 - 老式(v16.x之前)的 `Context API`
+
+## v16.6 相关更新
+
+### lazy
+
+异步操作，例如异步加载组件，异步获取数据
+```js
+import React, {lazy, Suspense} from 'react';
+const OtherComponent = lazy(() => import('./OtherComponent'));
+
+function MyComponent() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <OtherComponent />
+    </Suspense>
+  );
+}
+```
+
+### React.memo
+
+用于给无状态组件实现类似 `PureComponent`的浅比较功能，即浅比较 `props`是否有变化，如果没有变化，就不重新渲染当前组件
+
+```js
+const MyComponent = React.memo(function MyComponent(props) {
+  /* only rerenders if props change */
+})
+```
+
+### static contextType
+
+`Context API`的一种渐进方式，功能相同，可以不用关心，一般直接使用 `Context API`即可
+
+### static getDerivedStateFromError()
+
+在发布 `Error Boundaries`的时候，`React`提供了一个新的生命周期方法 `componentDidCatch`，在捕获到错误的时候会触发，你可以在里面修改 `state`以显示错误提醒的 `UI`，或者将错误信息发送给服务端进行 `log`用于后期分析。但是这里有个问题，就是在捕获到错误的瞬间，`React`会在这次渲染周期中将这个组件渲染为 `null`，这就有可能导致他的父组件设置他上面的`ref`获得 `null`而导致一些问题，所以现在提供了这个方法。
+这个方法跟 `getDerivedStateFromProps`类似，唯一的区别是他只有在出现错误的时候才触发，他相对于 `componentDidCatch`的优势是在当前的渲染周期中就可以修改 `state`，以在当前渲染就可以出现错误的 `UI`，而不需要一个 `null`的中间态。
+而这个方法的出现，也意味着以后出现错误的时候，修改 `state`应该放在这里去做，而后续收集错误信息之类的放到 `componentDidCatch`里面
+
+

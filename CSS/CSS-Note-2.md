@@ -107,3 +107,54 @@ wbr:after { content: '\00200B'; }
 
 使用`link`标签引用的  `css`文件，会异步加载，所以不会阻塞 `DOM`的 **解析**，但是会阻塞 `DOM`的 **渲染**
 
+## 多行省略
+
+- `-webkit-line-clamp`
+
+`-webkit`内核浏览器的私有特性，一般移动端浏览器都是使用这种内核，所以可以使用，作为渐进增强的体验方案
+
+需要注意的是，如果是英文，则长英文不会自动换行，需要增加额外代码：
+```css
+word-wrap:break-word;
+word-break:break-all;
+```
+
+- 利用 `float`的特性
+
+```html
+<div class="box">
+  <div class="box1">腾讯成立于1998年11月，是目前中国领先的互联网增值服务提供商之一。成立10多年来，腾讯一直秉承“一切以用户价值为依归”的经营理念，为亿级海量用户提供稳定优质的各类服务，始终处于稳健发展状态。2004年6月16日，腾讯控股有限公司在香港联交所主板公开上市(股票代号700)。</div>
+  <div class="box2">placeholder</div>
+  <div class="box3">...更多</div>
+</div>
+```
+
+```css
+.box {
+  height: 108px;
+  overflow: hidden;
+}
+.box1 {
+  float:right;
+  margin-left:-50px;
+  width:100%;
+  background: hsla(229, 100%, 75%, 0.5);
+}
+.box2 {
+  float:right;
+  width:50px;
+  height:108px;
+  color:transparent;
+  background: hsla(334, 100%, 75%, 0.5);
+}
+.box3 {
+  float:right;
+  width:50px;
+  height:18px;
+  position: relative;
+  background-color: yellowgreen;
+  left: 100%;
+  transform: translate(-100%,-100%);
+}
+
+```
