@@ -10,15 +10,24 @@
 
 `setTimeout` 和 `setInterval`并非是专为连续循环产生的 `API`，所以可能无法达到流畅的动画表现，故用 `requestNextAnimationFrame`，可能需要 `polyfill`：
 
+`requestNextAnimationFrame`:
 ```js
-const raf = window.requestAnimationFrame
-  || window.webkitRequestAnimationFrame
-  || window.mozRequestAnimationFrame
-  || window.oRequestAnimationFrame
-  || window.msRequestAnimationFrame
+const raf = requestAnimationFrame
+  || webkitRequestAnimationFrame
+  || mozRequestAnimationFrame
   || function(callback) {
-    window.setTimeout(callback, 1000 / 60)
+    setTimeout(callback, 1000 / 60)
   }
+```
+
+`requestAnimationFrame`:
+```js
+const cancelRaf = cancelAnimationFrame
+  || webkitCancelAnimationFrame
+  || mozCancelAnimationFrame
+  || (handler => {
+    clearTimeout(handler)
+  })
 ```
 
 ## 利用剪辑区域来处理动画背景或其他不变的图像

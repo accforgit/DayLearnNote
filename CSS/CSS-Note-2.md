@@ -156,5 +156,32 @@ word-break:break-all;
   left: 100%;
   transform: translate(-100%,-100%);
 }
+```
 
+## [iphoneX 刘海屏适配](https://juejin.im/post/5be95fbef265da61327ed8e0)
+
+通过以下几个步骤，即可实现所有 `IOS11.x`系统的适配了，也就是主体内容显示在安全区域内，包括横屏情况
+
+- 设置网页在可视区域的布局方式
+
+新增 `viweport-fit` 属性，使得页面内容完全覆盖整个窗口：
+```html
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+```
+
+- 让主体内容控制在安全区域内
+
+可以通过 `constant()` 可以获取到非安全边距，再结合 `padding` 或 `margin` 来控制页面元素避开非安全区域。 `Webkit` 在 `iOS11`中新增`CSS Functions: env()`替代 `constant()`，`constant()` 从 `Safari Techology Preview 41` 和 `iOS11.2 Beta`开始会被弃用。在不支持`env()`的浏览器中，会自动忽略这一样式规则，不影响网页正常的渲染。为了达到最大兼容目的，可以 `constant()` 和 `env()` 同时使用
+
+```css
+body {
+  padding-bottom: constant(safe-area-inset-top); /* iOS 11.0 */
+  padding-top: env(safe-area-inset-top); /* iOS 11.2+ */
+  padding-right: constant(safe-area-inset-right);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: constant(safe-area-inset-left);
+  padding-left: env(safe-area-inset-left);
+}
 ```
