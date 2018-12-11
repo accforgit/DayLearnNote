@@ -338,10 +338,6 @@ b === a;    // true
 c === a;    // false
 ```
 
-- `Object.assign`
-
-如果需要深度复制，那么可借助`ES6`中定义的`Object.assign()`方法。
-
 ## 属性描述符
 
 ### `getOwnPropertyDesciptor`
