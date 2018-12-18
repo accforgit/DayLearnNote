@@ -206,9 +206,7 @@ export default class ForwardRefApi extends React.Component {
 - 不期望的副作用
 - 老式(v16.x之前)的 `Context API`
 
-## v16.6 相关更新
-
-### lazy
+## lazy
 
 异步操作，例如异步加载组件，异步获取数据
 ```js
@@ -224,7 +222,7 @@ function MyComponent() {
 }
 ```
 
-### React.memo
+## React.memo
 
 用于给无状态组件实现类似 `PureComponent`的浅比较功能，即浅比较 `props`是否有变化，如果没有变化，就不重新渲染当前组件
 
@@ -234,14 +232,56 @@ const MyComponent = React.memo(function MyComponent(props) {
 })
 ```
 
-### static contextType
+## static contextType
 
 `Context API`的一种渐进方式，功能相同，可以不用关心，一般直接使用 `Context API`即可
 
-### static getDerivedStateFromError()
+## static getDerivedStateFromError()
 
 在发布 `Error Boundaries`的时候，`React`提供了一个新的生命周期方法 `componentDidCatch`，在捕获到错误的时候会触发，你可以在里面修改 `state`以显示错误提醒的 `UI`，或者将错误信息发送给服务端进行 `log`用于后期分析。但是这里有个问题，就是在捕获到错误的瞬间，`React`会在这次渲染周期中将这个组件渲染为 `null`，这就有可能导致他的父组件设置他上面的`ref`获得 `null`而导致一些问题，所以现在提供了这个方法。
 这个方法跟 `getDerivedStateFromProps`类似，唯一的区别是他只有在出现错误的时候才触发，他相对于 `componentDidCatch`的优势是在当前的渲染周期中就可以修改 `state`，以在当前渲染就可以出现错误的 `UI`，而不需要一个 `null`的中间态。
 而这个方法的出现，也意味着以后出现错误的时候，修改 `state`应该放在这里去做，而后续收集错误信息之类的放到 `componentDidCatch`里面
 
 
+## Hooks
+
+### useState
+
+作用：
+
+- 方便组件的复用
+- 摒弃 `class`，摒弃 `this`， 让组件易于写成 `function`的形式，
+
+```js
+import { useState } from 'react'
+
+function Example() {
+  const [count, setCount] = useState(0)
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  )
+}
+```
+
+`Tips`：
+
+- 数组的结构赋值开销较大，可以考虑写成对象结构或直接赋值
+
+```js
+const [count, setCount] = useState(0)
+// 改成
+const _useState = useState(0)
+let count = _useState[0]
+let setCount = _useState[1]
+```
+- `useState`可以多次调用，用于构造多个 `state`，接收的值不仅限于原始类型(`string/number/boolean`)，同样包括对象和数组，需要注意的是，之前我们的 `this.setState`做的是合并状态后返回一个新状态，而 `useState`是直接替换老状态后返回新状态，最后，`react`也给我们提供了一个 [useReducer](https://react.docschina.org/docs/hooks-reference.html#usereducer) 的 `hook`，如果你更喜欢 `redux`式的状态管理方案的话
+
+- `react`是怎么保证这组件内多个 `useState`找到它对应的 `state`呢
+
+`react`是根据 `useState`出现的顺序来定的，所以 `react`规定我们必须把 `hooks`写在函数的最外层，不能写在 `if...else`等条件语句当中，来确保 `hooks`的执行顺序一致

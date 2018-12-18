@@ -100,3 +100,39 @@ ReactDOM.render((
   document.getElementById('app')
 );
 ```
+
+## [Render Props](https://react.docschina.org/docs/render-props.html)
+
+>指一种在 `React` 组件之间使用一个值为函数的 `prop` 在 `React` 组件间共享代码的简单技术，主要用于简化 `react`
+组件的复用方式
+
+```jsx
+class DataProvider extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { target: 'Zac' };
+  }
+
+  render() {
+    return (
+      <div>
+        {this.props.render(this.state)}
+      </div>
+    )
+  }
+}
+
+// 使用 render Props
+<DataProvider render={data => (
+  <Cat target={data.target} />
+)} />
+```
+虽然这个模式叫 `Render Props`，但不是说非用一个叫 `render`的 `props`不可，习惯上大家更常写成下面这种：
+```jsx
+<DataProvider>
+  {data => (
+    <Cat target={data.target} />
+  )}
+</DataProvider>
+```
+

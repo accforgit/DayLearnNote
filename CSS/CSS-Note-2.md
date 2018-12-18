@@ -185,3 +185,40 @@ body {
   padding-left: env(safe-area-inset-left);
 }
 ```
+
+## box-shadow技巧
+
+### 单侧投影
+
+如果阴影的模糊半径，与负的扩张半径一致，那么我们将看不到任何阴影，因为生成的阴影将被包含在原来的元素之下，除非给它设定一个方向的偏移量。所以这个时候，我们给定一个方向的偏移值，即可实现单侧投影，例如：
+
+单左侧投影：
+```css
+box-shadow: -7px 0 5px -5px red;
+```
+
+单下测投影：
+```css
+box-shadow: 0 7px 5px -5px red;
+```
+
+### 投影背景 / 背景动画
+
+当 `box-shadow` 的模糊半径和扩张半径都为 `0` 的时候，我们也可以得到一个和元素大小一样的阴影，只不过被元素本身遮挡住了，我们尝试将其偏移出来：
+
+```css
+width: 80px;
+height: 80px;
+border: 1px solid #333;
+box-sizing: border-box;
+box-shadow: 80px 80px 0 0 #000;
+```
+
+`box-shadow` 是可以设置多层的，也就是多层阴影，而且可以进行过渡变换动画（补间动画）。但是 `background-image: linear-gradient()`，也就是渐变背景是不能进行补间动画的，例如 [box-shadow实现背景动画](https://codepen.io/Chokcoco/pen/WaBYZL)
+
+### 立体投影
+
+- 立体投影的关键点在于利于伪元素生成一个大小与父元素相近的元素，然后对其进行 rotate 以及定位到合适位置，再赋于阴影操作
+- 颜色的运用也很重要，阴影的颜色通常比本身颜色要更深，这里使用 `hsl` 表示颜色更容易操作，`l` 控制颜色的明暗度
+
+示例：[立体投影](https://codepen.io/Chokcoco/pen/LgdRKE?editors=1100)

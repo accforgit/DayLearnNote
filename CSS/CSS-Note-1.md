@@ -178,6 +178,14 @@ overflow: hidden;
 text-overflow: ellipsis;
 ```
 
+## 常见的开启硬件加速的 CSS属性
+
+`transform`、`opacity`、`SVG filters`、`will-change`
+
+开启硬件加速的坑：
+- 如果你为太多元素使用css3硬件加速，会导致内存占用较大，会有性能问题。
+- 在 `GPU`渲染字体会导致抗锯齿无效。这是因为 `GPU`和 `CPU`的算法不同。因此如果你不在动画结束的时候关闭硬件加速，会产生字体模糊。
+
 ## CSS3动画开启硬件加速
 
 ```css
