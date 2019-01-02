@@ -1,3 +1,5 @@
+>更详细的 `React 16.x`的进化步骤参见 [精读《React16 新特性》](https://zhuanlan.zhihu.com/p/52016989?utm_source=75weekly&utm_medium=75weekly)
+
 ## React 16.x新的生命周期函数和 `deprecate`掉的生命周期函数
 
 `deprecate`掉了三个生命周期函数，都是 `render`之前的：

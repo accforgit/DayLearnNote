@@ -272,4 +272,18 @@ navigator.sendBeacon('/haopv', data)
 - 信标请求可以有效地合并，以优化移动设备上的能量使用。
 - 保证页面卸载之前启动信标请求，并允许运行完成且不会阻塞请求或阻塞处理用户交互事件的任务
 
-还有一个需要注意的是，通过信标发送的请求，请求方法均为 `POST`，且不支持修改。
+还有一个需要注意的是，通过信标发送的请求，请求方法均为 `POST`，且不支持修改
+
+>此 `API`兼容性不太好（Android 6.x，IOS 11.4）
+
+## requestAnimationFrame && requestIdleCallBack
+
+`React 16`实现了新的调度策略(`Fiber`), 新的调度策略提到的异步、可中断，其实就是基于浏览器的 `requestIdleCallback`和 `requestAnimationFrame`两个 `API`
+
+- requestAnimationFrame
+
+会在每一帧确定执行，属于高优先级任务
+
+- requestIdleCallBack
+
+低优先级任务，执行的前提条件是当前浏览器处于空闲状态，利用的是帧的空闲时间，所以如果浏览器一直处于繁忙状态，那么回调将一直无法执行
