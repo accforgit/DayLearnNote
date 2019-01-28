@@ -287,3 +287,24 @@ navigator.sendBeacon('/haopv', data)
 - requestIdleCallBack
 
 低优先级任务，执行的前提条件是当前浏览器处于空闲状态，利用的是帧的空闲时间，所以如果浏览器一直处于繁忙状态，那么回调将一直无法执行
+
+## fetch无法拦截 302
+
+[当fetch遇到302状态码，会发生什么？](https://zcfy.cc/article/what-will-happen-when-fetch-meets-a-302-status-code)
+
+`fetch`无法拦截 `302`重定向，导致页面重定向失败，但可以通过修改 `302`为其他可拦截的状态码，来让前端自行重定向：
+```js
+fetch('http://www.somecompany.com/someapi')
+  .then(response => {
+    if (response.ok) {
+      // process the data
+    } else if (response.status == 401) { // something bad happened...
+      // do something like throwing an Error, or making a jump
+    } else { // some other status like 400, 403, 500, etc
+      // take proper actions
+    }
+  })
+  .catch(error => {
+    // do some clean-up job
+  })
+```

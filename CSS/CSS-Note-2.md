@@ -222,3 +222,7 @@ box-shadow: 80px 80px 0 0 #000;
 - 颜色的运用也很重要，阴影的颜色通常比本身颜色要更深，这里使用 `hsl` 表示颜色更容易操作，`l` 控制颜色的明暗度
 
 示例：[立体投影](https://codepen.io/Chokcoco/pen/LgdRKE?editors=1100)
+
+## FLIP
+
+即`First, Last, Invert, Play`，一种让 `css`动画更流畅和更简单的技术，具体参见 [FLIP技术给Web布局带来的变化](https://www.w3cplus.com/javascript/animating-layouts-with-the-flip-technique.html)
