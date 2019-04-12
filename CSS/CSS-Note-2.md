@@ -226,3 +226,17 @@ box-shadow: 80px 80px 0 0 #000;
 ## FLIP
 
 即`First, Last, Invert, Play`，一种让 `css`动画更流畅和更简单的技术，具体参见 [FLIP技术给Web布局带来的变化](https://www.w3cplus.com/javascript/animating-layouts-with-the-flip-technique.html)
+
+## 网站主题色切换方案
+
+详见 [聊一聊前端换肤](https://blog.souche.com/untitled-17/)
+
+## nth-child 进阶用法
+
+上面的用法中的第三部分，一般都是使用 `n`，而有时候也会用到 `-n`，比如选取前2个元素就是：`nth-child(-n + 2)`
+
+为什么是这样呢？其实运算：`-n + 2 ≥ 0`，就可以推出 `n ≤ 2`。
+
+由此，结合两者自动取交集，我们就可以限制选择某一范围。比如选择第 `6`个到第 `9`个，就是：`:nth-child(-n+9):nth-child(n+6)`
+
+注意：不是 `nth-child(2 - n)`，`-n`要写在一起！

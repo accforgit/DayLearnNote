@@ -53,37 +53,6 @@ for ( var i=1; i<=5; i++) {
 }
 ```
 
-## new 操作符干了什么
-
-做了以下 4件事
-
-- 创建一个空对象
-
-```js
-var obj = new Object()
-```
-
-- 将构造函数的作用域给新对象（因此 `this`就指向了这个新对象）
-
-```js
-obj.__proto__ = Func.prototype
-```
-
-- 执行构造函数中的代码
-
-```js
-var result = Func.call(obj)
-```
-
-- 判断`Func`的返回值类型，如果是值类型，返回 `obj`。如果是引用类型，就返回这个引用类型的对象
-
-```js
-if (typeof result === 'object') {
-  return result
-}
-return obj
-```
-
 ## 浏览器渲染与 Event Loop
 
 对于以下代码：
@@ -351,3 +320,73 @@ const foo = new Foo();
 - 必须使用 `new` 调用 `class`
 
 - `class` 内部无法重写类名
+
+## 箭头函数
+
+- 箭头函数没有 原型(`prototype`)，所以箭头函数本身没有 `this`
+- 箭头函数的 `this`在 **定义的时候**(不是执行的时候)继承自外层第一个普通函数的 `this`
+
+```js
+function fn1 () {
+  const fn2 = () => {
+    // 这里的 this 继承自 fn1的 this
+    console.log(this)
+  }
+  fn2()
+}
+```
+- 如果箭头函数外层没有普通函数，严格模式和非严格模式下它的 `this`都会指向全局对象(浏览器环境下是 `window`, `node`下是 `global`)
+
+```js
+let fn3 = () => {
+  // 这里的 this 指向 window
+	console.log(this)
+}
+```
+
+- 箭头函数本身的 `this`指向无法改变，但可以修改它要继承的普通函数的 `this`
+
+```js
+const name = 'tom'
+const obj = {
+  name: 'john'
+}
+function fn1 () {
+  const fn2 = () => {
+    console.log(this.name)
+  }
+  // 这里想要使用 call 来修改 this指向 obj，但实际上会静默失败，因为箭头函数的 this 无法直接修改
+  // 所以 这里的 this还是继承自 fn1，而 fn1的 this 指向 window，所以最终输出 tom
+  fn2.call(obj)
+}
+
+function fn3 () {
+  const fn2 = () => {
+    // 这里的 this 继承自 fn1的 this
+    console.log(this.name)
+  }
+  // 这里想要使用 call 来修改 this指向 obj，但实际上会静默失败
+  // 最终输出 tom
+  fn2()
+}
+// 输出 john，直接改变 fn3的 this指向 obj，相当于是间接改变 fn2的 this指向
+fn3.call(obj)
+```
+
+- 如果箭头函数的 `this`指向全局(即箭头函数外层不存在普通函数)，使用 `arguments`会报未声明的错误；如果箭头函数外层存在普通函数，则在箭头函数中使用的 `arguments`实际上是外层普通函数的 `arguments`
+
+- 使用 `new`调用箭头函数会报错，因为箭头函数没有 `constructor`
+- 箭头函数不支持 `new.target`
+- 箭头函数不支持重命名函数参数,普通函数的函数参数支持重命名
+
+```js
+function func1 (a, a) {
+  console.log(a, arguments) // 2 [1,2]
+}
+
+const func2 = (a, a) => {
+  console.log(a) // 报错：在此上下文中不允许重复参数名称
+}
+func1(1, 2)
+func2(1, 2)
+```
