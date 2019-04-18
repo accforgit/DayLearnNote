@@ -281,21 +281,21 @@ class BinarySearchTree {
 - 以此类推，直到待排序序列元素个数为0
 
 ```js
-function selectSort(array) {
-    let len = array.length
-    let minIndex, minValue
-    for(let i=0; i<len-1; i++) {
-        minIndex = i
-        for(let j=i+1; j<len; j++) {
-            if(array[minIndex] > array[j]) {
-                minIndex = j
-            }
-        }
-        minValue = array[minIndex]
-        array[minIndex] = array[i]
-        array[i] = minValue
+function selectionSort (arr) {
+  const len = arr.length
+  let minIndex, minValue
+  for (let i = 0; i < len - 1; i++) {
+    minIndex = i
+    for (let j = i + 1; j < len; j++) {
+      if (arr[j] < arr[minIndex]) {
+        minIndex = j
+      }
     }
-    return array
+    minValue = arr[i]
+    arr[i] = arr[minIndex]
+    arr[minIndex] = minValue
+  }
+  return arr
 }
 ```
 
@@ -313,17 +313,20 @@ function selectSort(array) {
 >f. 重复步骤b~e,直接待排元素个数为0
 
 ```js
-function insertSort(array) {
-    let len = array.length
-    let i, j, temp
-    for(i=1; i<len; i++){
-        for(j = i-1; j >= 0 && array[j+1]<array[j]; j--) {
-            temp = array[j+1]
-            array[j+1] = array[j]
-            array[j] = temp
-        }
+function insertionSort (arr) {
+  const len = arr.length
+  let preIndex
+  let current
+  for (let i = 1; i < len; i++) {
+    preIndex = i - 1
+    current = arr[i]
+    while (preIndex >= 0 && arr[preIndex] > current) {
+      arr[preIndex + 1] = arr[preIndex]
+      preIndex--
     }
-    return array
+    arr[preIndex + 1] = current
+  }
+  return arr
 }
 ```
 
@@ -337,23 +340,18 @@ function insertSort(array) {
 >d. 当(n= n-1)=0时，排序完成
 
 ```js
-let bubbleSort = (array) =>{
-    let len = array.length
-    if(len === 1) {
-        return array
+function bubbleSort (arr) {
+  const len = arr.length
+  for (let i = 0; i < len - 1; i++) {
+    for (let j = 0; j < len - i - 1; j++) {
+      if (arr[j + 1] < arr[j]) {
+        const temp = arr[j + 1]
+        arr[j + 1] = arr[j]
+        arr[j] = temp
+      }
     }
-    let temp = null
-    for(let i=0; i<len-1; i++){
-        for(let j=i+1; j<len; j++) {
-            if(array[i] > array[j]) {
-                temp = array[i]
-                array[i] = array[j] 
-                array[j] = temp
-            }
-        }
-    }
-
-    return array
+  }
+  return arr
 }
 ```
 
@@ -365,28 +363,22 @@ let bubbleSort = (array) =>{
 递归完成排序。
 
 ```js
-let quickSort =(array) =>{
-    let len = array.length
-    //注意，这里的递归出口不是len === 1
-    if(len <= 1){
-        return array
+function quickSort (arr) {
+  const len = arr.length
+  if (len < 2) return arr
+  const pivotIndex = Math.floor(len / 2)
+  const pivot = arr.splice(pivotIndex, 1)[0]
+  const left = []
+  const right = []
+  for (let i = 0; i < len - 1; i++) {
+    if (arr[i] <= pivot) {
+      left.push(arr[i])
+    } else {
+      right.push(arr[i])
     }
-
-    let leftArr = []
-    let rightArr = []
-    let q = array[0]
-
-    for(let i=1; i<len; i++) {
-        if(array[i] > q) {
-            rightArr.push(array[i])
-        }
-        else{
-            leftArr.push(array[i])
-        }
-    }
-    return [].concat(quickSort(leftArr),q,quickSort(rightArr))
+  }
+  return quickSort(left).concat(pivot, quickSort(right))
 }
-
 ```
 
 ## 希尔排序
@@ -448,30 +440,32 @@ function shellsort2(array){
 
 ```js
 // 排序并合并
-function merge(left, right) {
-    let result = []
-    while(left.length>0 && right.length>0) {
-        if(left[0]<right[0]) {
-            result.push(left.shift())
-        }
-        else {
-            result.push(right.shift())
-        }
-    }
-
-    return result.concat(left, right)
+function mergeSort (arr) {
+  const len = arr.length
+  if (len < 2) {
+    return arr
+  }
+  const middle = Math.floor(len / 2)
+  const left = arr.slice(0, middle)
+  const right = arr.slice(middle)
+  return merge(mergeSort(left), mergeSort(right))
 }
 
-function mergeSort(array) {
-    if(array.length <= 1) {
-        return array
+function merge (left, right) {
+  let result = []
+  while (left.length && right.length) {
+    if (left[0] <= right[0]) {
+      result.push(left.shift())
+    } else {
+      result.push(right.shift())
     }
-
-    let mid = Math.floor(array.length/2)
-    let left = array.slice(0, mid)
-    let right = array.slice(mid)
-
-    return merge(mergeSort(left), mergeSort(right))
+  }
+  if (left.length) {
+    result = result.concat(left)
+  } else if (right.length) {
+    result = result.concat(right)
+  }
+  return result
 }
 
 console.log(mergeSort([23,53,6,1,7,8,0,54,67,2,34]))
