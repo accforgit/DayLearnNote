@@ -20,4 +20,27 @@
 <img src="xxx.png" referrerPolicy="no-referrer" />
 ```
 
+## base标签
 
+`<base> `标签为页面上的所有链接规定默认地址或默认目标
+
+通常情况下，浏览器会从当前文档的 `URL` 中提取相应的元素来填写相对 `URL` 中的空白。
+
+使用 `<base>` 标签可以改变这一点。浏览器随后将不再使用当前文档的 `URL`，而使用指定的基本 `URL` 来解析所有的相对 `URL`。这其中包括`<a>、<img>、<link>、<form>` 标签中的 `URL`。
+
+```html
+<html>
+  <head>
+    <base href="https://user-gold-cdn.xitu.io/" />
+    <base target="_blank" />
+  </head>
+  <body>
+    <img src="2018/12/25/167e378b5af48d99?imageView2/1/w/180/h/180/q/85/format/webp/interlace/1" />
+    <a href="2018/12/25/167e378b5af48d99?imageView2/1/w/180/h/180/q/85/format/webp/interlace/1">跳转</a>
+  </body>
+</html>
+```
+
+## title标签
+
+`<title>` 标签是 `<head>` 标签中唯一要求包含的东西

@@ -136,3 +136,22 @@ class DataProvider extends React.Component {
 </DataProvider>
 ```
 
+## $$typeof
+
+`React` 在解析 `jsx`为 `vdom`的时候，会在 `vdom`的对象中额外添加一个 `$$typeof`的属性：
+```js
+const element = {
+  // This tag allows us to uniquely identify this as a React Element
+  $$typeof: REACT_ELEMENT_TYPE,
+
+  // Built-in properties that belong on the element
+  type: type,
+  key: key,
+  ref: ref,
+  props: props,
+
+  // Record the component responsible for creating this element.
+  _owner: owner,
+};
+```
+`$$typeof` 是一个 `Symbol`类型的值，主要用于防止 `XSS`攻击，因为此类型的值无法序列化，所以如果对
